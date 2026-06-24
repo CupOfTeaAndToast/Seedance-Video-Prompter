@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seedance Pipeline Director v12.1</title>
+    <style>
+        :root {
+            --bg-base: #090D16;
+            --bg-surface: #121826;
+            --bg-input: #1B2336;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border: #263147;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            
+            --c-time: #9CA3AF;
+            --c-cam: #F59E0B;
+            --c-dir: #3B82F6;
+            --c-audio: #A855F7;
+            --c-meta: #10B981;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background: var(--bg-base); color: var(--text-main); padding: 1.5rem; min-height: 100vh; display: flex; justify-content: center; }
+        
+        .workspace {
+            width: 100%;
+            max-width: 1650px;
+            display: grid;
+            grid-template-columns: 540px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1200px) { .workspace { grid-template-columns: 1fr; } .sticky-aside { position: static !important; height: auto !important; } }
+
+        .panel { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+        .control-column { display: flex; flex-direction: column; gap: 1.25rem; }
+        .sticky-aside { position: sticky; top: 1.5rem; height: calc(100vh - 3rem); display: flex; flex-direction: column; gap: 1rem; }
+
+        h2 { font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem; color: #FFF; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+        .form-group:last-child { margin-bottom: 0; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .form-row:last-child { margin-bottom: 0; }
+
+        label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
+        select, input[type="text"], textarea { background: var(--bg-input); border: 1px solid var(--border); color: #FFF; padding: 0.6rem; border-radius: 6px; font-size: 0.85rem; width: 100%; outline: none; }
+        textarea { resize: vertical; font-family: monospace; }
+
+        .file-upload-wrapper { position: relative; display: inline-block; width: 100%; }
+        .file-upload-btn { background: var(--bg-input); border: 1px dashed var(--border); color: var(--text-main); padding: 0.55rem; border-radius: 6px; font-size: 0.8rem; text-align: center; cursor: pointer; display: block; font-weight: 600; }
+        .file-upload-btn:hover { border-color: var(--accent); background: rgba(37, 99, 235, 0.05); }
+        input[type="file"] { position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+
+        .slider-box { display: flex; align-items: center; gap: 0.75rem; }
+        input[type="range"] { flex: 1; accent-color: var(--accent); background: var(--bg-input); height: 5px; border-radius: 3px; appearance: none; }
+        .slider-val { background: var(--bg-input); border: 1px solid var(--border); font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; min-width: 4rem; text-align: center; }
+
+        .hidden-panel { display: none !important; }
+
+        .lock-container { background: rgba(0,0,0,0.15); border: 1px dashed var(--border); border-radius: 8px; padding: 0.75rem; margin-top: 0.5rem; max-height: 220px; overflow-y: auto; }
+        .lock-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg-input); padding: 0.4rem 0.6rem; border-radius: 4px; margin-bottom: 0.4rem; font-size: 0.8rem; }
+        .lock-row:last-child { margin-bottom: 0; }
+        .lock-btn { background: none; border: none; font-size: 1rem; cursor: pointer; color: var(--text-muted); width: 24px; text-align: center; }
+        .lock-btn.locked { color: var(--warning); }
+
+        .canvas-area { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+        .stream-view { flex: 1; background: #070A10; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: 0.85rem; line-height: 1.6; overflow-y: auto; white-space: pre-wrap; }
+        
+        .t-time  { color: var(--c-time); font-weight: 600; }
+        .t-cam   { color: var(--c-cam); }
+        .t-dir   { color: var(--c-dir); }
+        .t-audio { color: var(--c-audio); }
+        .t-meta  { color: var(--c-meta); }
+
+        .footer-metrics { display: flex; justify-content: space-between; align-items: center; background: var(--bg-input); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border); margin: 0.5rem 0; }
+        .metric-label { font-size: 0.8rem; font-weight: 600; }
+        
+        .btn-action { background: var(--accent); color: #FFF; border: none; padding: 0.85rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; text-align: center; }
+        .btn-action:hover { background: var(--accent-hover); }
+        .btn-roll { background: #10B981; margin-bottom: 0.5rem; }
+        .btn-roll:hover { background: #059669; }
+    </style>
+</head>
+<body>
+
+<div class="workspace">
+    
+    <div class="control-column">
+        
+        <div class="panel">
+            <h2>1. Profile & Temporal Matrix</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Video Category</label>
+                    <select id="p-category">
+                        <option value="Axiom 65mm anamorphic print, masterful cinematic composition, volumetric cinematic lighting, moody dark look with deep shadows, high-fidelity color grading">Cinematic Film (65mm Anamorphic, Moody & Deep Shadows)</option>
+                        <option value="1970s gritty panavision film stock, technicolor palette emulation, ultra-high depth of field with soft bokeh">Vintage Panavision (70s Gritty Stock & Soft Bokeh)</option>
+                        <option value="Unfiltered 16mm archival documentary footage, gritty photojournalism aesthetic, natural overcast ambient light, raw handheld camera micro-tremors">Documentary Ledger (16mm Archival, Raw Handheld Tremors)</option>
+                        <option value="Authentic slice-of-life realism, captured on dynamic shoulder-mount rig, unprocessed color profile">Realism Reel (Shoulder-Mount Rig, Unprocessed Profile)</option>
+                        <option value="Ultra-sleek commercial product grade, hyper-glossy surface rendering, high-fashion editorial look, pristine studio softbox illumination">Commercial Cut (Hyper-Glossy, Sleek Studio Softbox)</option>
+                        <option value="Vibrant high-contrast color scheme, impeccable fluid motion tracking, high-end advertising polish">Premium Promo (High-Contrast, Fluid Motion Tracking)</option>
+                        <option value="Immersive first-person perspective POV field, bodycam distortion lens artifacting, high physical kinetic feedback">POV Perspective (First-Person Bodycam & Lens Distortion)</option>
+                        <option value="Grainy CCTV surveillance stream, low-fidelity analog tape decay, dashcam night-vision infrared filter, twitchy security feed frame skips">Surveillance Vault (Grainy CCTV, Infrared & Frame Skips)</option>
+                        <option value="Neon-drenched vaporwave color grading, surreal psychedelic dream-logic visuals, high-energy strobe pacing contrast">Music Video Grid (Neon Vaporwave & Psychedelic Dream-Logic)</option>
+                        <option value="Avant-garde editorial framing, frenetic jump-cut aesthetics, highly stylized lo-fi music video textures">Stylized Avant-Garde (Frenetic Cuts & Lo-Fi Textures)</option>
+                        <option value="1990s faded VHS magnetic tape degradation, magnetic tracking lines bleed, retro family camcorder timestamp burn">Home Video Reel (90s Faded VHS Tape Degradation)</option>
+                        <option value="Vintage super 8 chromatic aberration, nostalgic sun-drenched polaroid coloring">Super 8 Nostalgia (Sun-Drenched Polaroid Coloring)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Structural Layout</label>
+                    <select id="p-structure">
+                        <option value="multi">Multi-Shot Sequence Block</option>
+                        <option value="single">Single Continuous Shot</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Sequence Duration</label>
+                    <div class="slider-box">
+                        <input type="range" id="p-duration" min="4" max="30" value="12" step="1">
+                        <span class="slider-val" id="val-duration">12s</span>
+                    </div>
+                </div>
+                <div class="form-group" id="container-shots-count">
+                    <label>Shot Divisions (1 - 20)</label>
+                    <div class="slider-box">
+                        <input type="range" id="p-shots" min="1" max="20" value="4" step="1">
+                        <span class="slider-val" id="val-shots">4 Shots</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="container-timing-preset">
+                <label>Shot Duration Pacing Mix</label>
+                <select id="p-timing-preset">
+                    <option value="uniform">Uniform Balanced Divisions (Equal beats)</option>
+                    <option value="front">Front-Ended Sequence (Rapid opening cuts)</option>
+                    <option value="back">Back-Ended Sequence (Cuts quicken near end)</option>
+                    <option value="erratic">Erratic Disjointed Mix (Randomized durations)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-lock-registry">
+            <h2>2. Shot Parameter Lock Engine</h2>
+            <label style="margin-bottom: 0.25rem; display: block;">Toggle 🔒 to freeze camera path and action mechanics on individual shots</label>
+            <div class="lock-container" id="lock-rows-wrapper"></div>
+        </div>
+
+        <div class="panel">
+            <h2>3. Optical Motion & Dynamic File Loader</h2>
+            <div class="form-group">
+                <label>Subject Scenario Anchor</label>
+                <input type="text" id="p-subject" value="man dressed like bunny running up staircase and into rooms smashing things aggressively in an absurd rage">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Behavior Action Matrix Source</label>
+                    <select id="p-genre">
+                        <option value="universal"> Universal/General (Default Stock)</option>
+                        <option value="horror"> Horror & Survival Pack</option>
+                        <option value="cyberpunk"> Sci-Fi & Cyberpunk Pack</option>
+                        <option value="combat"> Martial Arts & Combat Pack</option>
+                        <option value="car_chase"> Car Chase Pack</option>
+                        <option value="dance"> Dance Pack</option>
+                        <option value="sports"> Sports Pack</option>
+                        <option value="formal"> Formal/Interview Pack</option>
+                        <option value="external" disabled id="opt-external">📂 Loaded External Profile Matrix</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Inject Custom File (.txt / .json)</label>
+                    <div class="file-upload-wrapper">
+                        <span class="file-upload-btn" id="file-label-view">Choose Behavior File...</span>
+                        <input type="file" id="p-file-loader" accept=".txt,.json">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Primary Camera Vector</label>
+                    <select id="p-movement">
+                        <option value="randomize">🎲 Sequenced Random Variations per Shot</option>
+                        <option value="Pan movement">Pan Tracking Only</option>
+                        <option value="Tilt transition">Tilt Transition Only</option>
+                        <option value="Dolly path tracking">Dolly Path Only</option>
+                        <option value="Horizontal tracking run">Tracking Run Only</option>
+                        <option value="Focal zoom adjustment">Focal Zoom Only</option>
+                        <option value="Orbit loop vector">Orbit Loop Only</option>
+                        <option value="Handheld organic sway">Handheld Drift Only</option>
+                        <option value="Immersive first-person POV tracking, camera locked directly to the subject's eye-line perspective">POV Perspective Only</option>
+                        <option value="Ultra-wide first-person POV perspective, the subject's arms, swinging hands, and lower legs or feet are dynamically visible in the lower frame foreground as they move">POV (With Arms & Feet Visible)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Kinetic Energy Intensity</label>
+                    <div class="slider-box">
+                        <input type="range" id="p-energy" min="0" max="10" value="3" step="1">
+                        <span class="slider-val" id="val-energy">LVL 3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>4. Narrative Scripts & Layout Alignment</h2>
+            <div class="form-group">
+                <label>Script Submissions (Line-breaks create unique tracks)</label>
+                <textarea id="p-dialogue" rows="3" placeholder="Line of dialogue 1...&#10;Line of dialogue 2..."></textarea>
+            </div>
+            <div class="form-group" id="container-dialogue-shift" style="margin-top: 0.5rem;">
+                <label>Dialogue Timeline Distribution Shift</label>
+                <div class="slider-box">
+                    <input type="range" id="p-dialogue-shift" min="0" max="10" value="0" step="1">
+                    <span class="slider-val" id="val-dialogue-shift">Offset 0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>5. Acoustic Architecture</h2>
+            <div class="form-group">
+                <label>Acoustic Output Mode</label>
+                <select id="p-audiomode">
+                    <option value="foley">Foley FX & Ambient Atmosphere Only</option>
+                    <option value="soundtrack">Foley + Layered Instrumental Soundtrack</option>
+                </select>
+            </div>
+            
+            <div id="soundtrack-expansion-panel" class="form-row hidden-panel" style="margin-top:0.75rem;">
+                <div class="form-group">
+                    <label>Music Instrumentation</label>
+                    <select id="p-instrument"></select>
+                </div>
+                <div class="form-group">
+                    <label>Compositional Mood</label>
+                    <select id="p-mood"></select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sticky-aside canvas-area panel">
+        <h2>6. Compiled Structural Prompt Stream</h2>
+        
+        <button class="btn-action btn-roll" onclick="rollUnlockedElements()">🎲 Regenerate Unlocked Fields</button>
+        
+        <div class="stream-view" id="output-view">Initializing matrix engines...</div>
+        
+        <div class="footer-metrics">
+            <div class="metric-label">String Metrics: <span id="char-counter" style="color:var(--success); font-weight:700;">0</span> / 7500 chars</div>
+            <div id="budget-warning" style="font-size:0.75rem; font-weight:700;"></div>
+        </div>
+
+        <button class="btn-action" onclick="copyPipelineOutput()">Copy Clean Prompt Array</button>
+    </div>
+
+</div>
+
+<script>
+const OPTICAL_POOL = [
+        "Pan movement tracking", "Tilt transition vector", "Dolly path tracking", "Horizontal tracking run",
+        "Focal zoom adjustment", "Jib crane arc movement", "Orbit loop vector", "Push-in lens compression",
+        "Whip pan snap sweep", "Handheld organic sway drift", "Aerial drone flight path mapping",
+        // Advanced AI-Comprehensible Cinematic Vectors
+        "Vertigo effect zolly camera movement",
+        "Low-angle tracking shot skimming the ground",
+        "High-angle overhead bird's-eye perspective",
+        "Dutch angle tilted horizon framing shift",
+        "Slow fluid push-in tracking shot approaching the subject",
+        "Steadicam tracking shot smoothly following behind the subject",
+        "Dynamic 360-degree rotational arc orbit shot",
+        "Rack focus depth of field transition",
+        "Snorricam perspective locked tightly to the subject's torso",
+        "Crash zoom snap focus acceleration",
+        "Extreme close-up macro details shift tracking"
+    ];
+
+const GENRE_BEHAVIOR_MATRIX = {
+        universal: [
+            "violently lunges sideways, slamming shoulder-first hard into the structural wall surface",
+            "aggressively shoves a piece of nearby furniture out of the central trajectory path",
+            "strikes a solid object nearby with full physical force, knocking it directly off its base",
+            "ducks head down defensively while executing full-velocity forward locomotion",
+            "kicks outward aggressively, violently knocking over a plastic chair mid-stride",
+            "pivots on a dime, tearing down decorative items or curtains from the adjacent frame setup",
+            "loses footing completely, skidding heavily across loose debris before regaining balance",
+            "reaches out with two hands to forcefully slam an open interior door shut across the axis",
+            "lunges directly over a floor obstacle, crashing down heavily into a forward roll configuration",
+            "swipes an arm clean across a tabletop surface, launching everything scattered into mid-air",
+            "wrenches an interior door handle completely down, bursting through the frame pathway",
+            "stumbles blindly forward over low structural details, using hands to avoid a full face-plant",
+            "veers sharply across lanes, knocking over a stack of storage structures laterally",
+            "leaps up and grabs an overhead frame pipe, hanging suspended briefly mid-sequence",
+            "spins dynamically around a vertical structural pillar, gaining immediate kinetic momentum",
+            "dives forward horizontally, extending both arms out to break a hard impact landing",
+            "charges directly ahead, shattering a fragile glass partition panel into small shards",
+            "slides sideways on knees across a polished floor surface, throwing arms up defensively",
+            "hurles weight backward against an unexpected obstacle, causing it to buckle or shatter",
+            "stumbles in a staggered zigzag pattern, trying desperately to re-orient physical balance",
+            "leaps forcefully off a elevated ledge platform, absorbing the heavy downward drop shock",
+            "vaults cleanly over a low waist-high concrete barrier block using a single hand plant",
+            "tears open a wall-mounted utility cabinet door, ripping loose wiring out of its cradle",
+            "ducks low beneath a sudden sweeping overhead trajectory path, staying close to the ground",
+            "skids to a violent halt on loose gravel, heels kicking up dust and fine stone fragments",
+            "wrenches a metal pipe loose from a structural wall mount with an aggressive pulling twist",
+            "bursts through a heavy set of swinging doors, causing them to slam repeatedly back and forth",
+            "climbs rapidly up an unstable vertical ladder frame, feet slipping periodically on rungs",
+            "tumbles head-over-heels down a steep incline surface, limbs flailing before stopping flat",
+            "drags a heavy industrial container box backward across the floor, leaving deep scuff marks",
+            "leaps across a wide floor gap fissure, barely catching the far edge with extended fingers",
+            "pivots dynamically on one heel, executing a sharp ninety-degree directional course correction",
+            "punches a fist directly into a fragile drywall surface, leaving a pulverized circular hole",
+            "braces both hands firmly against an oncoming moving object to resist forward kinetic energy",
+            "sweeps a leg out in a low wide arc, clearing away scattered debris on the floor perimeter",
+            "snatches a loose object out of mid-air with lightning-fast reflexes during a forward dash",
+            "bounds aggressively up a short flight of concrete stairs, skipping three steps at a time",
+            "recoils in sudden shock, taking three rapid defensive steps backward to establish spacing",
+            "grabs a hanging light fixture cable, causing the illumination source to swing erratically",
+            "slams an open hand down hard onto a metal console, creating a loud echoing impact sound",
+            "intercepts a tumbling object mid-fall, securing it tightly against the torso framework",
+            "dives headfirst under a lowering electronic shutter door, scraping across the floor matrix",
+            "wrenches a stubborn window frame upward with an explosive burst of vertical muscle power",
+            "steps directly onto an unstable floor tile, twisting an ankle slightly before recovering form",
+            "shoves a heavy rolling cart down a hallway corridor, letting it crash into a distant wall",
+            "rips a structural wooden plank away from a barricaded doorway frame with a hard pry motion",
+            "veers hard to the left to avoid a sudden projection hazard, shoulder grading the frame corner",
+            "boots a loose tin can forcefully across the concrete baseline, sending it clattering loudly",
+            "flops down flat onto the back to avoid a sweeping trajectory line, breathing heavily",
+            "wheels around sharply with wide unblinking eyes, scanning the environment for immediate changes",
+            // General Stock Core Matrix Expansion Blocks (To 100 entries)
+            "flicks a lighter open with a sharp click, staring intently at the flickering flame geometry",
+            "wrenches open a metal locker door, pulling a heavy canvas duffel bag out onto the bench",
+            "slams an open book shut face-down on a wooden table, sending a small cloud of paper dust rising",
+            "shuffles a deck of glossy playing cards rapidly, executing a flawless bridge transition maneuver",
+            "snatches a set of brass keys from a wall peg, spinning the ring around their index finger",
+            "paces back and forth along a narrow balcony perimeter, tracing their thumb along the iron railing",
+            "wipes a condensation ring off a cold glass bottle using the side of their bare palm",
+            "pulls a heavy woolen hood down low over their eyes, obscuring their upper facial features",
+            "clicks a metal ballpoint pen repeatedly in a fast rhythmic pattern while staring off-camera",
+            "tears open a paper envelope envelope, discarding the scraps directly onto the floor workspace",
+            "unrolls a long architectural blueprint sheet, weighting down the corners with heavy nearby objects",
+            "tosses a small metal coin vertically into the air, catching it flat on the back of their hand",
+            "adjusts a leather wristwatch strap, tightening it by exactly one notch before setting their wrist",
+            "wipes a smudge off their glasses lens with a sleeve cuff, squinting at the blurry background layout",
+            "slams a wooden drawer completely shut, lock mechanisms clicking into place with a resonance thud",
+            "unclips a heavy metal utility belt buckle, draping the gear assembly over a nearby counter",
+            "traces a single finger through a thick layer of grey dust on a glass display shelf template",
+            "plucks a loose thread away from their jacket cuff, tearing it free with a swift sharp pull",
+            "snaps a thick glow-stick in half, shaking it aggressively to distribute the chemical illumination",
+            "unties a tangled knot from a nylon cargo cord, pulling the line straight across the workspace",
+            "slides a heavy iron bolt lock across an old wooden security door frame structure",
+            "reaches into a coat pocket to retrieve a small brass pocket watch, snapping the flip cover open",
+            "swipes a damp rag aggressively across a dirty mirror frame, exposing a clean reflective strip",
+            "kicks a stray cardboard box out of their immediate path, flattening it against the baseboard",
+            "wrenches a stuck drawer handle with two hands, pulling the wooden tray completely off its tracks",
+            "slams a heavy padlocked storage chest down onto the concrete floor, dust settling around it",
+            "unrolls a leather toolkit pouch, revealing an array of polished precision mechanical instruments",
+            "snaps a rubber band tightly around a roll of paper documents, tossing the bundle into a box",
+            "wipes a streak of grease from their cheek with the back of a gloved hand, smudging the skin",
+            "paces a perfect square layout pattern in a small room, counting steps on their fingers silently",
+            "pulls a long strip of adhesive tape from a heavy dispenser reel, tearing it off with a loud snap",
+            "wrenches an old rusted valve wheel clockwise, muscles bracing against the stubborn resistance",
+            "slams a heavy metal clipboard down onto a workspace table, scattering several loose paper slips",
+            "plucks a single leaf off a hanging indoor plant, rolling the green texture between their fingers",
+            "clicks the latch on a vintage briefcase open, lifting the lid to reveal organized document files",
+            "untangles a mess of nylon headphone cables, pulling the wire taut with an annoyed hand gesture",
+            "slides a heavy wooden chair across the floor, leaving light parallel friction tracks on the wood",
+            "wipes down the surface of a sleek laptop computer shell casing using a microfiber cloth",
+            "snaps a pair of heavy padlocks together around a thick steel chain link wrapping a gate pillar",
+            "reaches into a canvas pouch to retrieve a handful of loose iron nails, counting them one by one",
+            "shoves a stack of heavy textbook volumes over sideways, causing them to fall like dominoes",
+            "tears a single page out of a wire-bound notebook tracker, folding the paper into a tight square",
+            "flicks a small pebble across a smooth concrete floor tracking path, watching it bounce away",
+            "wrenches a plastic cap off a spray-paint canister, shaking the bottle to rattle the internal mixing ball",
+            "slams a heavy stamp device down onto an official document sheet, leaving a bright red circular mark",
+            "unclips a heavy carabiner hook from a climbing harness assembly, snapping the gate shut repeatedly",
+            "wipes a bead of condensation off a window pane, looking through the clean patch into the street",
+            "paces toward a standing wall calendar, drawing a thick black marker line across the current date matrix",
+            "kicks a loose brick into place along a crumbling low wall baseline, checking its alignment structure",
+            "collapses a telescoping metal rod down into its handle housing frame with a single solid tap"
+        ],
+        horror: [
+            "scrambles backward frantically on hands and heels away from an approaching shadow boundary",
+            "slams full body weight flat against a heavy iron barricade door, trying to hold it closed",
+            "looks back over their shoulder in sheer unadulterated panic while running down the channel",
+            "stumbles over hidden structural floor bones, collapsing heavily before scrambling right up",
+            "clutches their chest and drops low into a tight defensive alcove, freezing breath patterns",
+            "tears desperately at a locked window frame structure, banging hands frantically on the pane",
+            "creeps forward on tip-toes, hands trembling while reaching out toward a dark rotting doorway",
+            "crouches low behind a blood-splattered counter structure, covering ears to block out ambient noise",
+            "wrenches a rusted metal latch open with a loud screech, backing away as dust billows out",
+            "slides down a damp moldy brick wall into a sitting position, knees pulled tightly to the chest",
+            "swipes a frantic hand through a thick web layout, face contorting in extreme sensory disgust",
+            "shivers uncontrollably while staring fixedly into a completely pitch-black ceiling corner corridor",
+            "reaches slowly into a dark, narrow wall cavity hole, fingers twitching with intense apprehension",
+            "trips over a concealed floor grate, dropping a vital handheld illumination tool across the room",
+            "presses their back completely flat against a cold stone wall, shuffling sideways with tiny steps",
+            "gasps sharply, slapping a frantic hand over their own mouth to stifle an involuntary scream",
+            "wipes a streak of dark, viscous fluid off a cabinet mirror surface, revealing a pale face reflection",
+            "clutches a blunt object tightly in a white-knuckled defensive grip, raising it above the head",
+            "ducks into a cramped wardrobe closet enclosure, peering out fearfully through a narrow door slit",
+            "stumbles blindly into a hanging plastic sheet barrier, flailing wildly to escape its entangling wrap",
+            "drags a useless, paralyzed leg slowly across a cold tiled floor matrix while whimpering softly",
+            "feels along a dark wall surface frantically for a light switch, fingernails scratching the plaster",
+            "drops to all fours to peer underneath a low bed frame structure, eyes widening in sheer horror",
+            "pivots around instantly at the sound of a distant footstep, breathing in rapid ragged shallow gasps",
+            "wrenches open a medical cabinet door, knocking glass vials onto the floor where they shatter loudly",
+            "backs into an unexpected hanging ceiling chain fixture, recoiling instantly as it clinks together",
+            "kneels over an old floor trapdoor, tracing fingers along its heavily scratched perimeter seal",
+            "shoves a heavy wooden dresser across a doorway frame to form an immediate improvised barricade",
+            "slams a fist repeatedly against a reinforcing iron security mesh screen, shouting for immediate help",
+            "clutches their head with both hands, rocking back and forth dynamically to block out phantom sounds",
+            "creeps through a narrow crawlspace tunnel, elbows dragging through thick layers of stagnant dust",
+            "freezes mid-stride with one foot suspended, head tilting slowly toward an ominous ceiling thud",
+            "tears a piece of clothing away from a jagged nail snag, leaping forward into an immediate sprint",
+            "wipes cold sweat from a pale forehead, eyes decoding erratically between multiple dark exits",
+            "drops a heavy set of keys onto a resonance metal floor plate, diving low to find them in the dark",
+            "slams a creaking attic door shut, throwing full body weight down over the horizontal surface hatch",
+            "scratches at a sealed wooden panel with desperate bloody fingertips, trying to find a leverage point",
+            "stumbles sideways into a dusty display case frame, causing old skull replicas to roll out across tiles",
+            "hides behind a stone pillar structure, synchronizing deep breaths to minimize structural movement audio",
+            "reaches out with a shaking hand to slowly twist an old brass doorknob that is vibrating on its own",
+            "collapses onto a dusty floor surface, dragging body forward by the elbows in absolute exhaustion",
+            "wrenches a broken mirror shard off a frame assembly, holding the sharp edge outward defensively",
+            "peers intently through a dusty glass peephole structure, iris dilating in sudden psychological panic",
+            "kicks a rotting wooden basement step clean through, trapping a foot tightly inside the dark cavity gap",
+            "swipes a hand along a wet moss-covered sewer pipe line, losing footing and splashing into sludge",
+            "bounds up a spiral staircase path, hands gripping the handrail tightly as if pulling upward weight",
+            "recoils from a blast of freezing cold air venting from an open wall vault, teeth chattering visibly",
+            "presses palms flat against an interior glass window, watching an ominous shadow approach the exterior",
+            "stumbles into an old operating table structure, knocking over a tray of antique surgical tools loudly",
+            "drops into a deep fetal position inside a concrete alcove niche, squeezing eyelids completely shut"
+        ],
+        cyberpunk: [
+            "wrenches an optical cable array clean out of an exposed data port framework, throwing sparks",
+            "interfaces frantically with a glowing holographic control console, swiping errors down",
+            "slams an elbow flat into a flickering neon terminal partition, fracturing the glass matrix",
+            "slides low across a wet asphalt baseline, breaking through digital holographic ads",
+            "adjusts a sleek cybernetic head visor interface while executing a high-speed lateral dash",
+            "punches directly through a low-hanging grid bundle of exposed copper fiber paths",
+            "leaps dynamically over an glowing plasma conduit line, landing in a hard metallic slidestop",
+            "taps a glowing temple implant node, causing an immediate change in iris illumination color",
+            "wrenches a synthetic cybernetic limb unit into a locked overdrive configuration with a hard twist",
+            "runs horizontally along a vertical neon-lit billboards wall surface before dropping into a roll",
+            "slices through a thick fiber bundle using a high-frequency plasma blade tool, creating blinding arcs",
+            "unplugs a thick neural link cable from a neck socket port, head snapping back from the pulse",
+            "slams a glowing neon-infused cyber-deck unit flat onto a metal counter to bypass a secure terminal",
+            "dives over a low server rack enclosure, firing a pulse emitter device down the structural lane",
+            "swipes a finger across an augmented reality HUD display overlay, clearing floating warning icons",
+            "tears away a damaged artificial chrome plating cover from a forearm, exposing smoking internal servos",
+            "pivots around a rain-slicked alleyway dumpster corner, neon sign reflections bleeding across a visor",
+            "vaults over an automated street cleaning drone unit, kicking its optical scanner lens offline mid-air",
+            "punches through a reinforced server mainframe mesh door, ripping out a glowing storage drive unit",
+            "slides down a metal fire escape rail structure, synthetic leather jacket trailing dynamic sparks",
+            "stands erect on an elevated skyscraper ledge, neon smog billowing around a trench coat perimeter",
+            "wrenches open an android chassis panel, rearranging glowing internal circuit boards frantically",
+            "drops a flash-bang data capsule onto the ground, blinding nearby security camera optical sensors",
+            "leaps from a moving mag-lev train roof platform, landing heavily onto an lower concrete catwalk path",
+            "presses a localized EMP device against an electronic security door lock panel, shorting out circuits",
+            "clutches a fractured cybernetic optics eye mount, blue fluid leaking through synthetic fingers",
+            "bounds up a flight of dirty metallic stairs inside a neon-drenched slums skyscraper corridor",
+            "tears a high-voltage power rail cable from a junction hub, redirecting energy into a hand weapon",
+            "crouches behind an automated vending machine structure, reloading a high-velocity smart-pistol clip",
+            "wipes a mix of synthetic coolant oil and rain off a cybernetic jawline, jaw servo clicking locked",
+            "slams an artificial bionic fist into a concrete support column, creating radial cracks in the structure",
+            "interfaces a palm data jack directly into a public information kiosk, downloading files instantly",
+            "skids across a wet rooftop panel surface, deploying an augmented reality drone scout device upward",
+            "ducks beneath a sweeping red laser security grid array, timing movements between beam passes",
+            "wrenches a magnetic lock housing assembly apart using an hydraulic-powered exoskeleton arm piece",
+            "swipes multiple data streams across an immersive holographic desktop rig, eyes tracking data rapid",
+            "leaps vertically to punch a ceiling surveillance drone unit down, crushing its chassis on the floor",
+            "stands amid a digital data matrix storm, holographic code characters projecting onto their face mesh",
+            "rips a dead cybernetic ocular implant clean out of its skull housing, throwing it to the floor",
+            "slides a fresh cooling cell cylinder into a smoking shoulder exhaust vent port, locking it flat",
+            "bounds over an automated factory conveyor line, dodging fast-moving robotic assembly arms dynamically",
+            "wrenches open an overhead maintenance duct hatch, pulling body up into a dark wire-filled tunnel",
+            "punches an emergency master override button, causing all surrounding neon grids to black out at once",
+            "stands inside a high-tech laboratory bay, looking at an advanced synthetic blueprint array matrix",
+            "clutches an overheating bionic battery pack core unit, ripping it free before an explosive discharge",
+            "veers a cyber-bike chassis sharply sideways, scraping a low knee guard plate along an neon asphalt strip",
+            "slides flat beneath a hovering security drone chassis, cutting its lower motor wiring with a blade",
+            "wrenches a glowing terminal interface screen out of its structural socket housing with brute force",
+            "punches a sequence of commands into a gauntlet-mounted sub-computer unit, causing a visor to glow red",
+            "leaps across an open industrial exhaust shaft opening, landing hard against a vertical ladder frame"
+        ],
+        combat: [
+            "executes a flawless spinning crescent kick, shattering a standing tactical test dummy",
+            "drops low underneath an incoming sweeping high strike, countering with a concrete leg swipe",
+            "vaults clear over a barrier layout block, drawing an immediate defensive guard posture",
+            "parries an imaginary forward threat vector line, pivoting instantly into an aggressive lunge",
+            "slams an opponent-level layout node down into a floor mat using an explosive shoulder throw",
+            "snaps into a tight Southpaw boxing stance, throwing a rapid double-jab sequence into space",
+            "ducks laterally to slip an incoming hook, exploding upward with a powerful counter uppercut",
+            "executes a high-velocity running wall-plant jump, flipping backward to escape a corner trap",
+            "lunges forward to execute a double-leg takedown entry, driving hips aggressively through the axis",
+            "blocks an overhead strike by crossing forearms vertically, muscles tensing under pressure",
+            "spins dynamically on the balls of the feet, unleashing a whipping reverse turning elbow strike",
+            "catches a theoretical flying strike mid-air, redirecting the momentum into a hip toss",
+            "drops into a deep, stable horse stance, extending both palms outward in a hard kiai push",
+            "coils weight onto the rear leg before launching a devastating flying knee strike directly forward",
+            "pivots away from a center-line stab, sweeping their arm downward to deflect the incoming weapon",
+            "steps deep inside an opponent's range to deliver a short, explosive palm strike to the sternum",
+            "executes a rapid somersault roll across the floor mat, coming up instantly with an extended guard",
+            "swipes an open hand across a weapons rack, instantly drawing a mock wooden training sword",
+            "snaps a lightning-fast front kick to chest height, returning their foot to its starting base instantly",
+            "weaves head and shoulders in a continuous fluid defensive slip-line, keeping hands held high",
+            "leaps high over a low leg sweep attempt, performing an aerial split before landing cleanly",
+            "intercepts an extended arm strike, applying a firm standing wrist-lock lever mechanism",
+            "dashes forward in an aggressive zig-zag pattern to confuse a defensive opponent's targeting",
+            "slams a heavy leather punching bag with an explosive combination punch sequence, making it rock",
+            "coils tightly into a defensive fetal shell position on the floor, blocking multiple heavy strikes",
+            "wrenches a heavy wooden staff out of a training rack, spinning it expertly in a figure-eight pattern",
+            "stumbles back from a heavy ghost-impact block, shaking their head rapidly to clear cognitive focus",
+            "executes a flying side kick horizontally across the frame, extending through the heel with force",
+            "drops weight instantly onto one hand, performing a ground-skimming breakdance-style sweep kick",
+            "grabs an overhead support beam to swing forward, landing both boots into a target zone",
+            "pivots 180-degrees blindly to catch an incoming sparring pad strike with a rigid back-fist",
+            "charges with shoulder lowered, executing a heavy tactical football-style drive to clear the lane",
+            "snaps into an elegant martial arts bow salute, then immediately drops into a low tiger claw stance",
+            "braces legs apart on the mat, resisting a heavy push by digging toes into the canvas boundary",
+            "weaves under a high weapon swing, sliding past the threat's blindside flank into a flanking guard",
+            "unleashes a rapid fire flurry of continuous chain punches, tracking straight down the center line",
+            "leaps off a concrete training box block, spinning 360 degrees to deliver a hard spinning back-kick",
+            "slams an open palm down onto a defensive buckler shield, pushing it down to expose a target",
+            "bobs head low under an imaginary high-line strike, shifting body weight across the baseline matrix",
+            "snatches a flying foam block training projectile clean out of the air using a single hand",
+            "pivots hard into a side-kick extension, holding the leg extended outward to demonstrate balance",
+            "executes a fast tactical combat slide on the hip, drawing a training sidearm device mid-slide",
+            "steps back into a wide defensive archer stance, pulling an imaginary high-tension bow string",
+            "slams an elbow vertically downward into a target block panel, splitting it down the center line",
+            "recoils from a phantom strike, spinning backwards along a perimeter wall to re-establish range",
+            "flops cleanly over a flying opponent's back, landing lightly on feet behind them in a guard",
+            "wrenches a mock weapon away from an imaginary target with a violent twisting wrench motion",
+            "shoves a sparring partner's pads away forcefully, stamping their foot down to claim the center floor",
+            "weaves through a series of hanging swinging target bags, dodging every element without slowing down",
+            "stands perfectly motionless in a traditional crane stance on a narrow wooden post block element"
+        ],
+        car_chase: [
+            "wrenches the steering wheel violently to the left, tires screaming in a hard drift arc",
+            "slams a foot hard down onto the aluminum accelerator pedal, forcing an immediate engine roar",
+            "stomps onto the heavy brake pedal, locking the front calipers as the nose dives sharply",
+            "yanks the mechanical handbrake lever upward with a sharp snap, initiating a tight 180 spin",
+            "shoves the manual gear shifter forcefully into third gear, dumping the clutch aggressively",
+            "swipes a frantic hand across the dashboard to activate the wiper blades as mud hits the glass",
+            "glances up rapidly into the interior rearview mirror, eyes widening at a close pursuing shadow",
+            "braces both hands firmly at the ten-and-two steering position as the chassis hits a heavy bump",
+            "slams a fist hard into the center horn pad, emitting a long continuous warning blast sequence",
+            "pivots their head around completely to look out the rear window while reversing at high speed",
+            "wrenches the wheel back and forth in rapid micro-corrections to maintain control on loose gravel",
+            "flicks a toggle switch on a custom console layout, activating a nitrous gas pressure gauge",
+            "ducks their head down below the dashboard line as a theoretical projectile shatters the windshield",
+            "punches the window roll-down button, leaning out slightly to adjust an exterior side mirror",
+            "grabs the passenger grab-handle tightly as the entire vehicle tilts violently on two wheels",
+            "shoves the automatic gear selector down into low-gear sport mode, engine RPM spiking instantly",
+            "slams a palm against the steering wheel rim in extreme frustration, tracking a missed exit",
+            "glances down toward a flashing red engine temperature dashboard light, face turning anxious",
+            "wrenches the wheel to execute a sudden PIT maneuver trajectory swipe against an imaginary car",
+            "braces shoulders hard against the bucket seat backrest as high-G cornering forces pull sideways",
+            "flicks the high-beam light stalk rapidly, flashing illumination beams into the space ahead",
+            "wipes a layer of condensation off the interior side window glass to track an adjacent vehicle",
+            "taps the digital GPS screen frantically, trying to force an alternate escape route calculation",
+            "yanks a seatbelt strap tightly across their chest, securing the locking buckle clasp mechanism",
+            "slams both hands flat on the top of the steering wheel rim to brace for an impending impact",
+            "reaches down to wrench the manual seat adjustment lever, sliding the seat tracking frame forward",
+            "flicks a steering column paddle shifter with a finger snap, prompting a rapid downshift pop",
+            "looks through the driver's side window intensely while executing a parallel high-speed lane scrape",
+            "shoves an open map layout onto the passenger floor, focusing entirely on a narrow alley entrance",
+            "yanks the wheel hard to avoid a sudden pedestrian obstacle block, clipping a trash bin laterally",
+            "slams a foot onto the clutch pedal while keeping the accelerator pinned to execute a power-shift",
+            "glances at a cracking side-view mirror assembly as it clips an alleyway stone wall structure",
+            "wrenches the vehicle into a tight reverse J-turn maneuver, spinning the wheel using a single palm",
+            "clutches the gear lever console tightly as the car launches over a crest, suspension extending",
+            "ducks instinctively as a low-hanging tree branch scrapes violently across the vehicle's glass roof",
+            "flicks the hazard light button on, letting the amber indicators pulse rhythmically across dashboard",
+            "wrenches the steering wheel hard into an opposite-lock counter-steer to catch a sliding rear end",
+            "slides a pair of leather driving gloves onto their hands, tightening the wrist strap button snaps",
+            "punches the dashboard glovebox open, searching inside frantically for a gate controller remote",
+            "glances at an analog boost gauge needle sweeping past the redline boundary zone indicator",
+            "wrenches the car through a series of tight traffic slalom weaves, brushing imaginary bumpers",
+            "slams an elbow against the door armrest panel as the car slides sideways into a concrete barrier",
+            "reaches over to change the climate control fan speed dial to maximum to defog a misty windshield",
+            "stares unblinkingly through a smoke-filled cabin layout as radiator steam vents through dashboard grills",
+            "yanks the wheel to dive onto a dirt shoulder lane, throwing high roost clouds of red clay dust",
+            "slams a hand onto a dash-mounted ignition kill switch, shutting down all vehicle electronic systems",
+            "glances down to confirm a shifting tachometer needle before clicking the manual transmission into fifth",
+            "wrenches the steering wheel in a wide full-lock circle to execute a smoking burnout donut matrix",
+            "braces their left foot hard onto the floor dead-pedal block to lock body position inside a corner",
+            "flicks the headlight switch completely off, plunging the vehicle path into tactical stealth darkness"
+        ],
+        dance: [
+            "executes a flawless contemporary pirouette turn, arms extending out into a graceful radial circle",
+            "drops fluidly into a low breakdance freeze posture, supporting full weight on a single elbow block",
+            "pops their chest outward aggressively in a sharp hip-hop locking movement, freezing instantly",
+            "slides gracefully across the floor surface on tip-toes, arms performing a continuous wave pattern",
+            "leaps vertically into a dramatic grand jeté ballet leap, arching their spine backward elegantly",
+            "pivots smoothly on one heel, dragging the other foot along the floor in a stylized tango sweep",
+            "drops weight suddenly into a deep urban krump stance, vibrating shoulders with high kinetic energy",
+            "snaps both hands upward into a stylized vogue frame pose, locking angles around their face profile",
+            "executes a rapid sequence of salsa spin steps, hips swaying rhythmically across the floor matrix",
+            "rolls body smoothly down to the floor, tracking spine vertebrae segments sequentially into a slide",
+            "kicks a leg straight up to a vertical 180-degree split line, holding the posture with ease",
+            "pops and locks an elbow joint framework, mimicking an organic mechanical cybernetic animation rhythm",
+            "glides effortlessly backward using an illusionary moonwalk heel-toe step progression sequence",
+            "leaps upward to execute an aerial barrel-roll twist, coat tails flaring dynamically mid-frame",
+            "drops down onto both knees smoothly, sliding forward across polished wood while arching backward",
+            "swipes an arm through the air in a wide contemporary sweep arc, tracing a path for their head to follow",
+            "snaps fingers on both hands rhythmically while stepping side-to-side in a classic jazz groove step",
+            "pivots into a sharp flamenco stamp sequence, heels striking the floor plate in rapid acoustic beats",
+            "extends both arms out laterally, performing a fluid ribbon-like micro-wave from fingers to shoulder",
+            "coils tightly into a low crouch before exploding upward into an expansive interpretative jump posture",
+            "slides a hand slowly down their own torso outline, head tilting back in a stylized sensual sway",
+            "executes a rapid house-dance footwork matrix, shuffling feet in an intricate criss-cross pattern",
+            "bobs head and shoulders to an invisible downbeat rhythm, shoulders dropping in a loose street vibe",
+            "vaults off a studio wall surface to initiate a stylized parkour-infused acrobatic dance flip",
+            "bends deeply at the waist into a dramatic ballroom dip posture, extending one hand toward camera",
+            "spins continuously on the ball of a single foot, arms tucked tightly into their center axis core",
+            "shuffles backward with tiny rhythmic tap-dance steps, heels and toes creating complex patterns",
+            "rolls head in a loose 360-degree circle, letting a long hair flow track the kinetic movement loop",
+            "drops into a splits configuration on the floor, instantly transitioning into a smooth side-roll sweep",
+            "wrenches body sideways in a sudden jagged animation-style glitch step, mimicking low frame rates",
+            "bounds forward with loose theatrical expressive steps, hands throwing imaginary petals into space",
+            "pivots around a standing microphone stand structure, treating it as an elegant dance partner node",
+            "unleashes an explosive capoeira cartwheel kick movement, spinning limbs through a wide vertical grid",
+            "stands perfectly still in a high-fashion pose, slowly moving only their fingers in a tutting sequence",
+            "weaves through a space using fluid low-gravity contemporary crawls, belly skimming the floor map",
+            "snaps head sharply to look directly at a target point, torso following a beat segment later",
+            "steps deep into a dramatic waltz stride, extending an open hand toward an unseen ballroom partner",
+            "swipes a hand across their own eyes, transitioning the gesture into an expansive overhead arm extension",
+            "vibrates full body weight in a high-frequency tribal dance shake, feet stamping out a steady pulse",
+            "leaps onto a low stage box platform, dropping into a stylized pop-star final routine anchor stance",
+            "shuffles sideways using an elegant Charleston kick step, switching weight between heels dynamically",
+            "rolls shoulders backward sequentially while walking forward with an exaggerated model-run stride",
+            "drops onto one hip, spinning full body weight around 360 degrees using floor frictional momentum",
+            "wrenches an invisible cord from the sky, pulling their entire torso upward onto tip-toe extensions",
+            "stands under a spotlight beam, tracing soft lines in the air with wrists crossed over their chest",
+            "slides a foot outward into a deep fencing-style side lunge, arms framing a high dramatic angle",
+            "bounds backward into a rolling back-handspring maneuver, executing the sequence with total fluidity",
+            "pivots on the knees while throwing arms outward in an expansive emotional lyrical performance peak",
+            "weaves body through a series of rapid hip isolating loops, tracking a fast micro-rhythm base line",
+            "freezes mid-movement in a complex asymmetrical architectural pose, holding absolute stillness"
+        ],
+        sports: [
+            "dribbles a basketball rapidly through their legs, cutting sharply laterally to lose a defender",
+            "coils their upper torso back before launching a high-velocity soccer strike across the pitch matrix",
+            "leaps horizontally to catch an incoming football, clutching the ball tightly against their torso chest profile",
+            "swings a tennis racket in a clean, explosive baseline follow-through arc, pivoting on their back heel",
+            "settles into a low sprinters block configuration, tensing muscles completely before an explosive release dash",
+            "vaults dynamically over a high athletic track hurdle bar frame, landing smoothly in full running stride",
+            "winds up to throw a baseball down the center line axis, leg extending high in a classic pitching windup",
+            "pivots cleanly around an opponent, executing a high-speed hockey puck stick-handling maneuver on the ice",
+            "coils power into their hips before exploding out into a high-jump vertical back-arch over a crossbar",
+            "slams an overhead volleyball spike directly down into the floor boundary court line with high energy",
+            "tucks into a tight streamlined tuck posture while descending a steep ski slalom slope tracking course",
+            "swings a golf club in an elegant full rotational loop arc, eyes tracking a distant aerial ball trajectory",
+            "skids sideways on a skateboard layout deck, dragging a gloved hand along asphalt to carve a hard turn",
+            "dives into a pristine swimming pool lane, executing a streamlined under-water butterfly kick sequence",
+            "pivots sharply on a turf field baseline, changing forward velocity lanes instantly to retrieve a pass",
+            "catches a rugby ball mid-stride, instantly dipping their shoulder to withstand an impending lateral hit",
+            "leaps vertically to catch a flying frisbee disc out of mid-air, spinning 180 degrees upon hitting ground",
+            "settles into a defensive football lineman stance, digging cleat spikes deep into the field sod matrix",
+            "executes a rapid sequence of speed-skating strokes, leaning low into a high-velocity rink bend arc",
+            "snatches a weightlifting barbell off the platform floor, exploding upward into a full locked overhead press",
+            "pivots on a gymnastics balance beam rail, raising arms laterally to secure an exact landing profile",
+            "slides headfirst into second base, kicking up a wide dynamic cloud of baseline infield red clay dirt",
+            "leaps high onto a boxing ring corner turnbuckle node, throwing arms outward to salute a cheering crowd",
+            "wrenches a mountain bike chassis through a sharp rocky switchback turn, rear wheel drifting slightly",
+            "charges down a bowling lane approach line, releasing a ball with an intense twisting wrist snap axis",
+            "dives laterally across a soccer goalmouth frame, extending a single glove hand to tip a ball wide",
+            "pivots 360 degrees inside a throwers ring before launching a heavy discus plate out into space",
+            "bounds along a sandy beach layout, executing a diving layout catch to save a volleyball baseline shot",
+            "shuffles feet in a rapid defensive tennis footwork step, tracking a deep cross-court groundstroke line",
+            "leaps high to catch a basketball off the rim, flushing down a powerful two-handed slam dunk finish",
+            "pivots away from an oncoming rugby defender, executing a sleek behind-the-back trick flip handpass",
+            "dashes along a narrow wooden pier baseline before launching into an artistic high-dive flip maneuver",
+            "braces their weight inside a rowing shell chassis frame, pulling an oar lever handle back with full power",
+            "slides sideways across a snowy halfpipe wall on a snowboard edge, launching upward into an aerial air rotation",
+            "snaps a lacrosse stick forward with a sharp wrist lever movement, firing a ball down the field corridor",
+            "pivots on the ball of their foot to deliver a sweeping field-hockey pass across a structural lane",
+            "bounds dynamically across an urban landscape parkour course, vaulting clean over consecutive rail frames",
+            "settles into an aggressive cycling sprint posture, pulling upward on handle bars while pumping legs hard",
+            "dives low into a soft wrestling mat grid, grabbing an opponent ankle to attempt a single-leg takedown",
+            "pivots around a pool table corner pocket, leaning low over a cue stick to execute a precise trick shot",
+            "bounds down a steep mountain ridge line trail, using trekking poles to stabilize rapid downward velocity",
+            "snaps an arrow into a high-tension recurve bow, holding full draw alignment while staring at a distant target",
+            "pivots cleanly onto a surf-board deck, carving a deep bottom turn layout inside a massive ocean curling wave",
+            "dashes forward to execute an artistic figure-skating triple axle jump twist, landing clean on a single blade edge",
+            "leaps to block a lacrosse shot attempt, body completely screening a net frame perimeter zone",
+            "pivots outward from a defensive basketball block, launching a long high-arc three-point shot attempt",
+            "shuffles rapidly along a badminton court baseline line, tracking a dropping shuttlecock bird flight path",
+            "braces core weight firmly on a windsurf platform deck, pulling a sail boom frame against heavy ocean winds",
+            "dashes across a cricket pitch track field, sliding their bat flat across the crease line to beat a throw",
+            "pivots around a structural rock climbing bouldering wall node, reaching high to grip a narrow finger pocket hold"
+        ],
+        formal: [
+            "settles slowly back into a premium leather armchair, crossing legs deliberately at the knees",
+            "adjusts their suit jacket lapels with a subtle hand twitch before delivering a calculated response",
+            "rests interlocked fingers calmly on a polished mahogany conference desk surface, leaning forward slightly",
+            "gestures expansively with an open palm to emphasize a point while speaking directly into a desk microphone",
+            "glances down briefly towards an interview notes folder notepad, turning a single page over quietly",
+            "pivots their head slowly toward a secondary panel interviewer speaker, tilting their chin down to listen",
+            "picks up a clean crystal water glass, taking a measured sip before placing it back down on a coaster",
+            "adjusts a tie knot configuration or collar placement, clearing their throat smoothly before speaking",
+            "nods their head in slow deliberate affirmation, eyes tracking an off-camera podium presentation panel",
+            "rests an elbow lightly on a chair armrest frame, balancing their chin thoughtfully on a curled knuckle index finger",
+            "opens a leather portfolio folder layout, sliding a clean pen out of its internal loop holder slot",
+            "glances toward a studio broadcast camera lens monitor, holding a neutral professional expression frame",
+            "taps a polished pen casing rhythmically against their knuckles while evaluating a complex query line",
+            "slides a pair of thin reading glasses down their nose bridge, peering over the top rims to look forward",
+            "pivots their chair slightly around toward a presenter layout board, gesturing toward an analytical chart graphic",
+            "unbuttons their formal blazer jacket jacket smoothly before transitioning into a seated posture layout",
+            "checks a sleek luxury wristwatch device face, letting a sleeve cuff fall back over the metal bracelet frame",
+            "stands up behind a podium structure deck, adjusting a flexible gooseneck microphone stand height layout",
+            "unfolds a clean white linen pocket square fabric, flattening the edge line across a suit pocket rim",
+            "rests hands flat down on a glass desk surface panel, pushing up slightly to readjust posture seating height",
+            "glances off-camera towards a stage director node, acknowledging a silent cue shift with a brief nod",
+            "shuffles a short stack of index cue cards together, neatening the edge boundaries against a desktop wood",
+            "smiles warmly into an entry greeting sequence, extending a firm arm out to initiate a corporate handshake",
+            "pivots away from an interview layout table, standing up to accept a formal certificate document scroll presentation",
+            "reaches up to adjust a wireless clip-on lapel microphone transmitter box clipped onto a rear waistband loop",
+            "sets a thin tablet device flat onto a conference table tracking mat, swiping a finger across the screen",
+            "rests both arms calmly behind their lower back profile while standing at a formal press conference briefing room podium",
+            "glances downward toward a vibrating smartphone screen on a desk layout, instantly flipping the device face-down",
+            "taps the tip of an index finger slowly against a temple node while composing an intricate diplomatic sentence",
+            "pivots their torso slightly away to sign a legal document sheet, scripting a clean signature path line across paper",
+            "closes an executive attache case latches together, snapping the dual metal lock mechanisms down in unison",
+            "stands inside a press briefing layout gallery, raising an open hand to select an audience audience question",
+            "wipes a tiny drop of sweat off an upper eyebrow line using a thumb knuckle while under bright stage lights",
+            "pivots toward a high-tech studio projection screen wall, point tracking a statistical metric marker dot index",
+            "unclips an official ID badge card lanyard from a suit lapel socket, setting the card down onto a check-in deck",
+            "rests palms inside trouser side pockets while maintaining a poised conversational stance position during a podcast",
+            "glances through a large boardroom window frame structure, observing a distant urban skyscraper landscape skyline line",
+            "swipes a single finger down a formal menu script binder layout, confirming an entry selection line before closing it",
+            "places a leather fountain pen device completely inside an interior coat breast pocket vault lining panel",
+            "pivots toward a luxury awards ceremony stage mic, gripping the trophy base node firmly in both hands",
+            "shoves a high-back office executive chair smoothly underneath a desk boundary frame to clear a walking pathway",
+            "nods politely to an audience greeting section layout, lifting a hand to adjust a headset earpiece speaker wire",
+            "sets a formal designer spectacle frame into a hard protective leather shell case container box, snapping lid closed",
+            "pivots away from an ongoing presentation row to take down a quick phone note entry, typing with a single thumb",
+            "stands quietly inside a gallery space gallery environment, checking a formal museum art frame catalog item slip",
+            "rests an open handbook binder flat across their lap frame, underlining a specific phrase line using an ink marker",
+            "glances sharply toward an interview opponent face profile, waiting for an active translation stream audio loop to close",
+            "pivots toward a luxury hotel check-in desk counter pad, sliding an executive black credit card across smooth granite",
+            "adjusts a formal velvet bow-tie loop collar alignment while reviewing a speech script copy mirror reflection",
+            "stands perfectly erect in a high-profile diplomatic assembly room corridor line, arms resting straight along dress pant sides"
+        ]
+,
+        external: []
+    };
+
+    const INSTRUMENTS = [
+        "Orchestral Strings", "Degraded Analog Synthesizer", "Shamanic Wooden Flute Breaths", "Sub-Bass Sine Waves", "Prepared Acoustic Piano",
+        "Classic Granular Pads", "Distorted Cello Drones", "Clean Fender Rhodes Organ", "Industrial Metallic Percussion", "Vintage Tape-Loop Mellotron",
+        "Traditional Japanese Koto Strings", "Dark Techno Modular Sequences", "Acoustic Folk Guitar Plucks", "Ethereal Church Pipe Organ", "Glitch Micro-Pulses",
+        "Warm Brass Choir Chords", "Tribal Frame Drums", "Ambient Electric Guitar Swells", "Haunting Operatic Soprano Echoes", "808 Lo-Fi Beat Sequences",
+        "Cinematic Taiko Drum Arrays", "Resonant Tibetan Singing Bowls", "Acid Synth Basslines", "Neoclassical Violin Solos", "Deep Didgeridoo Growls",
+        "Futuristic Cyberpunk Arpeggios", "Organic Wooden Marimba Taps", "Chamber Harpsichord Notes", "Dreamy Shoegaze Reverb Guitars", "Minimalist Triangle Rings",
+        "Overdriven Electric Organ Notes", "Jazz Upright Double Bass Plucks", "Experimental Noise Generators", "Spaghetti Western Acoustic Strums", "Classic Electric Sitar Plucks",
+        "Eerie Theremin Pitches", "Downtempo Trip-Hop Drums", "Chamber Woodwind Trios", "Processed Vocal Resonances", "Heavy Stoner Rock Riffs",
+        "Delicate Wind Chime Textures", "Muted Trumpet Air Lines", "Cinematic Sub Drops", "Polyrhythmic Cowbell Patterns", "Clean Harp Plucks",
+        "Deep Modular Drone Oscillators", "Lo-Fi Vinyl Surface Crackles", "Sustained French Horn Layers", "Scratchy Vinyl Deck Cuts", "Abstract Electronic Bleeps"
+    ];
+    const MOODS = [
+        "Somber & Introspective", "Tense & Apprehensive", "Eerie Dream Logic", "Claustrophobic Panic", "Sweaty Nightclub Hedonism",
+        "Stark Barren Isolation", "Heavy Majestic Reverence", "Haunting Nostalgic Sadness", "High-Stakes Cybernetic Surveillance", "Muted Internal Peace",
+        "Melancholic Longing", "Aggressive Industrial Rage", "Ethereal Heavenly Wonder", "Sinister Underlying Malice", "Euphoric Cinematic Dawn",
+        "Restless Paranoid Tremors", "Grim Post-Apocalyptic Desolation", "Dreamy Hypnotic Warmth", "Frantic High-Speed Chaos", "Ancient Mystical Secrecy",
+        "Subdued Analytical Focus", "Ominous Low-Frequency Dread", "Playful Whimsical Subversion", "Tranquil Zen Balance", "Sultry Noir Suspense",
+        "Bittersweet Resignation", "Epic Mythological Triumph", "Cold Clinical Detachment", "Jittery Neurotic Tension", "Warm Familial Comfort",
+        "Mysterious Uncharted Discovery", "Vengeful Blood Boiling", "Gothic Romantic Haunting", "Slick Urban Confidence", "Psychedelic Spatial Disorientation",
+        "Raw Primitive Ferocity", "Nostalgic Sun-Drenched Solitude", "Dystopian Corporate Oppression", "Quiet Dignified Sorrow", "Uplifting Transcendent Hope",
+        "Suffocating Void Vacuum", "Turbulent Chaotic Swirls", "Abyssal Subterranean Secrets", "Hypnotic Trance Fixation", "Spiritual Cosmic Expansion",
+        "Dread-Induced Paralysis", "Soothing Gentle Whispers", "Volatile Explosive Instability", "Crisp Early Morning Clarity", "Solemn Sacred Vows"
+    ];
+
+    let PERSISTENT_SHOTS_DATA = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+        populateAcousticMatrices();
+        syncDynamicLockRegistry();
+        registerEventHandlers();
+        compilePipelineOutput();
+    });
+
+    function populateAcousticMatrices() {
+        const instDropdown = document.getElementById("p-instrument");
+        const moodDropdown = document.getElementById("p-mood");
+        INSTRUMENTS.forEach((ins, idx) => { let opt = document.createElement("option"); opt.value = ins; opt.innerText = `Preset ${idx+1}: ${ins}`; instDropdown.appendChild(opt); });
+        MOODS.forEach((md, idx) => { let opt = document.createElement("option"); opt.value = md; opt.innerText = `Mood ${idx+1}: ${md}`; moodDropdown.appendChild(opt); });
+    }
+
+    function getActiveBehaviorPool() {
+        const currentGenre = document.getElementById("p-genre").value;
+        return (currentGenre === "external" && GENRE_BEHAVIOR_MATRIX.external.length > 0) 
+            ? GENRE_BEHAVIOR_MATRIX.external 
+            : (GENRE_BEHAVIOR_MATRIX[currentGenre] || GENRE_BEHAVIOR_MATRIX.universal);
+    }
+
+function syncDynamicLockRegistry() {
+    const structure = document.getElementById("p-structure").value;
+    const totalShots = structure === "single" ? 1 : parseInt(document.getElementById("p-shots").value);
+    const wrapper = document.getElementById("lock-rows-wrapper");
+    const currentPool = getActiveBehaviorPool();
+    
+    let oldData = [...PERSISTENT_SHOTS_DATA];
+    PERSISTENT_SHOTS_DATA = [];
+    wrapper.innerHTML = "";
+
+    for (let i = 0; i < totalShots; i++) {
+        let existing = oldData[i];
+        // Fallback or maintain independent states if they already exist
+        let isCamLocked = existing ? (existing.cameraLocked !== undefined ? existing.cameraLocked : existing.locked) : false;
+        let isActLocked = existing ? (existing.actionLocked !== undefined ? existing.actionLocked : existing.locked) : false;
+        
+        let cameraValue = existing ? existing.camera : getRandomValueFrom(OPTICAL_POOL);
+        let actionValue = existing ? existing.action : getRandomValueFrom(currentPool);
+
+        PERSISTENT_SHOTS_DATA.push({
+            cameraLocked: isCamLocked,
+            actionLocked: isActLocked,
+            camera: cameraValue,
+            action: actionValue
+        });
+
+        let row = document.createElement("div");
+        row.className = "lock-row";
+        row.innerHTML = `
+            <span><strong>Shot ${i+1}</strong> Components</span>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="lock-btn ${isCamLocked ? 'locked' : ''}" onclick="toggleIndependentLock(${i}, 'camera', this)" title="Lock Optics">${isCamLocked ? '🔒' : '🔓'} 📷</button>
+                <button class="lock-btn ${isActLocked ? 'locked' : ''}" onclick="toggleIndependentLock(${i}, 'action', this)" title="Lock Action">${isActLocked ? '🔒' : '🔓'} 🏃‍♂️</button>
+            </div>
+        `;
+        wrapper.appendChild(row);
+    }
+}
+
+function toggleIndependentLock(index, type, btnElement) {
+    if (type === 'camera') {
+        let state = !PERSISTENT_SHOTS_DATA[index].cameraLocked;
+        PERSISTENT_SHOTS_DATA[index].cameraLocked = state;
+        btnElement.classList.toggle("locked", state);
+        btnElement.innerText = state ? "🔒 📷" : "🔓 📷";
+    } else if (type === 'action') {
+        let state = !PERSISTENT_SHOTS_DATA[index].actionLocked;
+        PERSISTENT_SHOTS_DATA[index].actionLocked = state;
+        btnElement.classList.toggle("locked", state);
+        btnElement.innerText = state ? "🔒 🏃‍♂️" : "🔓 🏃‍♂️";
+    }
+    compilePipelineOutput();
+}
+
+    function getRandomValueFrom(array) {
+        if (!array || array.length === 0) return "executes unmapped structural transition behavior movement";
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+function rollUnlockedElements() {
+    const movementMode = document.getElementById("p-movement").value;
+    const currentPool = getActiveBehaviorPool();
+    PERSISTENT_SHOTS_DATA.forEach((shot) => {
+        // Only update camera if camera is unlocked
+        if (!shot.cameraLocked) {
+            shot.camera = (movementMode === "randomize") ? getRandomValueFrom(OPTICAL_POOL) : movementMode;
+        }
+        // Only update action if action is unlocked
+        if (!shot.actionLocked) {
+            shot.action = getRandomValueFrom(currentPool);
+        }
+    });
+    compilePipelineOutput();
+}
+
+    function registerEventHandlers() {
+        const triggers = ["p-category", "p-structure", "p-duration", "p-shots", "p-timing-preset", "p-genre", "p-movement", "p-energy", "p-subject", "p-dialogue", "p-dialogue-shift", "p-audiomode", "p-instrument", "p-mood"];
+        triggers.forEach(id => {
+            document.getElementById(id).addEventListener("input", () => {
+                if (id === "p-duration") document.getElementById("val-duration").innerText = document.getElementById("p-duration").value + "s";
+                if (id === "p-shots") {
+                    document.getElementById("val-shots").innerText = document.getElementById("p-shots").value + " Shots";
+                    syncDynamicLockRegistry();
+                }
+                if (id === "p-genre") {
+                    const currentPool = getActiveBehaviorPool();
+                    PERSISTENT_SHOTS_DATA.forEach(shot => {
+                        if (!shot.locked) shot.action = getRandomValueFrom(currentPool);
+                    });
+                }
+                if (id === "p-energy") document.getElementById("val-energy").innerText = document.getElementById("p-energy").value == 0 ? "STATIC" : `LVL ${document.getElementById("p-energy").value}`;
+                if (id === "p-dialogue-shift") document.getElementById("val-dialogue-shift").innerText = "Offset " + document.getElementById("p-dialogue-shift").value;
+                
+                if (id === "p-structure") {
+                    const isMulti = document.getElementById("p-structure").value === "multi";
+                    document.getElementById("container-shots-count").classList.toggle("hidden-panel", !isMulti);
+                    document.getElementById("container-timing-preset").classList.toggle("hidden-panel", !isMulti);
+                    document.getElementById("panel-lock-registry").classList.toggle("hidden-panel", !isMulti);
+                    syncDynamicLockRegistry();
+                }
+                if (id === "p-audiomode") {
+                    document.getElementById("soundtrack-expansion-panel").classList.toggle("hidden-panel", document.getElementById("p-audiomode").value !== "soundtrack");
+                }
+                if (id === "p-movement" && document.getElementById("p-movement").value !== "randomize") {
+                    PERSISTENT_SHOTS_DATA.forEach(shot => {
+                        if (!shot.locked) shot.camera = document.getElementById("p-movement").value;
+                    });
+                }
+                compilePipelineOutput();
+            });
+        });
+
+        document.getElementById("p-file-loader").addEventListener("change", function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            document.getElementById("file-label-view").innerText = file.name;
+            const reader = new FileReader();
+            
+            reader.onload = function(evt) {
+                try {
+                    let parsedActions = [];
+                    const content = evt.target.result.trim();
+                    
+                    if (file.name.endsWith(".json") || content.startsWith("[")) {
+                        parsedActions = JSON.parse(content);
+                    } else {
+                        parsedActions = content.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+                    }
+
+                    if (Array.isArray(parsedActions) && parsedActions.length > 0) {
+                        GENRE_BEHAVIOR_MATRIX.external = parsedActions;
+                        
+                        const extOpt = document.getElementById("opt-external");
+                        extOpt.removeAttribute("disabled");
+                        document.getElementById("p-genre").value = "external";
+                        
+                        PERSISTENT_SHOTS_DATA.forEach(shot => {
+                            if (!shot.locked) shot.action = getRandomValueFrom(parsedActions);
+                        });
+                        
+                        compilePipelineOutput();
+                        alert(`Successfully imported ${parsedActions.length} dynamic custom behavior nodes into volatile memory.`);
+                    } else {
+                        alert("Invalid Schema array parsing error: ensure file holds non-empty content layout items.");
+                    }
+                } catch(err) {
+                    alert("Failure parsing external data stream alignment matrix: " + err.message);
+                }
+            };
+            reader.readAsText(file);
+        });
+    }
+
+    function calculateSegmentDurations(totalTime, shotCount, preset) {
+        let fractions = [];
+        if (preset === "uniform" || shotCount === 1) {
+            for (let i = 0; i < shotCount; i++) fractions.push(1);
+        } else if (preset === "front") {
+            for (let i = 0; i < shotCount; i++) fractions.push(1 + i * 0.5);
+        } else if (preset === "back") {
+            for (let i = 0; i < shotCount; i++) fractions.push(1 + (shotCount - 1 - i) * 0.5);
+        } else if (preset === "erratic") {
+            for (let i = 0; i < shotCount; i++) fractions.push(1 + (Math.sin(i * 1.7 + totalTime) + 1) * 0.8);
+        }
+        let sum = fractions.reduce((a, b) => a + b, 0);
+        return fractions.map(f => (f / sum) * totalTime);
+    }
+
+    function calculateDialogueMapping(totalShots, scriptLines, shiftValue) {
+        let mapping = new Array(totalShots).fill(null);
+        if (scriptLines.length === 0) return mapping;
+        let maxAvailableOffset = Math.max(0, totalShots - scriptLines.length);
+        let normalizedShift = Math.min(maxAvailableOffset, Math.floor((shiftValue / 10) * (maxAvailableOffset + 0.99)));
+        for (let i = 0; i < scriptLines.length; i++) {
+            let targetIdx = normalizedShift + i;
+            if (targetIdx < totalShots) mapping[targetIdx] = scriptLines[i];
+        }
+        return mapping;
+    }
+
+    function extractSubjectCoreSnippet(anchorText) {
+        if (!anchorText) return "subject";
+        let words = anchorText.split(/\s+/).filter(w => w.length > 0);
+        if (words.length <= 6) return words.join(" ");
+        return words.slice(0, 6).join(" ");
+    }
+
+    function compilePipelineOutput() {
+        const category = document.getElementById("p-category").value;
+        const structure = document.getElementById("p-structure").value;
+        const duration = parseInt(document.getElementById("p-duration").value);
+        const totalShots = structure === "single" ? 1 : parseInt(document.getElementById("p-shots").value);
+        const timingPreset = document.getElementById("p-timing-preset").value;
+        const energy = parseInt(document.getElementById("p-energy").value);
+        const anchorSubject = document.getElementById("p-subject").value.trim() || "Unspecified visual baseline";
+        const dialogueInput = document.getElementById("p-dialogue").value;
+        const shiftValue = parseInt(document.getElementById("p-dialogue-shift").value);
+        const audioMode = document.getElementById("p-audiomode").value;
+
+        const scriptLines = dialogueInput.split('\n').map(l => l.trim()).filter(l => l !== '');
+        const shotDurations = calculateSegmentDurations(duration, totalShots, timingPreset);
+        const dialogueMap = calculateDialogueMapping(totalShots, scriptLines, shiftValue);
+
+        if (PERSISTENT_SHOTS_DATA.length !== totalShots) syncDynamicLockRegistry();
+
+        const subjectSnippet = extractSubjectCoreSnippet(anchorSubject);
+
+        let viewHtml = `<span class="t-meta">MASTER SCENARIO CONTEXT: ${anchorSubject}</span>\n`;
+        viewHtml += `<span class="t-meta">CONFIG PROFILE: [Type: ${category}] [Structure: ${structure === "single" ? "Continuous Shot" : "Sequence Array"}]</span>\n\n`;
+        
+        let rawText = `MASTER SCENARIO CONTEXT: ${anchorSubject}\n`;
+        rawText += `CONFIG PROFILE: [Type: ${category}] [Structure: ${structure === "single" ? "Continuous Shot" : "Sequence Array"}]\n\n`;
+
+        let currentTimelineTime = 0;
+
+for (let i = 0; i < totalShots; i++) {
+            let currentDur = shotDurations[i];
+            let start = currentTimelineTime.toFixed(1);
+            let end = (currentTimelineTime + currentDur).toFixed(1);
+            currentTimelineTime += currentDur;
+
+            let vibrationMod = "";
+            if (energy > 0) {
+                if (energy <= 3) vibrationMod = "with subtle stable stabilization anchors";
+                else if (energy > 3 && energy <= 7) vibrationMod = "accompanied by loose handheld organic drift patterns";
+                else vibrationMod = "driven by erratic high-frequency tracking jitters and rapid tracking corrections";
+            } else { vibrationMod = "locked absolute zero-velocity tripod lock"; }
+
+            let shotMemory = PERSISTENT_SHOTS_DATA[i];
+            
+            // Render specific visual markers depending on which components are frozen
+            let statusMarkers = "";
+            if (shotMemory.cameraLocked) statusMarkers += "🔒📷 ";
+            if (shotMemory.actionLocked) statusMarkers += "🔒🏃‍♂️ ";
+
+            viewHtml += `<span class="t-time">[SHOT ${i + 1} TIMEMARK: ${start}s - ${end}s] ${statusMarkers}</span>\n`;
+            rawText  += `[SHOT ${i + 1} TIMEMARK: ${start}s - ${end}s]\n`;
+
+            viewHtml += `<span class="t-cam"> - Optics: Axis directional ${shotMemory.camera}, ${vibrationMod}.</span>\n`;
+            rawText  += ` - Optics: Axis directional ${shotMemory.camera}, ${vibrationMod}.\n`;
+
+            let highImpactAction = shotMemory.action.replace(/^(violently|aggressively|strikes|ducks|kicks|pivots|loses|reaches|lunges|hurls|braces|smashes|charges|slides|grabs|collides|swipes|leaps|recoils|punches|climbs|tears|sweeps|slams|intercepts|drops|wrenches|skids|grapples|stumbles|shoves|rips|vaults|bounds|dives|pokes|snatches|veers|boots|wears|interfaces|looks|blocks|parries|executes|adjusts)/i, (match) => {
+                return `${subjectSnippet} ${match.toLowerCase()}`;
+            });
+            
+            if (highImpactAction === shotMemory.action) {
+                highImpactAction = `${subjectSnippet} ${shotMemory.action}`;
+            }
+
+            viewHtml += `<span class="t-dir"> - Action: ${highImpactAction}.</span>\n`;
+            rawText  += ` - Action: ${highImpactAction}.\n`;
+
+            if (dialogueMap[i]) {
+                viewHtml += `<span class="t-audio"> - Voice Transmission Line: "${dialogueMap[i]}"</span>\n`;
+                rawText  += ` - Voice Transmission Line: "${dialogueMap[i]}"\n`;
+            }
+            
+            viewHtml += `\n`; rawText  += `\n`;
+        }
+
+        viewHtml += `<span class="t-audio">ACOUSTIC CONTROL ARRAY:</span>\n`;
+        rawText  += `ACOUSTIC CONTROL ARRAY:\n`;
+
+        if (audioMode === "foley") {
+            viewHtml += `<span class="t-audio"> - Layer: Natural environment location foley effects, high atmospheric background noise track preservation.</span>\n`;
+            rawText  += ` - Layer: Natural environment location foley effects, high atmospheric background noise track preservation.\n`;
+        } else {
+            const inst = document.getElementById("p-instrument").value;
+            const mood = document.getElementById("p-mood").value;
+            viewHtml += `<span class="t-audio"> - Layer: Local physical environmental foley synced with instrumental soundtrack layer [Score: ${inst}] [Acoustic Vibe: ${mood}].</span>\n`;
+            rawText  += ` - Layer: Local physical environmental foley synced with instrumental soundtrack layer [Score: ${inst}] [Acoustic Vibe: ${mood}].\n`;
+        }
+
+        viewHtml += `<span class="t-meta"> - Render Directives: Maintain absolute multi-frame consistency matrix. Prevent spatial warping loops. [Cut Style: Hard cinematic jumps, zero fluid interpolation or morphing between timestamps]. Render crisp 8k detail resolution. No letterboxing fields.</span>`;
+        rawText  += ` - Render Directives: Maintain absolute multi-frame consistency matrix. Prevent spatial warping loops. [Cut Style: Hard cinematic jumps, zero fluid interpolation or morphing between timestamps]. Render crisp 8k detail resolution. No letterboxing fields.`;
+
+        const viewContainer = document.getElementById("output-view");
+        viewContainer.innerHTML = viewHtml;
+        viewContainer.setAttribute("data-raw", rawText);
+
+        updateTokenBudgetUi(rawText.length);
+    }
+
+    function updateTokenBudgetUi(charCount) {
+        const label = document.getElementById("char-counter");
+        const warn = document.getElementById("budget-warning");
+        label.innerText = charCount;
+        if (charCount <= 5500) { label.style.color = "var(--success)"; warn.innerText = ""; } 
+        else if (charCount > 5500 && charCount <= 7500) {
+            label.style.color = "var(--warning)"; warn.innerText = "⚠️ APPROACHING SEEDANCE 7500 CHARACTER LIMIT"; warn.style.color = "var(--warning)";
+        } else { label.style.color = "var(--danger)"; warn.innerText = "🚨 EXCEEDING MAX SYSTEM TOKEN LIMIT"; warn.style.color = "var(--danger)"; }
+    }
+
+    function copyPipelineOutput() {
+        navigator.clipboard.writeText(document.getElementById("output-view").getAttribute("data-raw")).then(() => {
+            alert("v12.1 custom array output written to system clipboard!");
+        });
+    }
+</script>
+
+</body>
+</html>
