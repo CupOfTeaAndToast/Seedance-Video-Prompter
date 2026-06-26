@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seedance Pipeline Director v32</title>
+    <title>Seedance Pipeline Director v33</title>
 <style>
         :root {
             --bg-base: #fcfcfd;
@@ -227,8 +227,8 @@
                 <div class="form-group">
                     <label>Sequence Duration</label>
                     <div class="slider-box">
-                        <input type="range" id="p-duration" min="4" max="30" value="12" step="1">
-                        <span class="slider-val" id="val-duration">12s</span>
+                        <input type="range" id="p-duration" min="4" max="30" value="10" step="1">
+                        <span class="slider-val" id="val-duration">10s</span>
                     </div>
                 </div>
                 <div class="form-group" id="container-shots-count">
@@ -266,28 +266,34 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Action/Motion</label>
-                    <select id="p-genre">
-<option value="beverage"> Beverage</option>
-<option value="office"> Office</option>
-<option value="tech"> Tech</option>
-<option value="door"> Door</option>
-<option value="clothing"> Clothing</option>
-<option value="maintenance"> Maintenance</option>
-<option value="map"> Map</option>
-<option value="medical"> Medical</option>
-<option value="flashlight"> Flashlight</option>
-<option value="cleaning"> Cleaning</option>
-<option value="mixmatch"> Mix-Match</option>
-                        <option value="universal"> Universal/General (Default Stock)</option>
-                        <option value="horror"> Horror & Survival Pack</option>
-                        <option value="cyberpunk"> Sci-Fi & Cyberpunk Pack</option>
-                        <option value="combat"> Martial Arts & Combat Pack</option>
-                        <option value="car_chase"> Car Chase Pack</option>
-                        <option value="dance"> Dance Pack</option>
-                        <option value="sports"> Sports Pack</option>
-                        <option value="formal"> Formal/Interview Pack</option>
-                        <option value="external" disabled id="opt-external">📂 Loaded External Profile Matrix</option>
-                    </select>
+<select id="p-genre">
+    <option value="universal" selected>Universal/General (Default Stock)</option>
+    <option value="flashlight">Flashlight</option>
+    <option value="cyberpunk">Sci-Fi & Cyberpunk Pack</option>
+    <option value="horror">Horror & Survival Pack</option>
+    <option value="car_chase">Car Chase Pack</option>
+    
+    <option disabled>───────────────────</option>
+    
+    <option value="beverage">Beverage</option>
+    <option value="office">Office</option>
+    <option value="tech">Tech</option>
+    <option value="door">Door</option>
+    <option value="clothing">Clothing</option>
+    <option value="maintenance">Maintenance</option>
+    <option value="map">Map</option>
+    <option value="medical">Medical</option>
+    <option value="cleaning">Cleaning</option>
+    <option value="mixmatch">Mix-Match</option>
+    <option value="combat">Martial Arts & Combat Pack</option>
+    <option value="dance">Dance Pack</option>
+    <option value="sports">Sports Pack</option>
+    <option value="formal">Formal/Interview Pack</option>
+
+    <option disabled>───────────────────</option>
+
+    <option value="external" disabled id="opt-external">📂 Loaded External Profile Matrix</option>
+</select>
                 </div>
                 <div class="form-group">
                     <label>Import Custom File (.txt / .json)</label>
@@ -1396,27 +1402,82 @@ function moveShot(currentIndex, direction) {
         wrapper.appendChild(row);
     });
 }
-    function getRandomValueFrom(array) {
-        if (!array || array.length === 0) return "executes unmapped structural transition behavior movement";
-        return array[Math.floor(Math.random() * array.length)];
+// --- COHESIVE CONTEXTUAL SCENARIO ENGINE ---
+const PROCEDURAL_SCENARIOS = {
+    cyberpunk: {
+        actors: ["the operative", "the technician", "a hooded figure", "the netrunner"],
+        kinetics: ["reaches out to recalibrate", "interfaces directly with", "taps a sequence into", "wipes down the status display on", "adjusts the cooling valve of"],
+        targets: ["the holographic terminal matrix", "a glowing fiber optic junction", "the central processing node array", "an exposed cybernetic hardware bay"],
+        physics: ["sending immediate data pulses down the pipeline", "causing indicator lights to cascade sequentially", "while maintaining a completely locked physical stance"]
+    },
+    industrial: {
+        actors: ["the operator", "the welder", "a heavy laborer", "the technician"],
+        kinetics: ["exerts deliberate physical force to pull", "cranks the iron wheel on", "manually inspects structural weld points along", "lifts and balances"],
+        targets: ["the floor-level platform tracking boundary", "a heavy hydraulic steel piston", "the primary utility pressure manifold", "an adjacent metallic framework panel"],
+        physics: ["releasing a sharp hiss of pressurized pneumatic steam", "with micro-adjustments to manage load equilibrium", "to minimize mechanical friction across the plane"]
+    },
+    cinematic_drama: {
+        actors: ["the protagonist", "a solitary individual", "the character", "the figure"],
+        kinetics: ["draws a heavy fabric hand across", "carefully re-positions", "extends a lone hand tracking across", "pivots slowly toward"],
+        targets: ["the dust-covered mahogany surface", "a heavy glass decanter vessel container", "the condensation-rimmed window pane", "an old leather-bound journal layout"],
+        physics: ["disturbing the settling ambient air currents", "catching a sharp sliver of raking volumetric sunlight", "as a heavy, deliberate silence anchors the frame"]
     }
+};
 
-function rollUnlockedElements() {
-    const movementMode = document.getElementById("p-movement").value;
-    const currentPool = getActiveBehaviorPool();
-    PERSISTENT_SHOTS_DATA.forEach((shot) => {
-        // Only update camera if camera is unlocked
-        if (!shot.cameraLocked) {
-            shot.camera = (movementMode === "randomize") ? getRandomValueFrom(OPTICAL_POOL) : movementMode;
-        }
-        // Only update action if action is unlocked
-        if (!shot.actionLocked) {
-            shot.action = getRandomValueFrom(currentPool);
-        }
-    });
-    compilePipelineOutput();
+function getRandomValueFrom(array) {
+    if (!array || array.length === 0) return "executes unmapped structural transition behavior";
+    return array[Math.floor(Math.random() * array.length)];
 }
 
+// Generates a contextually cohesive action based on your overall layout
+function generateDynamicProceduralMotion() {
+    const activeKeys = Object.keys(PROCEDURAL_SCENARIOS);
+    const chosenContextKey = getRandomValueFrom(activeKeys);
+    const pool = PROCEDURAL_SCENARIOS[chosenContextKey];
+    
+    const actor    = getRandomValueFrom(pool.actors);
+    const kinetic  = getRandomValueFrom(pool.kinetics);
+    const target   = getRandomValueFrom(pool.targets);
+    const physics  = getRandomValueFrom(pool.physics);
+    
+    const compositeSentence = `${actor} ${kinetic} ${target}, ${physics}`;
+    return compositeSentence.charAt(0).toUpperCase() + compositeSentence.slice(1);
+}
+
+// --- MASTER ROLLING ENGINE WITH EXPLICIT PRESET PACK LOCKS ---
+function rollUnlockedElements() {
+    // 1. Grab values from both independent dropdowns using your exact layout IDs
+    const movementMode = document.getElementById("p-movement").value;
+    const currentPool = getActiveBehaviorPool();
+    
+    const behaviorDropdown = document.getElementById("p-genre");
+    const selectedPackValue = behaviorDropdown ? behaviorDropdown.value : "";
+
+    PERSISTENT_SHOTS_DATA.forEach((shot) => {
+        // 2. Optics Handler (Runs off the camera dropdown setting)
+        if (!shot.cameraLocked) {
+            if (movementMode.toLowerCase().includes("random") || movementMode === "randomize") {
+                shot.camera = getRandomValueFrom(OPTICAL_POOL);
+            } else {
+                shot.camera = movementMode;
+            }
+        }
+        
+        // 3. Action/Motion Handler (Runs strictly off your behavior pack selection value)
+        if (!shot.actionLocked) {
+            // IF you selected the default stock ("universal"), OR if your loaded pool is missing data:
+            if (selectedPackValue === "universal" || !currentPool || currentPool.length === 0) {
+                // Use our clean, context-cohesive procedural action generator
+                shot.action = generateDynamicProceduralMotion();
+            } else {
+                // A dedicated preset pack is selected (flashlight, car_chase, etc.) -> Use it exclusively!
+                shot.action = getRandomValueFrom(currentPool);
+            }
+        }
+    });
+    
+    compilePipelineOutput();
+}
     function registerEventHandlers() {
         const triggers = ["p-category", "p-structure", "p-duration", "p-shots", "p-timing-preset", "p-genre", "p-movement", "p-energy", "p-subject", "p-dialogue", "p-dialogue-shift", "p-audiomode", "p-instrument", "p-mood"];
         triggers.forEach(id => {
