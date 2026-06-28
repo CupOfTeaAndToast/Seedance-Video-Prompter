@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seedance Pipeline Director v33</title>
+    <title>Seedance Pipeline Director v35</title>
 <style>
         :root {
             --bg-base: #fcfcfd;
@@ -199,20 +199,97 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Video Category</label>
-                    <select id="p-category">
-                        <option value="Axiom 65mm anamorphic print, masterful cinematic composition, volumetric cinematic lighting, moody dark look with deep shadows, high-fidelity color grading">Cinematic Film (65mm Anamorphic, Moody & Deep Shadows)</option>
-                        <option value="1970s gritty panavision film stock, technicolor palette emulation, ultra-high depth of field with soft bokeh">Vintage Panavision (70s Gritty Stock & Soft Bokeh)</option>
-                        <option value="Unfiltered 16mm archival documentary footage, gritty photojournalism aesthetic, natural overcast ambient light, raw handheld camera micro-tremors">Documentary Ledger (16mm Archival, Raw Handheld Tremors)</option>
-                        <option value="Authentic slice-of-life realism, captured on dynamic shoulder-mount rig, unprocessed color profile">Realism Reel (Shoulder-Mount Rig, Unprocessed Profile)</option>
-                        <option value="Ultra-sleek commercial product grade, hyper-glossy surface rendering, high-fashion editorial look, pristine studio softbox illumination">Commercial Cut (Hyper-Glossy, Sleek Studio Softbox)</option>
-                        <option value="Vibrant high-contrast color scheme, impeccable fluid motion tracking, high-end advertising polish">Premium Promo (High-Contrast, Fluid Motion Tracking)</option>
-                        <option value="Immersive first-person perspective POV field, bodycam distortion lens artifacting, high physical kinetic feedback">POV Perspective (First-Person Bodycam & Lens Distortion)</option>
-                        <option value="Grainy CCTV surveillance stream, low-fidelity analog tape decay, dashcam night-vision infrared filter, twitchy security feed frame skips">Surveillance Vault (Grainy CCTV, Infrared & Frame Skips)</option>
-                        <option value="Neon-drenched vaporwave color grading, surreal psychedelic dream-logic visuals, high-energy strobe pacing contrast">Music Video Grid (Neon Vaporwave & Psychedelic Dream-Logic)</option>
-                        <option value="Avant-garde editorial framing, frenetic jump-cut aesthetics, highly stylized lo-fi music video textures">Stylized Avant-Garde (Frenetic Cuts & Lo-Fi Textures)</option>
-                        <option value="1990s faded VHS magnetic tape degradation, magnetic tracking lines bleed, retro family camcorder timestamp burn">Home Video Reel (90s Faded VHS Tape Degradation)</option>
-                        <option value="Vintage super 8 chromatic aberration, nostalgic sun-drenched polaroid coloring">Super 8 Nostalgia (Sun-Drenched Polaroid Coloring)</option>
-                    </select>
+<select id="p-category">
+    <option value="Cinematic film print, shot on Arri Alexa LF with Panavision Primo Anamorphic lenses, 2.39:1 aspect ratio, masterfully composed cinematic frame, soft volumetric atmospheric bloom, moody low-key lighting with deep ink shadows, rich high-fidelity color science, subtle organic Kodak silver halide film grain." selected>
+        Cinematic Film (Arri LF Anamorphic, Low-Key & Deep Shadows)
+    </option>
+    
+    <option value="Gritty 1970s Panavision film stock emulation, shot on vintage 35mm film, warm technicolor palette color grading, organic chromatic aberration, ultra-shallow depth of field with soft oil-paint bokeh circle textures, warm amber halation around high-contrast edges.">
+        Vintage Panavision (70s Gritty Stock, Technicolor & Soft Bokeh)
+    </option>
+    
+    <option value="Raw 16mm archival documentary footage, unfiltered photojournalism aesthetic, natural overcast flat ambient lighting, slight gate weave, raw shoulder-mount camera micro-tremors, high-contrast black-and-white print tones, texture-heavy monochrome emulsion layer.">
+        Documentary Ledger (16mm Archival, Raw Handheld Tremors)
+    </option>
+    
+    <option value="Authentic hyper-realistic slice-of-life cinema, captured on an un-stabilized professional shoulder-mount rig, unprocessed native log color profile, neutral daytime ambient light illumination, deep focus lens depth, raw unposed environmental accuracy.">
+        Realism Reel (Shoulder-Mount Rig, Unprocessed Log Profile)
+    </option>
+    
+    <option disabled>───────────────────</option>
+    
+    <option value="Sleek high-end commercial grade product capture, shot on Arri Amira, 8k resolution textures, hyper-glossy material surface rendering, clean high-fashion editorial look, flawless multi-point studio softbox illumination, perfectly balanced specular highlights, smooth commercial polish.">
+        Commercial Cut (Hyper-Glossy, Sleek Studio Softbox)
+    </option>
+
+    <option value="Vibrant high-contrast modern block-buster color grading, teal and orange palette color science, impeccable fluid motion tracking focus, razor-sharp textures, dynamic studio lighting setups, premium advertising polish.">
+        Premium Promo (High-Contrast Teal & Orange, Fluid Tracking)
+    </option>
+    
+    <option disabled>───────────────────</option>
+    
+    <option value="Immersive first-person POV action perspective, shot on ultra-wide 8mm fisheye lens, authentic tactical bodycam distortion artifacts, low-angle barrel distortion warp, high physical kinetic camera feedback, rapid head-turning velocity motion blur.">
+        POV Perspective (First-Person Bodycam & Lens Distortion)
+    </option>
+
+    <option value="Grainy low-resolution CCTV surveillance camera stream, 4:3 aspect ratio, analog tape degradation artifacts, twitchy interlaced frame skips, low-fidelity night-vision infrared filter, glowing ghosting halos around moving light sources, monochrome green hues.">
+        Surveillance Vault (Grainy CCTV, Infrared & Frame Skips)
+    </option>
+
+    <option value="Authentic dashboard camera perspective layout, rough vehicle vibration micro-stuttering, glare reflections off the front windshield glass, dynamic low-light street lamp lighting shifts, exposure clipping when tracking headlights, corner digital timestamp burn data.">
+        Dashcam Feed (Windshield Glare, Low-Light Exposure Clipping)
+    </option>
+    
+    <option disabled>───────────────────</option>
+    
+    <option value="1990s faded VHS magnetic tape degradation, analog tracking lines bleed error, color channel bleeding artifacts, low-fidelity tracking warp, retro family camcorder 4:3 aspect ratio configuration with glowing orange timestamp text burnt into the lower margin corner.">
+        Home Video Reel (90s Faded VHS Tape Degradation)
+    </option>
+
+    <option value="Vintage super 8mm film format, severe chromatic fringing anomalies, nostalgic sun-drenched polaroid color grading, warm light leaks slicing vertically down the frames, heavy gate jitter flicker, vintage analog texture palette.">
+        Super 8 Nostalgia (Sun-Drenched Polaroid Coloring)
+    </option>
+
+    <option value="Lo-fi early 2000s cyber-shot digital camera aesthetic, harsh raw direct on-camera xenon flash exposure, hard dark drop shadows directly behind objects, low-fidelity CCD sensor color science, slightly overexposed skin tones, amateur flash snapshot styling.">
+        Y2K Digital Pocket (Harsh Xenon Flash & CCD Sensor Clip)
+    </option>
+    
+    <option disabled>───────────────────</option>
+    
+    <option value="Neon-drenched cyberpunk synthwave color grading, surreal psychedelic dream-logic visuals, high-energy rapid strobe light pacing contrast, brilliant fluorescent pink and cyan ambient lighting saturation, abstract lens flare streaks across the lens.">
+        Music Video Grid (Neon Vaporwave & Psychedelic Dream-Logic)
+    </option>
+
+    <option value="Avant-garde fashion film editorial framing, frantic jump-cut montage pacing, highly stylized alternative lo-fi music video textures, dramatic high-angle tilted compositions, high-fashion art-house lighting structures.">
+        Stylized Avant-Garde (Frenetic Cuts & Lo-Fi Textures)
+    </option>
+
+    <option value="Dark moody neo-noir atmospheric styling, shot on 35mm monochrome black-and-white high-contrast film print, raking venetian blind shadow silhouettes cast onto surfaces, glistening wet rain-slicked asphalt reflections, sharp chiascuro studio spot lighting.">
+        Neo-Noir Shadow (High-Contrast B&W & Rain Reflections)
+    </option>
+    
+    <option disabled>───────────────────</option>
+    
+    <option value="Saturated anime-inspired cinematic animation frame, rich vibrant ink linework, high-fidelity cell shading aesthetics, dramatic volumetric sky backlighting, epic magical fantasy color grading, fluid hyper-stylized keyframe motion curves.">
+        Cel Shaded Anime (Vibrant Sky Backlighting & Linework)
+    </option>
+
+    <option value="Sleek high-octane IMAX 70mm action camera frame format, massive deep depth field scope, pristine high-velocity tracking shots, crisp daylight exposure rendering, rich cinematic contrast balance, expansive scale masterwork composition.">
+        IMAX Arena (70mm Scale, High-Velocity Tracking Open Focus)
+    </option>
+
+    <option value="Ethereal hyper-stylized slow-motion sequence, shot on Phantom Flex 4K at 1000fps, mesmerizing fluid kinetic particulate tracking, ultra-precise motion clarity, soft wrapping rim-lighting accents, dreamlike ambient flow.">
+        Phantom Overcrank (1000fps Slow-Motion Macro Clarity)
+    </option>
+
+    <option value="Intimate indie-film festival aesthetic, shot on naturalistic prime lenses, shallow focus field separating planes, muted pastel color profile palette, soft organic morning window light illumination, delicate humanistic grading tones.">
+        Indie Sundance (Natural Pastel Palette & Soft Window Light)
+    </option>
+
+    <option value="Dystopian brutalist scifi aesthetic, industrial desaturated corporate color palette science, heavy volumetric concrete atmospheric dust haze, cold clinical overcast sky lighting grids, geometric hard-edge architectural alignment composition.">
+        Brutalist SciFi (Desaturated Industrial & Dust Haze)
+    </option>
+</select>
                 </div>
                 <div class="form-group">
                     <label>Structural Layout</label>
@@ -261,7 +338,7 @@
             <h2>3. SCENE & ACTION</h2>
             <div class="form-group">
                 <label>Subject Scenario Anchor (insert idea here)</label>
-                <input type="text" id="p-subject" value="reference character in location">
+<input type="text" id="p-subject" placeholder="Enter Subject Scenario Anchor...">
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -284,6 +361,9 @@
     <option value="map">Map</option>
     <option value="medical">Medical</option>
     <option value="cleaning">Cleaning</option>
+
+    <option disabled>───────────────────</option>
+
     <option value="mixmatch">Mix-Match</option>
     <option value="combat">Martial Arts & Combat Pack</option>
     <option value="dance">Dance Pack</option>
@@ -305,7 +385,7 @@
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Primary Camera Vector</label>
+<label>Primary Camera Vector</label>
                     <select id="p-movement">
                         <option value="randomize">🎲 Sequenced Random Variations per Shot</option>
                         <option value="Pan movement">Pan Tracking Only</option>
@@ -317,6 +397,16 @@
                         <option value="Handheld organic sway">Handheld Drift Only</option>
                         <option value="Immersive first-person POV tracking, camera locked directly to the subject's eye-line perspective">POV Perspective Only</option>
                         <option value="Ultra-wide first-person POV perspective, the subject's arms, swinging hands, and lower legs or feet are dynamically visible in the lower frame foreground as they move">POV (With Arms & Feet Visible)</option>
+                        <option value="Cinematic push-in dolly zoom tracking closer">Cinematic Push-In Only</option>
+                        <option value="Dolly pull-out revealing wider scale view">Dolly Pull-Out Only</option>
+                        <option value="Vertical crane lift rising upward high perspective">Vertical Crane Up Only</option>
+                        <option value="Jib boom lowering downward close tracking vector">Vertical Crane Down Only</option>
+                        <option value="Pedestal height shift moving vertically level">Pedestal Shift Only</option>
+                        <option value="Dramatic Dutch angle tilt roll orientation axis">Dutch Angle Roll Only</option>
+                        <option value="Arc tracking rotation framing side profile paths">Arc Tracking Only</option>
+                        <option value="Whip pan transition snapping swiftly to target">Whip Pan Only</option>
+                        <option value="Vertigo effect opposite lens zoom pull alignment">Vertigo Dolly-Zoom Only</option>
+                        <option value="Low ground angle sweep scanning upward focus">Low Ground Sweep Only</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -341,7 +431,7 @@
                 <label>Script Submissions (Line-breaks create unique tracks)</label>
                 <textarea id="p-dialogue" rows="3" placeholder="Line of dialogue 1...&#10;Line of dialogue 2..."></textarea>
             </div>
-            <div class="form-group" id="container-dialogue-shift" style="margin-top: 0.5rem;">
+<div class="form-group" id="container-dialogue-shift" style="margin-top: 0.5rem;">
                 <label>Dialogue Timeline Distribution Shift</label>
                 <div class="slider-box">
                     <input type="range" id="p-dialogue-shift" min="0" max="10" value="0" step="1">
@@ -351,7 +441,15 @@
         </div>
 
         <div class="panel">
-            <h2>5. AUDIO</h2>
+            <h2>5. MANUAL SHOT OVERRIDES (OPTIONAL)</h2>
+            <div class="form-group">
+                <label style="color: #ff6600; font-weight: bold; margin-bottom: 4px;">Shot Content Override Box (Line 1 = Shot 1, Line 2 = Shot 2, etc.):</label>
+                <textarea id="p-manual-actions-blob" rows="4" placeholder="Line 1 manual prompt text here...&#10;Line 2 manual prompt text here...&#10;Leave rows completely blank to run auto-pilot database matrices..." style="width: 100%; box-sizing: border-box;"></textarea>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>6. AUDIO</h2>
             <div class="form-group">
                 <label>Audio settings</label>
                 <select id="p-audiomode">
@@ -375,7 +473,7 @@
     </div>
 
     <div class="sticky-aside canvas-area panel">
-        <h2>6. GENERATED PROMPT</h2>
+        <h2>7. GENERATED PROMPT</h2>
         
         <button class="btn-action btn-roll" onclick="rollUnlockedElements()">🎲 Regenerate Prompt</button>
         
@@ -395,7 +493,7 @@
 const OPTICAL_POOL = [
         "Pan movement tracking", "Tilt transition vector", "Dolly path tracking", "Horizontal tracking run",
         "Focal zoom adjustment", "Jib crane arc movement", "Orbit loop vector", "Push-in lens compression",
-        "Whip pan snap sweep", "Handheld organic sway drift", "Aerial drone flight path mapping",
+        "Dynamic whip pan transition shifting swiftly to target", "Handheld organic sway drift", "Aerial drone flight path mapping",
         // Advanced AI-Comprehensible Cinematic Vectors
         "Vertigo effect zolly camera movement",
         "Low-angle tracking shot skimming the ground",
@@ -405,9 +503,20 @@ const OPTICAL_POOL = [
         "Steadicam tracking shot smoothly following behind the subject",
         "Dynamic 360-degree rotational arc orbit shot",
         "Rack focus depth of field transition",
-        "Snorricam perspective locked tightly to the subject's torso",
+        "Snorricam chest-mount perspective facing backward to lock directly onto the subject's face and expressions",
         "Crash zoom snap focus acceleration",
-        "Extreme close-up macro details shift tracking"
+        "Extreme close-up macro details shift tracking",
+        // Real-World Production Additions
+        "Cinematic parallax arc tracking shot, sliding sideways to push the background elements into dynamic motion depth",
+        "Slow low-level tracking shot pinned to moving feet and ground impacts, capturing heavy suspense",
+        "Cinematic reveal tracking shot passing smoothly forward through an open framing obstacle into the primary scene space",
+        "Over-the-shoulder tracking perspective, maintaining clean foreground shoulder framing behind the subject axis",
+        "Tight cinematic side-profile tracking run, locked completely level with the character moving across the field",
+        "Dolly pull-out tracking shot, smoothly retreating backward to isolate the subject as small within a massive environment",
+        "Vertical jib crane drop moving downwards while slowly tilting upwards to dramatically reveal the layout horizon",
+        "High-angle crane tracking shot slowly drifting down level to frame a close-up character perspective shift",
+        "Cinematic whip pan transition rapidly sweeping away into structural motion blur to serve as a match cut anchor",
+        "Slow hand-held creeping tracking push-in, edging forward with heavy suspense toward a stationary subject focus"
     ];
 
 const GENRE_BEHAVIOR_MATRIX = {
@@ -419,7 +528,48 @@ const GENRE_BEHAVIOR_MATRIX = {
         "swipes a damp cloth across a table surface in wide circular paths to clear away moisture stains",
         "gathers scattered dining utensils together into a tight bundle, lifting them off the surface layout",
         "opens a low under-counter storage door cabinet, placing a used dish tray inside the framework rack",
-        "closes a kitchen cabinet door firmly with a gentle push of the hip, freeing hands completely"
+        "closes a kitchen cabinet door firmly with a gentle push of the hip, freeing hands completely",
+// ADDITIONAL BEHAVIORS ADDED
+        "twists a tight screw-cap off a frosted glass bottle tracking rim, releasing a sharp hiss of carbonation gas",
+        "pours a stream of dark amber fluid from a pitcher asset into an open glass tumbler until it nears the brim",
+        "brings a ceramic coffee mug asset directly up to their lips, tilting the base upward in a slow steady lift",
+        "wipes a damp microfiber cloth across a slick laminate countertop layout to collect scattered liquid drops",
+        "scrapes left-over food debris off a ceramic plate directly into a plastic waste bin frame using a fork edge",
+        "pops a metal bottle opener claw under a steel crown cap, prying it upward with a sharp popping acoustic note",
+        "drops three solid ice cubes into an empty glass chalice asset, producing a bright ringing clink sound sequence",
+        "stirs a stainless steel spoon capsule inside a coffee mug in smooth circular paths, creating a miniature vortex",
+        "tears open a paper sugar packet pouch, tipping the fine white crystals directly into a filled liquid center",
+        "squeezes a fresh yellow lemon wedge over an open water glass frame, sending a stream of juice into the fluid",
+        "slides a tall clear glass cup across a smooth varnished bar counter plane directly into a waiting palm baseline",
+        "plugs a electric kettle base cord into a live wall socket element, activating a red heating toggle switch indicator",
+        "places a cardboard cup sleeve jacket smooth onto a paper espresso cup structure, sliding it upward until tight",
+        "punctures a foil juice box seal using a pointed plastic straw asset, pushing it down into the core cavity",
+        "shakes a metal cocktail mixer canister vigorously with both hands, generating an internal icy rattling sound",
+        "presses a mechanical water dispenser lever with a glass cup rim, causing clear liquid to cascade down smooth",
+        "screws a metal mesh tea infuser ball asset closed after packing it with coarse dried herbal leaf flakes",
+        "dips a porous paper tea bag asset repeatedly into an open mug of boiling water, turning the fluid dark amber",
+        "sets a fragile crystal wine goblet onto a polished wooden tabletop layout, aligning it with a fabric napkin",
+        "scoops a mound of coffee grounds from a foil storage bag using a plastic measuring spoon asset with high precision",
+        "snaps a plastic travel lid securely onto a paper takeaway cup rim, pressing down the edges until fully sealed",
+        "pries open a aluminum beverage can pull-tab using an index finger loop lift, breaking the inner pressurized seal",
+        "wipes a glass bottle neck clean with a dry cotton napkin cloth before tipping it to pour into a glass flute",
+        "draws a line of liquid honey from a wooden dipper tool directly into a porcelain teacup assembly setup",
+        "unfurls a paper straw wrapper by blowing through one end, launching the empty paper tube across a table matrix",
+        "clinks two thick glass beer steins together in a swift horizontal strike gesture, spilling a small layer of foam",
+        "empties a lukewarm liquid dreg cup completely down a stainless steel kitchen sink drain basin opening tracking core",
+        "scoops an accumulated layer of foam off a simmering liquid pot top using a wide metal skimmer spoon blade",
+        "froths a container of dairy milk using a handheld battery-powered wire whisk wand, creating dense micro-foam",
+        "sets a heavy glass blender pitcher onto its motorized base gear, locking it down with a firm clockwise twist",
+        "pours a measured jigger of clear syrup fluid into an open glass tumbler vessel containing mixed liquid bases",
+        "peels a paper branding label off a cold glass bottle container, exposing a clean adhesive tracking zone behind",
+        "strains a mixed liquid drink through a wire mesh funnel layer into a clean coupe glass container frame setup",
+        "crushes a single mint leaf bunch inside a mortar basin using a heavy wooden pestle tool with a grinding stroke",
+        "slides an acrylic coaster disk directly beneath a sweating beverage glass container to protect a desk wood grain",
+        "plucks a single olive garnish item out of a glass jar container using long wooden toothpick tweezers",
+        "opens a manual mechanical can opener key, slicing a circular track into a metal juice can lid element profile",
+        "sips a hot beverage fluid from a shallow spoon asset, inhaling a brief pocket of cooling air across the liquid",
+        "snaps a plastic soda bottle crate container into a lower storage rack shelf partition, sliding it back smooth",
+        "wipes a drop of condensation fluid off a glass bottle shoulder using a quick side thumb stroke sweep path"
 ],
 office: [
         "slides a heavy storage drawer open, reaching inside to index a specific folder divider tag",
@@ -429,7 +579,48 @@ office: [
         "signs a rapid flourish across a bottom document signature line path using a sleek ink pen device",
         "gathers a stack of loose papers together, tapping the bottom edge firmly against wood to align them",
         "inserts an aligned stack of paper documents cleanly into a cardboard storage file container setup",
-        "shoves a storage box deep into an overhead wall shelving compartment, clear of the working zone"
+        "shoves a storage box deep into an overhead wall shelving compartment, clear of the working zone",
+// ADDITIONAL BEHAVIORS ADDED
+        "claps a heavy mechanical stapler down onto a thick stack of paper sheets, joining them with a metallic snap",
+        "slides a crisp paper document smooth into a plastic folder sleeve, flattening it down completely",
+        "swivels a high-back desk chair a full ninety degrees to face a large whiteboard layout frame setup",
+        "clicks a retractable ballpoint pen multiple times in rapid succession using a deliberate thumb pulse motion",
+        "slices a razor-sharp utility knife down the center seam of a packed cardboard shipping box tracking boundary",
+        "peels a bright yellow adhesive note square off a paper block and slaps it onto a glass monitor bezel frame",
+        "slides a heavy metal filing cabinet drawer outward along its ball-bearing rollers with a low rumbling resonance",
+        "drops a heavy three-ring binder notebook flat onto a wooden desk surface layout plane, scattering loose clips",
+        "feeds a single sheet of paper crisp into a mechanical shredder slot, watching it split into vertical strands",
+        "adjusts the flexible goose-neck hinge of an architectural desk lamp to pool bright light onto a desk blotter",
+        "thumps a thick rubber validation ink stamp down onto a ledger sheet, leaving a bright red corporate seal",
+        "empties a mesh wire wastepaper basket directly into a larger plastic recycling bin structure with a dry rustle",
+        "slides a plastic keyboard tray out from beneath a wooden desk platform, locking it into ergonomic position",
+        "aligns a stack of scattered document papers by tapping their bottom edges rhythmically against a flat table desk",
+        "pinches a spring-loaded metal binder clip open, clamping it firmly over a thick sheaf of legal briefs",
+        "slices a silver envelope opener clean through the top crease of a paper parcel envelope item using a long pull",
+        "clicks a plastic label maker interface three times, then tears off a printed adhesive vinyl strip indicator",
+        "sets a heavy ceramic coffee mug down onto a glass desk coaster, producing a muffled sharp acoustic click",
+        "wipes a microfiber pad across the glass lens of an office copy machine plate to clear away smudges",
+        "presses a green plastic laminate button on a wall-mounted paper cutter, bringing a long blade down flat",
+        "inserts a blunt graphite pencil tip into an electric sharpener hole, triggering a brief grinding whir tone",
+        "unrolls a long blue architectural blueprint scroll sheet across a drafting table matrix, weighing down corners",
+        "snaps a clear plastic ruler edge flush against a ledger page, drawing a straight ink line across columns",
+        "slides a plastic security keycard smooth through a wall-mounted optical slot scanner, triggering a green LED flash",
+        "arranges five multi-colored highlighting markers into a neat parallel row directly above a computer keyboard layout",
+        "plucks a silver paperclip out of a magnetic base dish asset, sliding it over a pair of invoice pages",
+        "opens a desktop drawer compartment completely to retrieve a fresh roll of clear adhesive tape casing",
+        "tears a jagged piece of clear cellotape off a weighted dispenser blade with a sharp downward yank motion",
+        "taps a wooden pointer stick firmly against a specific quadrant of a hanging financial wall chart layout matrix",
+        "replaces a black mesh desk organizer frame back to its original alignment coordinate on a side credenza shelf",
+        "squeezes a metal staple remover tool together over an embedded wire prong, pulling it cleanly from a page",
+        "winds the manual dial of a wall-mounted analog clock forward by fifteen minutes to correct the time profile",
+        "locks a wooden desk drawer compartment using a small silver key asset, twisting it full counter-clockwise",
+        "slides a plastic mouse pad accessory three inches to the left to optimize tracking layout space parameters",
+        "unclips a lanyard badge clip from a shirt collar loop, setting it face down onto an active workstation desk",
+        "organizes a row of thick reference books vertically between two heavy cast-iron bookend weights on a shelf",
+        "scrapes a sticky tape residue mark off a plastic desk grommet hole using a rigid thumbnail scraping edge",
+        "flips a single thick page of a wall calendar overlay sheet upward, exposing the next chronological month block",
+        "closes a heavy faux-leather presentation portfolio case cover, pressing the twin brass snaps into locked slots",
+        "adjusts the vertical armrest levers of an ergonomic task chair to align with the height plane of a desk edge"
 ],
 
 tech: [
@@ -440,8 +631,101 @@ tech: [
         "wrenches a data connection line clean out of an interface socket port using a sharp pulling motion",
         "slides a protective cover shield down over a device screen interface, locking it into a secure frame",
         "drops a handheld device smoothly into a deep canvas shoulder bag compartment enclosure framework",
-        "pulls a zipper track completely shut across a gear bag opening, securing the interior payload data"
+        "pulls a zipper track completely shut across a gear bag opening, securing the interior payload data",
+// ADDITIONAL BEHAVIORS ADDED
+        "taps a series of rapid alphanumeric keys on a mechanical keyboard array with precise fingertip pressure",
+        "swipes a single bare index finger rapidly across a glowing glass mobile phone display panel layout matrix",
+        "plugs a rectangular USB data cable asset directly into a side port interface slot until it fits flush tight",
+        "presses a small circular power button module on a desktop chassis frame, activating a soft internal LED light",
+        "snaps a protective hardshell plastic casing frame securely onto the back profile of a tablet device asset",
+        "clicks an optical computer mouse primary microswitch twice, highlighting a line of text script data on-screen",
+        "slides a micro-SD storage card deep into an electronic camera slot partition using a fingernail edge push",
+        "peels a transparent protective plastic film layer off a brand new monitor panel display surface tracking matrix",
+        "wipes an anti-static cloth circle across an iPad screen glass face to eliminate dust specs and smudges",
+        "clips a wireless lapel microphone module onto a fabric shirt collar seam, checking the physical orientation",
+        "unplugs a thick black power adapter brick from a wall receptacle socket using a firm outward hand tug",
+        "adjusts a circular webcam bracket frame on top of a laptop screen lid to modify the video capture frame angle",
+        "docks a wireless electronic stylus pen into a side charging groove partition tracking line along a tablet frame",
+        "mounts an electronic camera rig chassis directly onto a quick-release tripod plate mechanism, locking the lever",
+        "slides a plastic laptop safety slider shutter element shut over an integrated webcam lens aperture hole",
+        "presses a mechanical key switch puller tool down over a keyboard keycap layer, popping it off the board stem",
+        "inserts a metal SIM card ejector pin tool into a tiny pinhole port hole along a smartphone aluminum rail",
+        "coils a long heavy-gauge ethernet data cable into a neat loop circle around a forearm before storing it away",
+        "clamps a desktop microphone boom arm assembly bracket onto the rear flange parameter of a wooden desk setup",
+        "plugs a pair of audio headphone jack pins into a mixed media console deck board slot matrix array line",
+        "slides a mechanical toggle lock switch on a flash drive housing asset to activate internal write-protection",
+        "wipes a contact cleaner solution pad over a row of golden memory module pin connectors with a light slide",
+        "snaps a lithium-ion battery cell block down into an electronic drone belly bay partition until the tabs click",
+        "adjusts the dual telescoping antennas of a wireless networking router node to point vertically upward in parallel",
+        "threads a fiber-optic data cable bundle through a plastic desktop cable management ring guide path system",
+        "presses a reset button recess pinhole node using the tip of an unfolded steel paperclip anchor tool segment",
+        "slots a data tape cassette component flat into an archival server drive assembly bay deck matrix framework",
+        "wipes an optical camera lens element using a specialized circular lens paper sheet to clear visual artifacts",
+        "screws a brass adapter node thread onto a standard audio microphone cable socket head until it binds firmly",
+        "mounts a smartphone handset into a spring-loaded vehicle dashboard cradle bracket, squeezing the side rails tight",
+        "snaps open a plastic latch door frame on a networking switch hub rack to clear access to a fiber block line",
+        "slides a secondary external graphics processing box enclosure along a rail slot layout until it settles clean",
+        "presses a digital touch-screen button interface icon four times with a thumb tip pad to reset system tracking",
+        "unboxes a retail tech components box package, lifting an inner anti-static silver pouch out of the foam",
+        "threads a nylon security wrist strap cord through a handheld camera corner mount pin slot loop anchor point",
+        "slides an electronic VR headset goggle visor frame down over their eyes, adjusting the top fabric strap fit",
+        "clicks a remote control pointer button target indicator toward a high projector lens array hanging on a wall",
+        "plugs a thick grounding wire strap ring connector terminal onto an open metal computer enclosure chassis screw",
+        "unclips a modular solid-state drive module cartridge out of a server array tray handle latch mechanism slot",
+        "wipes a conductive copper heatsink pad plate smooth using an isopropyl alcohol tissue pad to clear old paste"
 ],
+door: [
+        "turns a heavy brass doorknob full clockwise, pulling a wooden panel door outward to reveal a dark hallway",
+        "pushes a sleek brushed-aluminum panic bar handle down with a palm to swing an emergency exit door open",
+        "slides a heavy glass patio door smoothly along its horizontal tracks, letting in a soft breeze",
+        "punches a four-digit security pin code into a backlit electronic keypad matrix, triggering a green status flash",
+        "presses a bare thumb flat onto an optical biometric scanner lens surface until a mechanical deadbolt clicks free",
+        "inserts a long steel key asset deep into a tarnished padlock cylinder rim, twisting it until the shackle snaps open",
+        "slides a heavy iron bolt bar latch horizontally out of its metal wall bracket sleeve to unlock a gate door",
+        "lifts a rusted steel floor hatch door vertically upward by its recessed iron ring handle handle bracket joint",
+        "unlatches a circular mechanical dog-wheel lock on a submarine hatch door, spinning the wheel full counter-clockwise",
+        "pushes an unlatched iron security gate frame outward, causing the metal hinges to release a long piercing squeak",
+        "pries open a jammed wooden trapdoor panel seam using the flat claw end of a steel crowbar tool tool leverage",
+        "hoists a weighted industrial garage roller door upward along its vertical metal ceiling track channels",
+        "swivels a protective keyhole cover plate away from a vintage lock face to expose an open skeleton key slot",
+        "threads a long flexible cable lock loop through the iron mesh links of a perimeter chain-link fence gate door",
+        "taps a plastic proximity smart key fob sensor token direct against a dark wall reader module until it beeps",
+        "yanks a spring-loaded chain link latch pin upward to release a swinging wooden garden gate frame structure",
+        "slides a thin plastic credit card strip down through a hotel room door lock slot matrix to trip an indicator LED",
+        "slam-shuts a heavy soundproof studio door vault panel frame, sealing the inner acoustic perimeter rubber gaskets",
+        "turns a small knurled thumb-turn deadbolt knob inside a front entry door panel to lock the mechanism manual",
+        "pivots a vertical emergency break-glass lever downward to release an automated magnetic door lock system circuit",
+        "knocks a closed fist rhythmically three times against a solid oak door panel wood grain center field matrix",
+        "wipes a layer of finger grease smudges off a high-traffic glass door push plate using a microfiber cloth patch",
+        "slides a metal safety chain slider link across a track slot plate to secure an open door ajar crack aperture",
+        "presses an automated door opener wall button switch module with an elbow to open a swinging storefront door",
+        "pulls a thick velvet curtain sash rope loop aside to expose a hidden wooden door frame embedded in a wall",
+        "screws a replacement brass hinge pin down inside an open steel door hinge sleeve cylinder to stabilize a panel",
+        "unbolts a mechanical heavy-duty rim lock housing assembly off a back door panel using a screwdriver driver handle",
+        "slides a slim metal pocket door element out from a wall cavity slot pocket until it bridges a room opening",
+        "pockets a heavy iron cellar key bundle after securing an old weathered wooden storage vault door shut",
+        "steps close parallel within a motion-activated radar sensor field to trigger an automatic sliding glass entryway",
+        "catches a swinging wooden door frame panel with a boot heel to prevent it from closing fully against a frame",
+        "kicks a triangular rubber doorstop wedge deep beneath a bottom door edge rail to lock a classroom door open",
+        "unlatches a tiny magnetic catch snap along a glass display cabinet single door door frame element boundary",
+        "hoists open a heavy counter-weighted historical castle iron portcullis gate grille via a manual stone winch wheel",
+        "pours a stream of graphite lock lubricant powder directly into a sticky cylinder key slot entry channel profile",
+        "snaps a wireless smart-lock battery pack shield enclosure cover down over an active smart deadbolt adapter base",
+        "wipes an accumulation of grit dust away from a sliding glass track lane bottom channel using a thin stiff brush",
+        "hooks a heavy padlocked chain links loop tightly around a set of double factory driveway iron fence gate bars",
+        "turns a split skeleton key shaft clockwise inside a cabinet lock, shooting a steel bolt into a mortise pocket",
+        "pushes open a lightweight double-action saloon swing door pane, watching it sway back and forth on spring hinges",
+        "snaps open a small toggle latch clasp lock holding an exterior electrical utility metal access hatch box door shut",
+        "yanks a release chord handle overhead to disengage an automatic garage door opener trolley track carriage slide",
+        "slides a heavy copper bolt latch down vertically into a floor hole socket to anchor a stationary double-door leaf",
+        "scrubs a rust scale ring pattern away from an industrial bulkdoor latch handle latch joint using a wire pad brush",
+        "presses a glowing intercom call button console next to an iron apartment gate door panel to request entry track",
+        "slides a modern electronic fingerprint screen slider shield plate upward to unlock an outdoor vault keypad core",
+        "pulls a leather strap handle down firm to release an old wooden carriage barn door lock sliding roller tracking",
+        "hoists a small sliding horizontal service ticket window glass pane upward along its vertical metal side sash guides",
+        "adjusts a hydraulic door closer tension screw node valve clockwise to reduce a heavy security door slam force",
+        "snaps a master padlock shackle lock jaw closed sound around a heavy steel utility room latch plate staple loop"
+    ],
 clothing: [
         "lifts a heavy canvas winter coat layout off a wall peg hook assembly by its collar framework",
         "shoves their left arm deeply through a jacket sleeve opening, pulling the fabric up over the shoulder",
@@ -450,7 +734,48 @@ clothing: [
         "yanks a zipper slider mechanism vertically upward to the throat line using a sharp continuous pull",
         "pulls a fabric weather hood up and over their skull architecture, obscuring upper profile details",
         "tightens two dynamic elastic hood adjustment cords, cinching the fabric close around cheeks",
-        "adjusts a pair of thick leather utility gloves, snapping the wrist button anchors down tight"
+        "adjusts a pair of thick leather utility gloves, snapping the wrist button anchors down tight",
+// ADDITIONAL BEHAVIORS ADDED
+        "threads a thick leather belt asset completely through a series of fabric pant loops with a fluid sliding motion",
+        "fastens a small plastic button node directly through a tight stitched shirt seam orifice hole using two fingers",
+        "pulls a metallic zipper tab asset vertically upward along a jacket track line, closing the front fabric plane",
+        "loops a long fabric shoelace strand over and under itself, drawing a tight double-knot anchor point together",
+        "glides a hot steaming iron plate smooth across a wrinkled cotton sleeve fabric layer to flatten out creases",
+        "shrugs a heavy wool overcoat garment onto their shoulders, settling the fabric collar frame line by shaking",
+        "snaps a metal dress cufflink pin through matching fabric buttonholes on a stiff white formal dress shirt sleeve",
+        "folds a long knitted wool scarf strip over itself three times, converting it into a neat compressed block item",
+        "hangs a wooden suit hanger hook onto a metal closet garment rod pipe rail, sliding it into alignment with others",
+        "smooths out a silk necktie fabric blade layout downward against a buttoned shirt chest plane using a palm",
+        "peels a pair of tight athletic socks downward off a foot heel profile, exposing bare skin baseline areas",
+        "snaps a plastic adjustable baseball cap strap closure system together at the rear hat brim band profile line",
+        "cinches a fabric hoodie drawstring chord pair tight, pulling the hood aperture close around their face outline",
+        "unbuckles a heavy metallic brass belt fastener frame buckle tongue, loosening a waist belt band track line",
+        "hooks a wire clothes pin marker clamp over a wet shirt item shoulder seam on an outdoor rope clothesline rope",
+        "tucks a white cotton shirt hem tail down deep inside a denim waistband rim all around their torso profile",
+        "folds a pair of denim jeans fabric segments lengthwise, matching the outer leg stitching seams together perfectly",
+        "brushes a red lint roller adhesive cylinder barrel down a black suit jacket fabric lapel sheet to catch debris",
+        "wipes a damp shoe polish sponge wedge across a black leather boot toe box curve to restore a high glossy shine",
+        "snaps a heavy brass button rivet socket together along a canvas work jacket waist tab to adjust the fit profile",
+        "threads a silk pocket square bundle into a front suit coat breast pocket frame slit, fluffing the exposed corners",
+        "unbuttons a long trench coat garment jacket from the collar node down to the midsection waist tie line layout",
+        "shakes a creased linen dress fabric panel item out vigorously in open air space before laying it down flat",
+        "pulls a thick knit winter sweater collar loop over a head crown profile, emerging from the fabric throat tube",
+        "clips a silver tie bar horizontal accent clamp onto a necktie body midsection, locking it to a shirt placket",
+        "adjusts a pair of elastic fabric suspender strap metal slider clips upward along a chest harness track line",
+        "rolls a long flannel sleeve cuff fabric layer upward over a forearm bone radius three times to expose skin",
+        "zips open a side pocket zipper lane track on a winter ski coat jacket asset to reveal an interior pouch liner",
+        "smooths down a pleated dress skirt panel fabric layer against an iron board frame setup before starting a steam run",
+        "unlaces a high-top leather boot eyelet row system by pulling a leather string line out from side prongs",
+        "loops a heavy fabric apron tie chord pair behind a lower back lumbar sector, anchoring a secure bow knot",
+        "hangs a wet rain jacket coat item onto a metal wall peg hooks mount frame, letting it drape down naturally",
+        "slides a pair of thick leather gloves onto bare hand finger profiles, flexing fingers to break in the shape",
+        "pops open a springy metal snap button line along the crotch inseam segment of a child romper canvas garment",
+        "folds a silk neck scarf strip into a neat diagonal bandana triangle layout matrix across a table surface",
+        "pulls a knit beanie hat edge down over ears and forehead skin lines using a dual hand pull-down gesture",
+        "unfastens a heavy brass hook-and-eye dress closure link directly above a hidden side seam zipper track entry",
+        "stretches an elastic waistband fabric ring section outward with both hands to step inside a sports pant garment",
+        "wipes a dry bristle fabric brush tool down a velvet coat surface layout to clean dust grains off the nap layer",
+        "snaps a plastic garment size clip tag identifier off a plastic clothing hanger hook base neck assembly node"
 ],
         
 maintenance: [
@@ -461,7 +786,48 @@ maintenance: [
         "wipes a streak of dark machinery grease off a tool shaft using a soiled cotton workspace rag",
         "places a manual hand tool back into its designated canvas storage pouch pocket location framework",
         "rolls a canvas equipment kit tightly into a cylindrical bundle configuration bundle tracking frame",
-        "fastens a heavy leather buckle strap around a tool roll assembly to lock components down secure"
+        "fastens a heavy leather buckle strap around a tool roll assembly to lock components down secure",
+// ADDITIONAL BEHAVIORS ADDED
+        "turns a metal screwdriver handle firmly clockwise to set a steel screw asset flush into a wooden structural beam",
+        "clamps a pair of steel adjustable pliers tightly around a hex nut module to break a seized thread loose",
+        "strikes a blunt hammer head down onto a metal nail head, driving it deep into an active wall frame assembly",
+        "pivots a large adjustable wrench tool handle downward to tighten a polished brass water pipe fitting joint",
+        "scrapes a stiff wire brush attachment back and forth across a rusted metal machinery gear to strip scale",
+        "squeezes a trigger link on a silicone caulking gun asset to lay a bead of white gel along a tile corner rim",
+        "threads a hex key wrench Allen tool into a socket bolt head cavity, turning it ninety degrees to tighten a joint",
+        "pumps a manual lever handle on a red grease gun assembly to inject grease compound into a bearing housing ball",
+        "strips a plastic insulation jacket layer off a copper electric wire strand wire end using a hand wire stripper tool",
+        "slices a sheet of coarse sandpaper across a rough pine wood plank edge to smooth away splinters and burs",
+        "pries open a metal paint can tin lid rim container using a flat screwdriver blade edge loop step tool leverage",
+        "sprays a quick burst of penetrant lubricant fluid oil stream directly into a squeaking metal door hinge assembly pin",
+        "winds a layer of white teflon plumbing tape clockwise around a threaded pipe link joint connection junction segment",
+        "snaps a fresh razor blade strip element into a heavy utility handle chassis slot, securing the set lock screw",
+        "mixes a two-part epoxy paste adhesive slurry on a cardboard scrap patch using a flat wooden mixing stick spacer",
+        "scrapes away an old dried paper gasket material layer off a cast iron engine block face using a steel razor putty knife",
+        "tightens a small electrical brass terminal block screw wire clasp node using a jeweler jewelry size driver handle",
+        "pumps an oil canister thumb lever twice to squirt fluid droplets onto an active bicycle chain roller chain links unit",
+        "taps a steel center punch tool top with a hammer head to mark a drill bit entry guide point hole trace coordinate",
+        "inserts a cotter pin wire prong full through a castle nut axle bolt hole slot element, bending the tips back",
+        "scrubs a heavy nylon cleaning pad over a grimy engine casing component wall to reveal stamped serial numbers",
+        "sweeps a wide floor push-broom tool brush across a workshop concrete slab floor to clear metal shavings away",
+        "mounts a rubber sanding disc wheel pad onto an electric angle grinder tool hub shaft spindle, locking the nut threads",
+        "unbolts a damaged hex bolt fastener nut component from a frame rail framework using a pneumatic impact socket gun tool",
+        "threads a thick nylon pull-start rope cord mechanism handle out from an engine housing shroud block core cover",
+        "checks a small bubble vial level tool indicator alignment placement position directly on top of a hanging wooden wall shelf",
+        "snaps a new inline water filter canister cylinder capsule directly into a rubber feed hose line segment bracket slot",
+        "squeezes a pair of wire retaining ring pliers clips tool handles together to widen a spring clip retaining collar loop",
+        "taps the side rim flank parameter of a seized machine casting component frame with a non-marring orange rubber mallet mallet",
+        "wipes a greasy hand palm across a blue fabric workshop rag cloth piece to clear black grease smudges off skin",
+        "tightens a toggle latch toggle clamp bracket closure system along a modular machinery safety guard cage screen box",
+        "scrapes out packed mud and gravel stone debris particles from an equipment boot tread using a long metal pry spike",
+        "threads a replacement carbon brush cap screw node into a side port window of an electric drill casing shell unit",
+        "slides an adjustable woodworking bar clamp arm track layout assembly tight around an unglued picture frame corner layout",
+        "sprays an aerosol brake cleaner solvent spray stream across a dirty metallic brake disc rotor face component layout",
+        "adjusts a knurled micrometer measuring gauge caliper frame gauge width size smooth around a steel rod diameter core",
+        "snaps a replacement drive belt rubber loop band layout tight across two machined aluminum pulley wheel V-grooves v-tracks",
+        "scrapes clean a weld splatter slag scale bead layer off a fresh steel corner weld seam using a chipping hammer tip",
+        "threads a pointed metal scribe point along a steel template guideline marking coordinate lane to scribe an accent cut line",
+        "closes a heavy sheet-metal contractor tool chest lid box tray down, locking the dual toggle draw-bolt pad clasp locks"
 ],
         
 map: [
@@ -472,7 +838,48 @@ map: [
         "rotates full body weight slowly on their heels until a physical orientation vector aligns straight",
         "folds a paper navigation map layout back down into a tight square configuration configuration line",
         "tucks a folded map document securely inside an interior zippered jacket breast pocket lining panel",
-        "pivots smoothly on a forward foot to initiate an energetic forward march along an established track"
+        "pivots smoothly on a forward foot to initiate an energetic forward march along an established track",
+// ADITIONAL BEHAVIORS ADDED
+        "unfolds a large multi-panel paper terrain chart map across a flat table surface layout, pinning down edges",
+        "traces a clean bare index finger tip along a highlighted red route coordinate vector line on a printed grid",
+        "rotates a manual brass compass housing array until the floating target needle aligns with the north index line",
+        "pins a sharp metallic push-pin marker directly into a specific topographical target junction on a wall map",
+        "magnifies a small dense regional sector map layout cluster using a thick glass optic lens asset handheld",
+        "marks a black ink X mark cross coordinate junction directly onto a parchment map sheet paper using a fountain quill pen",
+        "rolls up a long parchment maritime chart navigation roll map canvas tube, securing it inside a leather map tube",
+        "draws a straight vector line path connecting two map landmarks points using a clear acrylic parallel rule tool blueprint",
+        "aligns a metal straightedge ruler scale across a map grid sheet to compute accurate transit scale distances metrics",
+        "scribes a circular distance range arc indicator perimeter path on a map grid sheet paper surface using a brass drafting compass",
+        "peels an adhesive neon tracking arrow indicator sticker flag layer off a sheet pad and sticks it onto a trail junction map coordinate",
+        "highlights a section coordinate square grid block sector matrix layout grid zone using an orange transparent wax pencil marker stick",
+        "flips open a multi-page spiraled paper road atlas booklet volume book flat onto a car dashboard vehicle wheel trim pane",
+        "unrolls a rolled structural topographic canvas contour plot sheet map flat directly against a rock face outcrop anchor ledge",
+        "wipes away dry-erase clear marker lines off a laminated tactical field grid map surface layout using an eraser sponge block",
+        "taps a finger three times on a specific map contour elevation lines cluster pattern indicator icon target layout",
+        "shines a low red-filtered lens light beam flashlight directly across a night tactical map grid sheet paper board layout",
+        "sketches a small baseline mountain visual profile sketch icon landmark indicator onto an empty peripheral boundary map section line",
+        "folds a paper transit map sheet brochure bundle panel back into its original complex origami leaflet accordion seam folds",
+        "inserts a rolled map sheet blueprint document cylinder container inside a waterproof plastic blueprint tube storage sleeve cover cap",
+        "places a transparent gridded coordinate reader overlay template sheet square flat directly centered over a military grid map section",
+        "traces an elevation contour path looping vector route circle on a map page using a fine tip technical pen tool line",
+        "shuffles three overlapping satellite reference photo overlay map sheet cards into alignment stack order index matrices",
+        "pins an engineering construction site site-plan map plot diagram direct onto a cork display board wall mount grid using tacks",
+        "draws a directional compass rose orientation arrow line layout indicator key near a map bottom margin ledger box text",
+        "scrapes a light graphite pencil trace path mark off a sea chart map surface using a soft vinyl art block block eraser",
+        "measures a winding river trail track vector mileage length index path using a small wheel wheel mechanical map-measuring map-wheel tool",
+        "unclasps a leather strap closure latch framing system on a vintage world globe atlas desk map storage trunk layout",
+        "mounts an updated regional zoning boundary reference map map sheet chart flat within an outdoor informational wood kiosk display board frame",
+        "scribes a nautical coordinate reading mark entry block inside an open logbook page next to an unfolded harbor map layout",
+        "shines a blue UV ultraviolet leak marker tracking light beam across a water-resistant navigation track chart sheet paper map layout",
+        "folds down a small inset index overview mini-map corner box flap map panel layout sheet to read underlying text details",
+        "sketches an arrow path flow dynamic current vector tracking vector arrow array line direct across a marine weather map template",
+        "sets a circular solid brass chart weight ring disk down flat centered on a curling map sheet border parameter corner point",
+        "pastes a grid patch amendment correction paper strip over an outdated highway intersection map quadrant panel section block map",
+        "aligns an overhead aerial surveillance photograph card side-by-side with a vector grid map layout sheet sheet canvas surface",
+        "traces an access fire road trail lane vector boundary trace line along a state park forestry topographic chart index sheet",
+        "slides an open folded street guide map document layout folder frame assembly smooth into an overhead aircraft cockpit storage partition pocket",
+        "stamps a certified date validation ink verification print mark onto a field engineering surveyor map map sheet baseline index panel",
+        "draws a boundary fence lane line limit path indicator color line across a property parcel plat diagram map layout template sheet"
 ],
         
 medical: [
@@ -483,7 +890,48 @@ medical: [
         "screws a plastic bottle cap back onto a container tracking rim until it clicks locked tight",
         "places a medical bottle asset completely away inside a dark mirrored wall cabinet partition frame",
         "slams a cabinet mirror door completely shut, revealing a sharp facial reflection frame setup",
-        "wipes a damp hand across their forehead skin profile to clear away cold sweat beads smoothly"
+        "wipes a damp hand across their forehead skin profile to clear away cold sweat beads smoothly",
+// ADDITIONAL BEHAVIORS ADDED
+        "wrenches the cap off a small plastic prescription bottle container using a twisting thumb motion",
+        "shakes a single solid medicine tablet capsule out of a bottle container directly into an open palm",
+        "tosses a medical pill capsule into an open mouth cavity, snapping their head back in unison",
+        "swallows a tablet pill using a quick throat muscle contraction, closing eyelids briefly to focus",
+        "screws a plastic bottle cap back onto a container tracking rim until it clicks locked tight",
+        "places a medical bottle asset completely away inside a dark mirrored wall cabinet partition frame",
+        "slams a cabinet mirror door completely shut, revealing a sharp facial reflection frame setup",
+        "wipes a damp hand across their forehead skin profile to clear away cold sweat beads smoothly",
+        "peels a paper sterile backing strip off a flexible adhesive fabric bandage patch strip, exposing the sticky pad matrix",
+        "presses an adhesive sterile bandage pad directly down centered over a clean skin surface cut line coordinate point lane",
+        "squeezes a dollop of clear antiseptic ointment cream gel out from a metallic squeeze tube body directly onto a clean finger",
+        "wipes a soft white cotton ball pad saturated with isopropyl rubbing alcohol solution liquid fluid clean over a skin bruise line",
+        "clips a pair of stainless steel medical suture thread line scissors blades clean through a sterile thread strand end knot link",
+        "wraps a roll layer segment path of clear elastic compression gauze tape elastic bandage smooth around an injured wrist wrist joint",
+        "tears off a clean multi-inch strip piece segment of white medical cloth adhesive tape roll directly using a side thumb tear motion",
+        "squeezes two fluid drop units of sterile saline eye wash solution drop fluid out a small pipette plastic tube tip into an eye eye opening",
+        "snaps a long wooden cotton-tipped applicator swab stick item clear in half to shorten its physical processing utility length dimension",
+        "swabs a layer of dark orange iodine antiseptic fluid wash across an open skin scratch abrasion mark surface using a cotton bud stick",
+        "pinches a pair of fine silver metal splinter precision tweezers tips close together to pluck an embedded thorn sliver out from skin skin tissue",
+        "threads a soft fabric triangular arm sling bandage wrap panel setup across a shoulder bone alignment neck collar frame layout",
+        "inflates a grey fabric blood pressure arm cuff sleeve bladder component manually using a handheld rubber pump squeeze bulb assembly tool",
+        "slides a digital medical thermometer probe stick element safe deep beneath a tongue muscle base fold to capture thermal heat readings",
+        "clicks an auto-injector medicine pen cap casing cover sleeve shield mechanism away from a spring needle cartridge tip frame setup",
+        "presses a dense sterile cotton gauze pad block firm direct over an active skin blood point location to stem a fluid flow leak",
+        "mixes a powdery rehydration medicine drink pack powder mix inside a glass clear water flask container using a plastic stirrer straw rod",
+        "snaps open a clear glass breakable ampoule bottle neck tube section line by applying side thumb counter-force pressure snap action",
+        "draws a volume of clear fluid liquid medicine solution up deep inside a plastic syringe plunger cylinder barrel tracking through a needle base",
+        "peels a medicated pain relief transdermal patch film wrapper away to reveal an active medicated gel adhesive sheet pad matrix strip",
+        "presses a medicated transdermal adhesive square patch layout flat direct against a clean shoulder deltoid muscle patch skin layer plane",
+        "sprays a quick dual-puff mist cloud dosage stream of metered asthma inhaler medicine fluid aerosol vapor straight into an open throat mouth cavity",
+        "unrolls a soft elastic tensor bandage wraps layer system smooth spiral path wrapping around a swollen ankle foot joint bone framework",
+        "snaps a hard plastic medical finger splint guard sleeve component lock frame secure over a sprained finger joint segment tip track",
+        "scrapes a sterile wood tongue depressor blade spatula flat down across a throat base throat tongue line to inspect tonsil area fields",
+        "wipes a layer of cooling anti-itch hydrocortisone skin cream paste smooth down across a red skin rash irritation patch boundary surface",
+        "pinches open a metal safety pin wire clasp link assembly lock to anchor a canvas bandage wrap end corner secure in position place",
+        "inserts a soft foam medical earplug barrel deep inside an open external ear canal passage path line to muffle background acoustic noise tracks",
+        "squeezes a cold gel ice pack packet internal activation fluid bubble pouch to trigger an instant chemical cooling cold freeze action sequence",
+        "settles an ice-filled fabric compress bag unit direct flat centered across a throbbing forehead head skin plane zone layout matrix profile",
+        "wipes clean a metal stethoscope disc membrane pad circle surface using a sterile alcohol pad wipe paper sheet patch before a chest test run",
+        "drops a single water-soluble effervescent antacid tablet pill round disc direct down inside a water glass cup, starting a rapid bubble fizz run"
 ],
 
 flashlight: [
@@ -494,7 +942,48 @@ flashlight: [
         "wipes a layer of thick surface dust off an old plaque panel using a gloved secondary hand layout",
         "clicks a flashlight thumb switch button node off, plunging a localized field back into ambient light",
         "drops a flashlight rod device smoothly back into its designated canvas belt holster frame container",
-        "pivots away from an explored wall sector zone, returning to a neutral center-frame tracking stance"
+        "pivots away from an explored wall sector zone, returning to a neutral center-frame tracking stance",
+// ADDITIONAL BEHAVIORS ADDED
+        "clicks a tactical thumb switch asset forward on a cylindrical metal body, throwing a bright white light cone",
+        "sweeps a high-intensity directional illumination beam across a dark concrete basement wall framing setup",
+        "twists the rear end-cap threads off a flashlight housing to reveal empty battery storage bay chambers",
+        "slides two fresh cylinder battery cells into an open torch handle cavity track before sealing the cap close",
+        "shines a narrow focused spotlight beam directly down into a deep vertical access shaft utility floor opening",
+        "adjusts a knurled flashlight lens bezel focus collar rim layout ring tracker to narrow a light beam spot pattern cone shape",
+        "mounts a tactical flashlight barrel adapter ring bracket direct onto an iron accessory rail mounting tracking line system frame mount",
+        "waves a bright handheld flashlight beam signal pattern three times up vertically toward an open sky background plane field coordinate",
+        "clips a metal flashlight body belt spring clasp hook secure down over a heavy canvas trousers utility side pocket seam boundary track",
+        "shines a wide flat low-power floodlight beam pattern across an old wooden crawlspace joist framing ceiling setup grid floor matrix",
+        "taps a flickering malfunctioning flashlight barrel housing shell frame firm direct against a open hand palm to adjust loose battery spring contacts",
+        "stands a flat-bottomed cylindrical flashlight torch unit vertically upright upside-down onto a table surface to bounce light off a ceiling layout room",
+        "threads a paracord safety lanyard wrist strap line cord knot through a milled lanyard eyelet channel slot on a flashlight end-cap tail-cap",
+        "wipes a muddy glass flashlight lens optic front lens cover window clean using a dry corner edge block of a cotton shirt fabric layer",
+        "swivels a pivot-head articulation hinge neck on a angled utility flashlight body to throw a light beam beam full ninety degrees flat",
+        "presses and holds a soft rubber mode selector button pad switch on a headlamp torch body to activate a secondary flashing red SOS pulse code",
+        "slides a red plastic color filter lens lens cover cap accessory smooth overlay down over a tactical flashlight light aperture head frame ring",
+        "straps an elastic nylon headlamp triple-strap band layout frame system firm secure snug around a bare head crown hair profile line grid",
+        "unlatches a heavy plastic security latch toggle lock clasp pair on an industrial explosive-proof lantern housing battery storage box cover case",
+        "shines a handheld torch light light focus circle spot ring track along an old rusted factory pipeline valve installation array setup grid",
+        "plucks an old leaked corroded battery cylinder out from an open flashlight tube guide cavity using a pair of long needle-nose pliers tool tips",
+        "screws a long translucent white acrylic diffusion cone wand tube accessory onto a flashlight thread mouth rim to build an omnidirectional light lantern",
+        "shines an inspection flashlight beam trace line close parallel down along a smooth sheet-rock wall panel plane to check surface texture unevenness",
+        "hangs a flashlight battery lantern module onto a high overhead branch loop hook knot using an integrated metal split-ring carabiner wire clip snap",
+        "slides an under-barrel weapon-light toggle rail rocker switch asset forward with an index finger tip to throw a short strobe blinding flash sequence",
+        "shines a bright LED torch light focus beam down deep straight inside an empty rusted fuel fuel oil drum tank interior cavity space frame",
+        "wipes a layer of insulating dielectric grease paste ointment compound around an open flashlight tail-cap internal rubber O-ring sealing ring track",
+        "sets an aluminum flashlight casing handle down flat within a soft padded foam foam channel insert cutout line tray of a hard protective case shell",
+        "shines a flashlight spot beam line across a high attic roof rafter wood beam matrix layout to discover active cobweb dust wire clusters",
+        "clicks a micro-clicky tail switch node button button asset light five times fast to cycle a torch engine down through brightness level steps scales",
+        "unthreads a modular flashlight strike-bezel ring segment from an aluminum head housing casing rim using a counter-clockwise hand twist spin sweep",
+        "slides a mechanical locking lock slider switch element forward over a flashlight power button pad to prevent an accidental gear activation state",
+        "shines a ultraviolet blacklight torch flashlight emitter line down onto a carpet floor panel to find organic fluorescing stain fluid traces marks",
+        "clips a small pen-light pocket-clip flashlight shaft frame smooth over a shirt breast pocket divider partition seam line fabric slot setup",
+        "shines a dual-beam multi-LED heavy searchlight torch full forward, slicing a thick visible beam path lane across a dense evening fog atmosphere",
+        "wipes an accumulated layer of water condensation droplets off a metal flashlight reflector cone lens chamber wall using a clean dry cotton bud swab",
+        "threads a replacement tiny incandescent lightbulb filament bulb stem module direct deep inside a vintage flashlight metal reflector socket screw base",
+        "mounts a magnetic base flashlight housing block body firm direct sound snap onto a flat cast iron car automobile engine hood panel ceiling plate",
+        "shines a narrow keyhole flashlight pocket torch light dot straight centered right over an open keyhole lock latch door cylinder key slot path",
+        "lays down a heavy rubber-armored high-lumens work lantern block flat directly onto a gravel pathway floor ground plane to illuminate a low workspace zone"
 ],
         
 cleaning: [
@@ -505,7 +994,48 @@ cleaning: [
         "releases a foot pedal lever node, letting a container lid panel snap down shut with a thud",
         "wipes bare palms against each other repeatedly to clear away any residual loose debris microparticles",
         "pulls a fresh sanitizing liquid gel bottle out of a pocket frame line, squeezing a drop out",
-        "rubs hands together vigorously in a circular motion sequence until liquid gel evaporates clean"
+        "rubs hands together vigorously in a circular motion sequence until liquid gel evaporates clean",
+// ADDITIONAL BEHAVIORS ADDED
+        "scrubs a coarse abrasive sponge circle over a stained ceramic sink bowl to lift dark mineral scaling",
+        "pushes a wide floor broom asset forward in rhythmic linear strokes, gathering loose dust into a neat pile",
+        "squeezes a dollop of white gel paste from a plastic tube directly onto the nylon bristles of a toothbrush",
+        "drags a manual razor blade asset down a lathered shaving foam jawline skin plane with precise clean strokes",
+        "runs a fine-tooth plastic comb asset smoothly through wet hair strands to part the layout profile evenly",
+        "mops a wet soapy cotton string mop head back and forth across a tiled kitchen floor tracking matrix layout grid plane",
+        "sprays a fine mist cloud pattern of clear blue window glass cleaner solvent fluid out a trigger spray bottle nozzle direct onto a window pane",
+        "wipes a dry crumpled newspaper sheet page circle across a wet glass window pane layer to clear away fluid steak lines clean profile",
+        "empties a dirty grey water bucket fill volume straight down an open floor utility sink sewer pipe drain hole grate ring setup",
+        "shakes out a dusty fabric door rug mat item vigorously outside against a concrete brick wall face exterior layout, releasing dust clouds",
+        "scoops a mound of white granular laundry detergent chemical soap powder out a box container using a plastic cup scoop wheel measuring bucket",
+        "pours a liquid fabric softener solution stream down a central dispenser column tube track hole inside a washing machine metal drum spin cylinder",
+        "wipes a damp yellow cellulose sponge block line across a grease-splattered glass stove-top panel field to pick up cooking oil splatters residue",
+        "scrapes a hardened wax drip blob particle spot off a varnished wood tabletop surface using a rigid flat plastic scraper blade tool edge",
+        "dusts a fluffy static microfiber feather duster brush wand head along a high wooden fireplace mantle display shelf board to collect dust layers",
+        "squeezes out excess dirty liquid water content volume from a saturated car wash sponge block item using a dual hand crushing compression grip",
+        "sprays a blast stream jet line of high-pressure water hose fluid across a muddy truck wheel well arch tyre fender liner space path boundary",
+        "scrubs a stiff-bristled wooden hand brush tool back and forth along a dirty grout grout line groove channel seam segment tracking between floor tiles",
+        "wipes a dry chamois leather hide cloth block in long drying path loops across a wet car automobile hood paint paint surface to prevent water spots",
+        "plucks a mass knot cluster of hair fiber debris waste clutter track up out from a shower floor basin strainer plug hole using wire needle tweezers",
+        "pours half a bottle unit of caustic clear drain cleaner chemical gel liquid down a clogged pipe basin opening to clear organic blockage tracks",
+        "scrubs a long wire toilet brush wand ring head circle inside a porcelain toilet bowl water track perimeter to clear dark ring scale stains",
+        "wipes a disinfectant antiseptic wet-wipe tissue paper sheet smooth across a plastic door handle lever lock assembly system to sterilize the touch points",
+        "scrapes a layer of dried soap scum layer crust film off a glass shower door panel surface using a wide rubber blade window squeegee tool window-wiper",
+        "squeezes an emerald green dish liquid soap droplet capsule out from a plastic squirt container direct centered onto a wet fiber dishcloth rag pad",
+        "scrubs a stainless steel wire mesh scouring pad chainmail sponge loop over a blackened cast-iron frying pan skillet bottom interior base to scour carbon",
+        "wipes a soft flannel rag cloth saturated with oil wood polish fluid across an antique oak chair armrest curve to buff a clean sheen finish",
+        "vacuum cleans a high-pile fabric carpet floor section track using an upright vacuum suction head nozzle tool path track, lifting fine gray particles",
+        "clears out a packed lint dust filter screen mesh frame drawer from a clothes tumble dryer machine chassis box slot, peeling a sheet dust blanket off",
+        "sprays a foaming chemical oven cleaner aerosol foam spray layer over an encrusted metal wire baking oven wire rack shelf support unit grid",
+        "scrubs a small old toothbrush head module line around a water faucet mixing tap valve base seal connection joint to lift crusty white scale lime",
+        "wipes a wet dust rag piece sheet smooth across all the individual horizontal blade louvers panels rows of an open window blind window-shutter layout",
+        "scrapes away loose peeling paint flake chips off a wooden window frame panel track using a stiff steel paint hand scraper tool blade edge",
+        "pours a capful measure layer of pine-scented liquid floor cleaner oil fluid direct down inside an empty hot water mop pail bucket basin container",
+        "scrubs a wet bristle scrub brush block across a dirty canvas sneaker shoe sidewall trim rubber edge strip to remove dark lawn grass grass stains",
+        "wipes a screen-cleaning fluid pad tissue across a television monitor display screen matrix glass sheet face to lift grease finger smudge markings",
+        "scrapes out packed wet grass leaf mulch trimmings paste cake layer from underneath a lawnmower deck shell housing perimeter using a long wooden flat stick",
+        "dusts a telescopic extension poles pole duster brush cone head up deep inside a high ceiling ceiling corner joist vault block to clear active cobwebs",
+        "wipes a damp hand cloth block over a dusty leather couch seat cushion pad pillow cover plane layout to pick up loose pet hair fur strands",
+        "scrubs a wet soapy hand towel cloth over a greasy bicycle frame bottom bracket crank arm hub shell set zone area to remove black oil splatters"
 ],
 mixmatch: [
         "lifts a heavy leather utility case upward off a floor layout area using a vertical handle pull",
@@ -552,7 +1082,7 @@ mixmatch: [
         "sets a glass jar down flat on a workbench surface, aligning it within a safe center field quadrant",
         "stirs a liquid container mixture continuously using a long glass rod tool in smooth circles",
         "lifts a completed chemical beaker mixture up toward a bright background illumination source light",
-        "swwipes an index finger across a beaker exterior profile to monitor temperature status values",
+        "swipes an index finger across a beaker exterior profile to monitor temperature status values",
         
         "slides a designer wooden chair outward away from a desk alignment zone using an arm pull motion",
         "lowers full body weight down into a cushioned chair seat pan, settling hips into a center line",
@@ -943,7 +1473,58 @@ horror: [
             "recoils from a blast of freezing cold air venting from an open wall vault, teeth chattering visibly",
             "presses palms flat against an interior glass window, watching an ominous shadow approach the exterior",
             "stumbles into an old operating table structure, knocking over a tray of antique surgical tools loudly",
-            "drops into a deep fetal position inside a concrete alcove niche, squeezing eyelids completely shut"
+            "drops into a deep fetal position inside a concrete alcove niche, squeezing eyelids completely shut",
+// Added 
+"scrambles backward frantically on hands and heels away from an approaching shadow boundary",
+        "slams full body weight flat against a heavy iron barricade door, trying to hold it closed",
+        "looks back over their shoulder in sheer unadulterated panic while running down the channel",
+        "stumbles over hidden structural floor bones, collapsing heavily before scrambling right up",
+        "presses both palms tight over their mouth to stifle a ragged breath while hiding inside a closet",
+        "drags a blood-stained fingernail slowly down the cracked plaster wall texture to trace an escape route",
+        "reaches out with a trembling hand toward a swinging overhead light bulb socket to stop its rhythmic shadow sway",
+        "drops flat beneath a rusted iron bedframe, staring out horizontally through the dark gap baseline",
+        "pokes a single eye close against a keyhole slot, watching an unholy movement down the corridor",
+        "clutches a splintered wooden cross artifact tight against their chest while whispering frantically",
+        "wipes cold sweat from their brow with a shivering forearm sleeve while backing down an dark aisle",
+        "yanks a rusty iron floor grating upward to reveal a tight mud-filled escape tunnel matrix",
+        "pries at a boarded-up window panel using bare bleeding fingers to snap a wooden plank free",
+        "crawls forward flat on their stomach across broken glass shards to reach a glowing exit sign field",
+        "swivels around sharply to face a dead end wall, breathing heavily as a freezing draft hits their neck",
+        "tears open a hidden wall panel seam using a rusted scalpel blade tool to find a crawlspace aperture",
+        "huddles tightly into a fetal position behind an upturned morgue table matrix to escape a roaming spotlight",
+        "slides a heavy wooden dresser piece slowly across the floorboards to wedge it beneath a turning door handle",
+        "wipes a layer of thick cobwebs away from a heavy iron padlock fixture using a ragged sleeve cuff",
+        "ducks low beneath a swinging meat hook apparatus inside a dimly lit slaughterhouse cold room track",
+        "bounds up a crumbling stone spiral staircase three steps at a time while screaming for assistance",
+        "wrenches an old fuse box door open, desperately slamming the main lever down to restore light levels",
+        "skids to a halt along a slick wet basement floor patch, turning completely around to run backward",
+        "grapples wildly with a heavy metal hatch handle that refuses to budge under maximum physical pressure",
+        "shoves a pile of rotting mannequin parts aside to clear a path toward a dark brick crawlway entrance",
+        "rips a heavy velvet curtain down from its brass rod assembly to drape it over an open window view",
+        "vaults over a stack of rusted oil drums, landing roughly on one knee before continuing a wild run",
+        "bounds down a long dimly lit institutional corridor, knocking over metal iv stands to block the path",
+        "dives headfirst under a heavy rolling steel shutter door just before it snaps completely closed down",
+        "veers sharply to the left inside an old library stack area, hiding deep within the shadow recesses",
+        "blocks out a high-pitched piercing frequency sound by pressing both palms hard against their ear channels",
+        "parries a swinging rusty pipe weapon using a wooden chair frame asset to deflect a direct blow",
+        "adjusts a cracked pair of spectacles while staring intensely at an old VHS static monitor display unit",
+        "crouches perfectly motionless inside an old industrial washing machine basin, looking out through the glass pane",
+        "reaches deep inside a rotted hollow tree trunk cavity to pull out an old tarnished iron house key",
+        "lunges forward to snatch a dropping flashlight tool off the floorboards before its bulb shatters out",
+        "hurls a heavy metal candlestick holder directly across a dark room toward an eerie tapping noise point",
+        "braces both boots hard against a rotting wooden floor beam to prevent sliding down a deep sinkhole",
+        "smashes a fire extinguisher glass box panel frame using an elbow strike to grab the tool inside",
+        "charges blindly through a dense patch of thorny briars, ignoring the tearing branches against skin surface",
+        "slides flat down a steep mud embankment trail, landing inside a stagnant shallow drainage pool lane",
+        "grabs a handful of dirt from the floor, throwing it blindly forward to blind an unseen pursuer path",
+        "collides heavily with an unyielding stone pillar structure, dazing themselves for a brief tracking second",
+        "swipes a frantic hand across a dusty vanity mirror glass face to inspect an unravelling facial wound",
+        "leaps clean across an open floor gap over a dark basement drop, catching the opposite ledger beam edge",
+        "recoils in disgust after touching a slimy patch of fungal rot growth along a cold brick wall panel",
+        "punches an old glass windowpane outward using a jacket-wrapped fist to create an emergency escape hole",
+        "climbs an old metal rungs ladder layout up toward a rooftop exit hatch while kicking downward blindly",
+        "tears open a sealed first-aid cabinet box using a pocket knife blade to extract clean bandage rolls",
+        "sweeps a handheld match flame in a wide horizontal arc to illuminate an ancient stone tomb entry"
         ],
         cyberpunk: [
             "wrenches an optical cable array clean out of an exposed data port framework, throwing sparks",
@@ -995,7 +1576,58 @@ horror: [
             "slides flat beneath a hovering security drone chassis, cutting its lower motor wiring with a blade",
             "wrenches a glowing terminal interface screen out of its structural socket housing with brute force",
             "punches a sequence of commands into a gauntlet-mounted sub-computer unit, causing a visor to glow red",
-            "leaps across an open industrial exhaust shaft opening, landing hard against a vertical ladder frame"
+            "leaps across an open industrial exhaust shaft opening, landing hard against a vertical ladder frame",
+// Added
+"interfaces a fiber-optic data cable jack directly into an illuminated neural port socket behind the ear",
+        "taps the side profile frame of a chrome cybernetic visor to switch vision feeds into infrared tracking mode",
+        "slides a glowing neon-blue credit chip component across a dark carbon-fiber bar counter surface module",
+        "types rapid encrypted code commands into a holographic keyboard array suspended hovering in mid-air",
+        "wipes a layer of dirty acid-rain moisture off a leather trench coat shoulder pad using a synthetic cloth",
+        "adjusts a pair of dark mirrored aviator shades while leaning back against a glowing billboard matrix tower",
+        "pockets a microchip storage drive asset after extracting it from a smoking server bay node array",
+        "swivels a neon-lit cybernetic bionic arm element full clockwise to test hydraulic servo fluid pressure levels",
+        "punches an emergency override command sequence into a glowing wall interface panel to short-circuit a blast door",
+        "presses a digital biometric patch element onto a cybernetic forearm terminal to initialize a system defrag run",
+        "slides a sleek monofilament wire spool out from a wrist capsule casing, letting the fiber hum softly",
+        "pries a heavy metal floor grate open using a chrome cybernetic crowbar attachment to bypass optical sensors",
+        "hoists a heavy data deck unit onto a desk space, plugging in multi-layered jumper cable lines rapidly",
+        "swivels a high-frequency radio antenna dial module along a wrist-mounted communications rig terminal array",
+        "threads a thin copper wire loom through a mesh opening in a glowing neon signage frame structure",
+        "taps a wireless smart-patch token direct against a metal reader panel to deploy an autonomous icebreaker script",
+        "yanks an auxiliary battery power cell element out from a drone chassis, cutting its blue power ring light",
+        "slides a plastic injection hypo-syringe into a neck port track, pressing the plunger to dump stim codes",
+        "slam-shuts a reinforced carbon-fiber server housing case cover, locking the data drive arrays inside safely",
+        "turns a small brass dial wheel on a modified breathing apparatus mask to increase oxygen filter flow rates",
+        "pivots a sleek neural-linked shoulder turret module ninety degrees to point toward an open ventilation duct airway",
+        "knocks a steel-toed cybernetic boot heel hard against a metal floor bar to clear a jammed gear wheel",
+        "wipes a streak of synthetic glowing cooling fluid away from an optic lens frame using a thumb pad",
+        "slides a sleek digital hacking deck accessory deep into an inner jacket slot pocket lining frame path",
+        "presses a remote drone recall button on a wrist gauntlet module, guiding an autonomous quadcopter to land",
+        "pulls a length of glowing fiber-optic wiring bundle free from a broken terminal box frame housing unit",
+        "screws a replacement cooling valve unit down onto a cybernetic leg piston shaft to seal a hydraulic leak",
+        "unbolts a mechanical head-up display visor component off a helmet shell structure using a hex key tool",
+        "slides a flat magnetic strip key card deep into a pneumatic elevator control bay slot matrix track",
+        "pockets an illegal EMP grenade device capsule after disarming its red proximity indicator light ring panel",
+        "steps close within an active augmented-reality advertising projector zone, triggering a cascade of digital graphics",
+        "catches a dropping electronic memory module using a quick reflex-boosted cybernetic finger grab maneuver",
+        "kicks a metal terminal rack support brace away to cause an entire server wall assembly to crash downward",
+        "unlatches a small protective lens cap element on an under-eye sub-dermal optical augment implant ring structure",
+        "hoists open a massive armored electronic data vault hatch door using an external hydraulic manual pump jack",
+        "pours a drop of synthetic neural fluid solution into a small port hole on an external processor module",
+        "snaps a wireless data transceiver clip frame secure around an active optical internet node conduit pipe",
+        "wipes away an accumulation of metallic solder filings from a custom circuit board using a stiff static brush",
+        "hooks a heavy grounding clamp link onto a raw exposed power cable line to bleed off high voltage grid levels",
+        "turns a split interface key shaft inside an offline mainframe terminal box, booting an automated backup script",
+        "pushes open a heavy clear plexiglass lab room dividing door panel, stepping through an active decontam gas line",
+        "snaps open a small fuse link cover plate on a modified cybernetic arm panel to replace a fried circuit chip",
+        "yanks a release handle downward to cut the main fiber grid link, dropping an entire building block into darkness",
+        "slides a thin steel probe tool into a smart lock mechanism matrix, shorting out the internal memory battery",
+        "scrubs a layer of black carbon scorch marks away from a plasma pistol discharge nozzle using a metal brush",
+        "presses a glowing interface grid pad using a whole palm print surface to confirm a tactical black-market trade",
+        "slides a modern digital identity scrambler card inside an active public terminal console slot array track",
+        "pulls a thick insulated power cable link down from an overhead crane rail layout to jumpstart a dead machine",
+        "hoists a small desktop drone platform box upward onto an elevated metal balcony edge platform to gain line of sight",
+        "adjusts an electronic frequency modulator dial on a long-range signal jammer device frame to mask location data"
         ],
         combat: [
             "executes a flawless spinning crescent kick, shattering a standing tactical test dummy",
@@ -1047,7 +1679,58 @@ horror: [
             "wrenches a mock weapon away from an imaginary target with a violent twisting wrench motion",
             "shoves a sparring partner's pads away forcefully, stamping their foot down to claim the center floor",
             "weaves through a series of hanging swinging target bags, dodging every element without slowing down",
-            "stands perfectly motionless in a traditional crane stance on a narrow wooden post block element"
+            "stands perfectly motionless in a traditional crane stance on a narrow wooden post block element",
+// Added
+"throws a lightning-fast left jab toward an opponent's jaw line while maintaining a tight defensive stance",
+        "ducks low beneath a swinging right hook weapon strike, pivoting gracefully on the ball of the lead boot",
+        "drives a heavy right cross fist straight into the center field chest area of an attacking adversary",
+        "executes a sweeping low leg kick path to knock an opponent off balance across a stone floor surface",
+        "parries an incoming knife thrust by striking the attacker's wrist sideways with a hardened forearm block",
+        "lunges forward with a steel combat knife asset, driving the point in a clean horizontal thrust vector",
+        "hurls an opponent over an extended hip element using an advanced tactical judo shoulder throw execution",
+        "braces both forearms high in an overhead cross guard position to block a dropping heavy pipe strike",
+        "smashes a hard elbow strike backward into the ribs of an attacker attempting a rear bear-hug hold",
+        "charges forward behind a ballistic shield panel asset, slamming it hard against an enemy combatant frame",
+        "slides flat along the dirt floor lane to dodge a high-velocity swinging weapon sweep across head height",
+        "grabs an attacker's extended punch arm by the wrist, twisting the joint locks down to force a submission",
+        "collides heavily with a charging opponent mid-floor, locking arms to push them back against a metal frame",
+        "swipes a frantic sweeping backhand strike outward to clear space against multiple surrounding enemy units",
+        "leaps clean into the air to deliver a powerful flying knee strike target straight into an opponent's center",
+        "recoils quickly after absorbing a heavy punch to the shoulder guard, resettling into a balanced combat stance",
+        "punches a solid stone wall surface panel intentionally to deflect an incoming swinging chain link weapon path",
+        "climbs onto an elevated wooden crate box to launch a diving downward double-fist strike onto an enemy below",
+        "tears an enemy's weapon asset free from their grip using a twisting disarm maneuver around the fingers",
+        "sweeps a long metal staff tool in a low 360-degree rotation path to clear a wide circle space baseline",
+        "snaps a front kick straight into an opponent's midsection frame, throwing them backward into a wall panel",
+        "wrenches an opponent's arm behind their shoulder blades, locking the wrist tight to pin them down horizontally",
+        "skids across a wet gravel patch to escape a wide-angle swinging sword blade path sweep tracking line",
+        "grapples intensely on the floor surface, trying to slip a forearm under an opponent's chin for a choke",
+        "shoves a stunned combatant backward into an open metal trash bin box to remove them from active space",
+        "rips a loose steel rebar rod frame piece free from a concrete block to use as an improvised club weapon",
+        "vaults over a low stone retaining wall structure to drop down onto an unsuspecting patrol guard below",
+        "bounds forward in a zigzag running layout pattern to minimize exposure to incoming tactical missile tracks",
+        "dives sideways through an open wooden doorway panel frame to take cover from a volley of flying arrows",
+        "veers sharply behind a heavy steel girder pillar to reload a manual crossbow asset device panel assembly",
+        "blocks a dropping axe weapon strike using a thick steel bracer armor plate mounted on the left forearm",
+        "parries a quick succession of three knife slashes by weaving the upper torso backward sequentially along track lanes",
+        "adjusts a tactical chest rig harness strap tight against the torso while running between structural cover blocks",
+        "crouches behind a low brick wall barrier, peaking over the top ledger edge to track enemy team movements",
+        "reaches down to grab a heavy handful of loose sand, flinging it across the air into an enemy's eyes",
+        "lunges sideways to catch a falling combat shield tool asset before it clatters loudly onto the stone floor",
+        "hurls a heavy metal gear wheel weapon piece directly at an opponent's shield face to crack its balance structural",
+        "braces a shoulder hard against an entrance door frame layout to resist an enemy team pushing from outside",
+        "smashes a glass bottle asset across the edge of a bar counter to create a jagged sharp weapon profile",
+        "charges up a steep wooden ramp structure with an iron war hammer tool held high over the head frame",
+        "slides into a low baseball-slide maneuver to kick out the back ankle support joint of a armored heavy guard",
+        "grabs a hanging ceiling rope strand, swinging across an open room to kick an opponent off an elevated ledge",
+        "collides with an enemy scout inside a narrow hallway space, immediately driving a forehead strike into their nose",
+        "swipes a double-bladed staff weapon asset in a rapid spinning figure-eight pattern shield wall display vector",
+        "leaps backward out of a ground grappling zone to reset a vertical martial arts stance across open floor space",
+        "recoils from a close-range flashbang device explosion, shaking the head out while holding a defensive blind guard",
+        "punches through a thin wooden partition panel frame to grab an enemy unit hiding direct on the opposite side",
+        "climbs an exterior window ledge frame rapidly to pull an enemy sniper downward off an elevated platform track",
+        "tears open a tactical smoke grenade canister pin using teeth, dropping the tool at their feet to mask tracking",
+        "sweeps a heavy iron chain link weapon outward across a low arc path to wrap around an enemy's boot ankles"
         ],
         car_chase: [
             "wrenches the steering wheel violently to the left, tires screaming in a hard drift arc",
@@ -1099,7 +1782,58 @@ horror: [
             "glances down to confirm a shifting tachometer needle before clicking the manual transmission into fifth",
             "wrenches the steering wheel in a wide full-lock circle to execute a smoking burnout donut matrix",
             "braces their left foot hard onto the floor dead-pedal block to lock body position inside a corner",
-            "flicks the headlight switch completely off, plunging the vehicle path into tactical stealth darkness"
+            "flicks the headlight switch completely off, plunging the vehicle path into tactical stealth darkness",
+// Added
+"wrenches a leather-wrapped steering wheel full counter-clockwise to execute a dramatic 180-degree slide maneuver",
+        "slams a heavy boot flat down onto a brushed-aluminum accelerator pedal, floorboarded to maximize engine output RPM",
+        "yanks a mechanical handbrake lever upward sharply to lock the rear wheels into a smoking drift arc path",
+        "shifts a manual gear stick layout rapidly from third to fourth index, dropping the clutch smoothly in sequence",
+        "wipes condensation fog off the interior windshield glass panel area using a quick sweep of a bare palm",
+        "adjusts a wide rearview mirror element to track the flashing lights of two pursuing interceptor sedan models",
+        "pockets a handheld radio mic transceiver piece after barking an emergency escape route coordinate set inside",
+        "swivels an exterior side-view mirror glass node inward to narrow vehicle width profiles inside a tight lane gap",
+        "punches a red nitrous-oxide system toggle switch on a center console dashboard to dump fuel flow acceleration",
+        "presses a dashboard touch screen interface grid button to deploy a layer of defensive spike strips behind tires",
+        "slides a heavy steel gear shifter lever down into reverse gear format, preparing to back out of a trap",
+        "pries open a jammed glove compartment door panel using a key tip to retrieve an electronic gate clicker unit",
+        "hoists a heavy spare tire asset out of a trunk space, throwing it onto the pavement trail to block pursuers",
+        "swivels a rooftop spotlight control handle manual layout inside the cabin to blind an overtaking driver path",
+        "threads a high-performance sports car chassis through a narrow gap between a semi-truck and a concrete barrier",
+        "taps an electronic toll pass token direct against a windshield bracket node while speeding through a barrier gate",
+        "yanks a deployment cable loop frame to release a braking parachute canopy kit off a rear bumper assembly",
+        "slides a fresh heavy-duty battery fuse link inside a steering column terminal box to fix a blown lighting circuit",
+        "slam-shuts a driver-side door panel frame firmly while accelerating away from a curbside boarding point line",
+        "turns a dashboard ignition key cylinder switch full forward to crank a flooded V8 engine layout back to life",
+        "pivots a dashboard air vent nozzle module direct toward the driver's face to blast cold air across tracking paths",
+        "knocks a heavy wrench tool against a stuck transmission casing block from inside an open floor panel slot",
+        "wipes away a splash of engine oil mud from an instrument cluster gauge screen using a rag patch asset",
+        "slides a sleek metal navigation tablet device into an active dashboard mounting bracket clip structure track",
+        "presses an automated garage door opener remote clicker button three times while speeding down an alleyway lane",
+        "pulls a manual choke cable knob out from an old dashboard panel frame to stabilize a cold engine idle speed",
+        "screws a replacement oil cap plug down onto a hot engine valve cover container underneath a smoking hood panel",
+        "unbolts an aerodynamic rear spoiler wing plate assembly off a trunk frame using an impact driver tool bit",
+        "slides a wide flat pry tool beneath an ignition lock cylinder array to bypass a missing security key asset",
+        "pockets a garage gate access swipe card after cleaning its magnetic strip against a denim pant leg surface",
+        "steps close onto an external running-board rail element of a moving truck chassis to perform an airborne boarding",
+        "catches a loose rolling fuel canister tank inside a cargo bed layout before it slides off an open tailgate edge",
+        "kicks a dented front fender panel wheel-well edge outward away from a tire profile to prevent rubber shredding friction",
+        "unlatches a mechanical hood release catch handle lever located beneath an steering wheel column frame support block",
+        "hoists open a heavy armored vehicle roof hatch window using a double hand push to expose an upper viewpoint rail",
+        "pours a bottle of fuel additive fluid direct down an open gas tank filler throat channel neck opening",
+        "snaps a magnetic wireless tracking puck housing unit onto the underside steel frame structure of a target vehicle",
+        "wipes an accumulation of brake dust grit off an alloy wheel rim bead profile using a coarse shop cloth",
+        "hooks a heavy steel tow chain hook link tightly around a structural front bumper recovery loop mount frame",
+        "turns a lockable fuel cap cylinder clockwise inside a fender fuel door recess pocket until it clicks twice secure",
+        "pushes open a damaged driver-side windowpane frame completely using a heavy shoulder thrust maneuver to clear glass",
+        "snaps open a plastic fuse array box lid located inside an engine bay compartment to inspect circuit lines",
+        "yanks a release chord handle to drop a payload of construction pipes off an open flatbed trailer deck lane",
+        "slides a copper oil drain plug screw down into a oil pan hole using an open-ended socket wrench tool handle",
+        "scrubs a layer of road tar scale away from a high-beam headlight glass lens cover using a stiff nylon brush",
+        "presses a dashboard hazard light switch button console module to activate double amber warning light flashers tracking",
+        "slides an active radar detector screen unit down into a window suction cup mount frame plate groove lane",
+        "pulls an emergency battery disconnect handle pin out from a rear race car panel frame to cut circuit grids",
+        "hoists a sliding side door panel on a delivery van frame wide open while turning a sharp corner apex line",
+        "snaps a steering wheel security lock bar jaw lock mechanism shut around a leather wheel rim diameter field"
         ],
         dance: [
             "executes a flawless contemporary pirouette turn, arms extending out into a graceful radial circle",
@@ -1151,7 +1885,58 @@ horror: [
             "bounds backward into a rolling back-handspring maneuver, executing the sequence with total fluidity",
             "pivots on the knees while throwing arms outward in an expansive emotional lyrical performance peak",
             "weaves body through a series of rapid hip isolating loops, tracking a fast micro-rhythm base line",
-            "freezes mid-movement in a complex asymmetrical architectural pose, holding absolute stillness"
+            "freezes mid-movement in a complex asymmetrical architectural pose, holding absolute stillness",
+// Added
+"executes a flawless triple pirouette spin rotation on the tips of a pair of satin pointe shoes",
+        "slides a silk tap shoe smoothly across a polished maple wood floor to produce a crisp rhythmic cadence",
+        "extends a leg vertically upward into a striking 180-degree grand ecart split profile alignment line",
+        "pivots gracefully on the heel of a leather dress boot, swooping an arm outward in a wide horizontal arc",
+        "wipes a layer of stage powder chalk dust off a pair of black jazz shoes using a soft velvet cloth patch",
+        "adjusts the pleated layers of a stiff white ballet tutu skirt while walking out toward a center stage field",
+        "pockets a small wireless microphone transmitter pack inside an elastic waist belt sash tracking frame pouch",
+        "swivels both hips rhythmically three times in a fluid salsa dance sequence step pattern across floor tiles",
+        "punches both fists down into a sharp pop-and-lock hip-hop isolation freeze move pose sequence layout frame",
+        "presses a flat palm down onto a smooth linoleum breakdance mat surface, launching into an inverted handstand spin",
+        "slides a long silk ribbon prop trail smoothly through the air to create a flowing vertical wave geometry shape",
+        "pries open a stuck jar container of rosin powder compound using a small metal spoon handle tool leverage",
+        "hoists a dance partner high overhead in a dramatic contemporary lifting maneuver, holding a balanced stance frame",
+        "swivels an overhead theater spotlight casing manual bracket handle to angle a colored beam down onto center floor",
+        "threads a complex series of rapid tap-dance steps directly through a maze of floor-mounted lighting cables layout",
+        "taps a rhythm sequence using a pair of wooden castanets held tightly within curved finger grips tracking paths",
+        "yanks a satin stage curtain sash cord downward to close an inner performance backdrop line border segment",
+        "slides a pair of protective foam knee pads up over leg shins to prepare for a contemporary floor slide run",
+        "slam-shuts a heavy wooden stage door vault panel frame, dampening the echoes of an ongoing orchestra warm-up",
+        "turns a small tension knob wheel on an old metronome device to reset a dance practice tempo speed rhythm",
+        "pivots a large rolling audio speaker console box forty-five degrees to face a dance studio mirror wall panel",
+        "knocks a pair of wooden flamenco dance shoes hard against a hollow timber stage riser platform to check acoustics",
+        "wipes an accumulation of sweat drops off an acoustic guitar body shell panel using a micro-fiber towel cloth",
+        "slides a wide elastic resistance band loop up around thigh muscles to execute a series of barre workout steps",
+        "presses a remote audio system play button token module using a finger tap to launch a master backing track",
+        "pulls a heavy velvet theater drapery sheet aside to peek out at an arriving auditorium audience field layout",
+        "screws a replacement rubber cap wedge down onto the foot stem baseline of a portable ballet barre frame structure",
+        "unbolts an old metallic stage lighting gel clamp attachment piece off a structural truss rail using a wrench key",
+        "slides a thin plastic audio cassette tape track deep into a portable stereo deck tray housing slot mechanism",
+        "pockets a set of wireless inner-ear monitor headphones after securing their small charging case box shell closed",
+        "steps close onto a chalk-marked floor target line matrix to align perfectly with an overhead camera tracking vector",
+        "catches a falling satin dance hoop accessory out from mid-air using a precise one-handed blind grab catch step",
+        "kicks an ancient stage prop trunk box deep underneath an elevated backstage stairway frame to clear a walkway lane",
+        "unlatches a tiny metal buckle strap holding a leather ballroom dance shoe secure around an ankle tracking joint",
+        "hoists open a massive wooden costume wardrobe cabinet double door assembly using both brass ring handle loops",
+        "pours a drop of liquid grip solution direct onto bare palm skin surfaces before a vertical pole dance climb",
+        "snaps a wireless audio body pack unit secure onto the rear fabric waistband slot of a spandex dance unitard",
+        "wipes a layer of dust grit off a polished studio mirror glass panel surface using a long extension squeegee tool",
+        "hooks a heavy elastic theater fly-wire carabiner clip loop direct onto an aerial acrobatics body harness belt system",
+        "turns a split key shaft inside a vintage mechanical music box housing cylinder to wind up its internal gear track",
+        "pushes open a set of double swing saloon doors pane frames, stepping into a line-dance formation array floor",
+        "snaps open a small metal clasp box containing fresh stage makeup sponges and powder blending brushes layouts",
+        "yanks a quick-release tab string along a tear-away track suit pant line to reveal a hidden costume layer underneath",
+        "slides a smooth copper tuning slide tube down an orchestral trombone horn neck using a gloved hand grip slide",
+        "scrubs a rust scale patch ring away from a steel aerial hoop frame joint using a fine-grit sandpaper pad patch",
+        "presses an electronic lighting mixer console button module to shift a stage color wash from blue into amber tracking",
+        "slides an active digital tablet script board down into a side pocket slot frame folder during a routine break",
+        "pulls a thick gold curtain tassel cord element downward firm to call a theater intermission break drop panel",
+        "hoists a heavy rolling dance floor linoleum bundle upward onto a storage rack rail using dual shoulder lifting strength",
+        "snaps a master padlock loop frame closed around a secure metal equipment chest trunk inside a backstage locker room"
         ],
         sports: [
             "dribbles a basketball rapidly through their legs, cutting sharply laterally to lose a defender",
@@ -1203,7 +1988,58 @@ horror: [
             "shuffles rapidly along a badminton court baseline line, tracking a dropping shuttlecock bird flight path",
             "braces core weight firmly on a windsurf platform deck, pulling a sail boom frame against heavy ocean winds",
             "dashes across a cricket pitch track field, sliding their bat flat across the crease line to beat a throw",
-            "pivots around a structural rock climbing bouldering wall node, reaching high to grip a narrow finger pocket hold"
+            "pivots around a structural rock climbing bouldering wall node, reaching high to grip a narrow finger pocket hold",
+// Added
+"bounds forward across a synthetic running track lane, executing a powerful long-jump takeoff step sequence",
+        "slams a tennis racket frame downward in a fierce overhead smash maneuver, driving a ball across a net cord",
+        "drives a heavy golf club head assembly in a wide horizontal arc swing, executing a clean tee shot launch tracking",
+        "executes a high-velocity springboard dive layout rotation, cutting through a pool water surface cleanly baseline",
+        "parries an incoming fencing foil blade thrust using a lightning-fast saber parry-four wrist motion shift lane",
+        "lunges forward along a gymnastics mat runway track to launch into a succession of handspring tumble flips",
+        "hurls a heavy leather medicine ball tool accessory straight toward a target wall block using a dual hand push",
+        "braces a body core posture hard against an entry block rail frame to prepare for a 100-meter sprint start",
+        "smashes a hard boxing speed-bag strike sequence using alternating left and right knuckle contacts rhythmically",
+        "charges down a steep bobsled track run ice lane, leaping inside a fiberglass hull shell body casing mid-motion",
+        "slides into a low baseball base slide layout, extending a cleat boot toe out to touch a canvas plate canvas",
+        "grabs a heavy barbell iron shaft using a wide snatch grip layout, preparing for an Olympic lift lift step",
+        "collides with a heavy leather tackle dummy pad module, driving shoulder guards forward to force a tip over",
+        "swipes a frantic ping-pong paddle strike across an angled vector path to return a high-spin ping pong ball",
+        "leaps clean over a high-jump crossbar rail tracking element, arching a spine layout backwards into a foam pit drop",
+        "recoils from a hard impact against a gym wall padding mat, resetting an active athletic ready stance tracking line",
+        "punches an electronic stop-watch button timer console module to record an official athletic lane speed lap record",
+        "climbs an indoor synthetic climbing wall route grid rapidly, hooking finger tips inside small resin rock holds",
+        "tears a roll of athletic grip tape fabric asset free from its core spool to wrap a hockey stick blade layer",
+        "sweeps a fiberglass kayak paddle blade down through a turbulent whitewater rapids river channel current flow track",
+        "snaps a hockey puck asset across a smooth ice rink floor surface using a composite stick wrist flick maneuver",
+        "wrenches a mechanical bicycle pedal gear assembly tight using a specialized pedal wrench tool spindle handle",
+        "skids across a wet grass turf baseline patch, pivoting a body frame around to follow a launching projectile flight",
+        "grapples intensely along a wrestling mat border zone, attempting to slip an arm under an opponent's shoulder hook",
+        "shoves a rolling heavy training hurdle rack assembly across a track field space to clear an clear workout path",
+        "rips a damaged nylon net cord element off a basketball hoop metal rim frame using a pair of pliers cutters",
+        "vaults over an equestrian show jump wood rail gate element structure while holding leather saddle reins firm",
+        "bounds along a steep mountain bike trail path layout, maintaining balance over erratic tree root obstacles track",
+        "dives sideways across a volleyball court sand patch to perform an emergency one-handed fist dig save step",
+        "veers sharply to the right side of a downhill ski slalom course track, cutting a deep edge line into snow pack",
+        "blocks an incoming lacrosse ball projectile using a webbed pocket stick head frame held high over safety helmet",
+        "parries a rapid sequence of three incoming training staff strikes by shifting footwork patterns across a ring boundary",
+        "adjusts a neoprene weightlifting belt buckle tight around a waist frame line before attempting a heavy deadlift set",
+        "crouches inside a low surfboard wave riding stance, tracking a curling saltwater tube tunnel break apex pathway",
+        "reaches down to scoop a handful of white magnesium carbonate powder chalk compound from a storage bowl container",
+        "lunges forward to catch a dropping badminton shuttlecock accessory tool before it makes contact with gym floors",
+        "hurls a weighted athletic discus platter disc directly across an open throwing cage field matrix path tracking lane",
+        "braces both boots hard inside metal rowing shell foot stretchers to prepare for a heavy oar stroke pull phase",
+        "smashes a leather baseball mitt pocket face hard against a thigh to settle a newly caught baseball inside safely",
+        "charges up a steep sand dune training hill path with a heavy drag sled harness strap anchored to shoulders",
+        "slides a pair of fiberglass ski boots deep inside an active ski binding track latch plate until it snaps secure",
+        "grabs a hanging rock climbing canvas chalk bag wire rim to dust finger pad surfaces before a difficult jump move",
+        "collides with a foam yard marker pylon tracking element at full sprint speed, knocking it flat onto sideline turf",
+        "swipes an active rowing oar shaft handle backward in a powerful clean sweep stroke axis through water current tracks",
+        "leaps backward off an elevated diving platform board deck to execute an advanced reverse double somersault flip run",
+        "recoils from a high-speed paint ball impact hit against a shoulder guard plate, calling out a hit marker code",
+        "punches through a thick pine wood board target block panel using a focused martial arts straight fist strike execution",
+        "climbs an exterior stadium seating riser staircase layout rapidly during a morning cardio endurance workout run step",
+        "tears open a fresh pack of energy gel paste using teeth, squeezing the contents out down throat midline tracking",
+        "sweeps a long-range curling stone rock handle across an ice lane surface, releasing it toward a target house ring"
         ],
         formal: [
             "settles slowly back into a premium leather armchair, crossing legs deliberately at the knees",
@@ -1255,7 +2091,58 @@ horror: [
             "glances sharply toward an interview opponent face profile, waiting for an active translation stream audio loop to close",
             "pivots toward a luxury hotel check-in desk counter pad, sliding an executive black credit card across smooth granite",
             "adjusts a formal velvet bow-tie loop collar alignment while reviewing a speech script copy mirror reflection",
-            "stands perfectly erect in a high-profile diplomatic assembly room corridor line, arms resting straight along dress pant sides"
+            "stands perfectly erect in a high-profile diplomatic assembly room corridor line, arms resting straight along dress pant sides",
+// Added
+"adjusts a silk bow tie knot meticulously while looking into a polished silver vanity mirror frame face",
+        "pours a stream of vintage champagne down into a crystal flute glass held gently by a stem base",
+        "extends a white-gloved hand toward a gala guest, offering a polite formal greeting gesture sequence layout",
+        "pivots smoothly on a patent-leather tuxedo shoe heel, guiding a partner into an elegant slow waltz frame step",
+        "wipes a tiny smudge of dust off a polished onyx cufflink setting using a clean silk pocket square corner",
+        "adjusts the long flowing train layers of an intricate white silk wedding dress layout while walking down an aisle",
+        "pockets a small silver fountain pen tool asset after signing an official diplomatic treaty document sheet panel",
+        "swivels an ornate crystal chandelier dimmer switch knob module clockwise to lower ballroom ambient light levels",
+        "punches a five-digit security lock access pin code into a high-end country club gate terminal keypad matrix",
+        "presses a signature stamp block down firm onto an official wax seal layout to authenticate an inheritance scroll",
+        "slides a heavy silver serving platter tray smoothly across a white damask linen table cloth surface field",
+        "pries open a sealed vintage wax stamp layer on an antique wine bottle neck using a small sommelier knife tool",
+        "hoists a massive crystal punch bowl basin upward onto an ice sculpture presentation display block platform layout",
+        "swivels a desktop mahogany reading lamp shade manual fixture to illuminate a leather-bound auction bidding log board",
+        "threads a pathway directly through a crowded ballroom space while balancing three cocktail drink trays across a palm",
+        "taps a tiny silver gavel head block three times against a polished wood sounding block panel to request silence",
+        "yanks a long velvet bell-pull cord handle element downward firm to summon a butler service staff intervention line",
+        "slides a pair of long satin evening gloves up past elbow joints to complete an opera attendee outfit array",
+        "slam-shuts a heavy hand-carved mahogany library entrance door frame, sealing out the noise of a dynamic cocktail lounge",
+        "turns a small brass winding key stem inside a vintage gold pocket watch casing assembly to set accurate times",
+        "pivots a grand piano lid support stick brace manual arm up to secure a heavy polished timber soundboard roof open",
+        "knocks a fine porcelain teacup rim gently against a matching saucer dish plate surface to settle an herb bag",
+        "wipes an accumulation of condensation water ring marks off a polished marble table top using a soft linen rag",
+        "slides a thin sterling silver cigarette case unit deep inside an inner tuxedo jacket breast pocket lining seam",
+        "presses an automated velvet rope stanchion post latch lock release clip mechanism to open a VIP red carpet line",
+        "pulls a heavy gold-embossed leather window drapery loop sash aside to observe an arriving line of limousines track",
+        "screws a replacement brass adjustment foot node down beneath a wobbly banquet table corner layout to stabilize glasses",
+        "unbolts a decorative silver name plate frame off an office executive desk panel using a small precision screwdriver",
+        "slides a thick cream cardstock menu template sheet inside a clear brass-edged table display holder slot frame tracking",
+        "pockets an ornate brass estate key bundle accessory after locking an antique mahogany display cabinet cabinet door shut",
+        "steps close parallel within a designated photography backdrop zone to pose for an official press gallery camera flash",
+        "catches a dropping crystal champagne cork element mid-air using a quick palm grab catch maneuver during an opening toast",
+        "kicks a stray fallen flower petal cluster deep beneath a velvet lounge sofa base rail to clear a pristine flooring view",
+        "unlatches a small diamond clasp clip lock element holding an heirloom pearl necklace secure around a neck tracking joint",
+        "hoists open a massive iron wine cellar vault door panel frame using an antique master key turn sequence step line",
+        "pours a drop of essential lavender oil compound into a small ceramic perfume burner well container channel top",
+        "snaps a wireless lapel microphone transmitter clip plate secure onto the inner edge border of a silk tuxedo lapel block",
+        "wipes away an accumulation of wax drip scale marks from an antique silver candelabra base branch using a cloth scraper",
+        "hooks a heavy brass picture frame wire loop tightly onto an exhibit wall mounting hook track during gallery setup",
+        "turns a custom code lock dial wheel clockwise inside an executive leather briefcase locking assembly plate to secure papers",
+        "pushes open a set of grand double-leaf oak entry archway doors pane frames, stepping into an embassy reception hall space",
+        "snaps open a small velvet-lined jewelry box lid container to present a rare platinum diamond engagement ring asset face",
+        "yanks a silk ribbon bow tie strand pattern loose from an evening gown wrap box frame packaging bundle package assembly",
+        "slides a smooth silver napkin ring band casing down off a rolled white linen cloth sheet bundle layout step tracking",
+        "scrubs an oxidation tarnish ring circle away from an antique silver tea service pot handle joint using a polishing pad",
+        "presses a digital audio visual touchscreen remote module interface grid to cue a classical string quartet tracking entrance",
+        "slides a high-grade fountain pen ink cartridge tube deep inside a lacquered pen housing barrel shaft thread assembly",
+        "pulls a velvet theater box privacy screen drapery cord down firm to mask an upscale audience viewing area field view",
+        "hoists a heavy rolling luxury carpet roll axis upward onto a transport utility cart bed using careful dual person lifts",
+        "snaps a master briefcase hinge clasp lock set shut sound around an active diplomatic courier documentation collection box"
         ]
 ,
         external: []
@@ -1402,59 +2289,167 @@ function moveShot(currentIndex, direction) {
         wrapper.appendChild(row);
     });
 }
-// --- COHESIVE CONTEXTUAL SCENARIO ENGINE ---
+// --- COHESIVE CONTEXTUAL SCENARIO ENGINE (MAPPED TO REAL HTML VALUE presets) ---
+// --- MASTER COHESIVE CONTEXTUAL SCENARIO ENGINE (COMPLETE PRODUCTION VALUE MATRIX) ---
 const PROCEDURAL_SCENARIOS = {
+    universal: {
+        kinetics: ["while shifting posture slightly in front of", "as a steady tracking shot captures movement past", "with a deliberate hand gesture extending toward", "while focusing attention completely on"],
+        targets: ["the central focus layout boundary", "the primary foreground structural element", "the midground cinematic plane matrix", "the immediate physical environment space"],
+        physics: ["while maintaining sharp high-definition cinematic focus.", "as smooth ambient light emphasizes structural contours.", "with clean cinematic composition balancing the frame structure."]
+    },
     cyberpunk: {
-        actors: ["the operative", "the technician", "a hooded figure", "the netrunner"],
-        kinetics: ["reaches out to recalibrate", "interfaces directly with", "taps a sequence into", "wipes down the status display on", "adjusts the cooling valve of"],
-        targets: ["the holographic terminal matrix", "a glowing fiber optic junction", "the central processing node array", "an exposed cybernetic hardware bay"],
-        physics: ["sending immediate data pulses down the pipeline", "causing indicator lights to cascade sequentially", "while maintaining a completely locked physical stance"]
+        kinetics: ["while managing active interface nodes on", "as automated systems override encryption layers on", "while tapping a rapid diagnostic sequence into", "while maintaining a cybernetic neural link directly into"],
+        targets: ["the holographic terminal matrix", "a glowing fiber-optic proxy junction", "the central processing node array", "an exposed cybernetic hardware bay"],
+        physics: ["sending immediate high-frequency data pulses down the pipeline.", "causing indicator lights to cascade sequentially in a flash.", "illuminating the scene in a volatile pulse of shifting cyan light."]
     },
-    industrial: {
-        actors: ["the operator", "the welder", "a heavy laborer", "the technician"],
-        kinetics: ["exerts deliberate physical force to pull", "cranks the iron wheel on", "manually inspects structural weld points along", "lifts and balances"],
-        targets: ["the floor-level platform tracking boundary", "a heavy hydraulic steel piston", "the primary utility pressure manifold", "an adjacent metallic framework panel"],
-        physics: ["releasing a sharp hiss of pressurized pneumatic steam", "with micro-adjustments to manage load equilibrium", "to minimize mechanical friction across the plane"]
+    flashlight: {
+        kinetics: ["while sweeping a harsh narrow beam across", "as a trembling flashlight beam illuminates the surface of", "while tracking a dense light source along", "as shadows distort wildly while inspecting"],
+        targets: ["the dark damp concrete wall boundary", "a dusty rusted lock assembly panel", "the pitch-black hallway layout corridor", "an unlit structural basement crawlspace hatch"],
+        physics: ["revealing ancient moisture streaks and thick cobwebs in the beam.", "casting long terrifying high-contrast shadows across the background.", "as fine airborne dust motes dance inside the localized light stream."]
     },
-    cinematic_drama: {
-        actors: ["the protagonist", "a solitary individual", "the character", "the figure"],
-        kinetics: ["draws a heavy fabric hand across", "carefully re-positions", "extends a lone hand tracking across", "pivots slowly toward"],
-        targets: ["the dust-covered mahogany surface", "a heavy glass decanter vessel container", "the condensation-rimmed window pane", "an old leather-bound journal layout"],
-        physics: ["disturbing the settling ambient air currents", "catching a sharp sliver of raking volumetric sunlight", "as a heavy, deliberate silence anchors the frame"]
+    horror: {
+        kinetics: ["while frantically backing away from", "as bloodied hands fumble blindly along the edge of", "while staring in sheer frozen terror at", "as cold sweat drips while hiding behind"],
+        targets: ["the decaying splintered doorway structural frame", "a rusted metal morgue drawer assembly", "the cracked mildew-covered bathroom wall mirror", "a dark unlit security camera tracking monitor"],
+        physics: ["while an eerie low-frequency drone echoes through the environment.", "as a sudden chilling draft causes ambient mist vapors to form.", "with flickering warning indicator lights casting an amber panic glow."]
+    },
+    car_chase: {
+        kinetics: ["while violently gripping the leather steering wheel tracking past", "as high-speed vehicles slide erratically alongside", "while downshifting hard adjacent to", "as trailing sirens flash intensely through"],
+        targets: ["the concrete highway median dividing barrier", "the narrow wet asphalt street alleyway layout", "an intersection traffic control boundary grid", "the debris-covered shipping container loading yard"],
+        physics: ["leaving thick black rubber skid marks burning across the pavement.", "as high-intensity headlight glare reflecting off wet rain surfaces blurs the frame.", "sending structural trash bins and loose debris scattering violently through the frame."]
+    },
+    beverage: {
+        kinetics: ["while slowly tilting and pouring liquid into", "as condensation droplets slowly track down the outer surface of", "while swiping a finger clean across the rim of", "as a hand gently swirls ice cubes inside"],
+        targets: ["the frosted crystal highball glassware vessel", "a premium embossed aluminum beverage can container", "the carbonated liquid reservoir line surface", "an artisanal vintage copper chalice assembly"],
+        physics: ["causing micro-bubbles to rapidly effervesce and cascade upward.", "catching bright hyper-detailed reflections across liquid surface ripples.", "as fine ambient studio backlighting refracts cleanly through the fluid glass."]
+    },
+    office: {
+        kinetics: ["while aggressively shuffling through physical document printouts on", "as hands strike rapid keystrokes across", "while organized sorting logs accumulate neatly near", "as a hand reaches out to spin"],
+        targets: ["the polished sleek corporate desktop layout surface", "the glowing ergonomic laptop display terminal", "the master document submission tray matrix", "a heavy high-back leather executive task chair unit"],
+        physics: ["illuminated by the harsh monochrome glare of overhead fluorescent grids.", "as fine floating dust particles catch a sliver of window blind sunlight.", "while a shallow depth of field softly blurs background office rows."]
+    },
+    tech: {
+        kinetics: ["while checking structural components along", "as micro-probing needles establish contacts on", "while soldering a miniature circuit element onto", "as tracking lasers parse diagnostic telemetry across"],
+        targets: ["the multi-layered fiberglass printed circuit board layout", "the microchip processing array infrastructure frame", "an intricate high-density component terminal motherboard", "the gold-plated connector array terminal grid"],
+        physics: ["sparking tiny microscopic pulses of green light status indicators.", "projecting crisp floating spatial vector telemetry graphics in mid-air.", "as a faint clean hum of localized hardware cooling fans echoes quietly."]
+    },
+    door: {
+        kinetics: ["while slowly sliding an unlatched hand flat along", "as heavy security hinges creak open past", "while rattling the stubborn brass handle mechanism of", "as a nervous glance tracks through the peephole view of"],
+        targets: ["the massive reinforced solid oak entrance door structure", "the frosted glass privacy pane boundary layout", "an industrial heavy sliding metal warehouse gate barrier", "the narrow closet storage access panel framework"],
+        physics: ["allowing a bright geometric beam of external light to slice inside.", "casting a long growing shadow shape across the clean floor plane.", "as a sharp rush of outside wind rattles the surrounding hardware structure."]
+    },
+    clothing: {
+        kinetics: ["while zipping up the heavy weather-resistant tracking line of", "as fingers button up the formal tailored collar of", "while checking fabric textures and seam stitching along", "as a hand smooths out creases along the front panel of"],
+        targets: ["the distressed thick leather motorcycle jacket alignment", "the clean formal silk lapel layout lining", "the heavy woven canvas utility pocket array", "the vintage velvet formal outerwear cloak structure"],
+        physics: ["as directional studio spot-lighting accentuates fine woven textures.", "while micro-shadows fold naturally along the soft moving fabric lines.", "revealing minute fibers catching a sharp edge-light accent boundary profile."]
+    },
+    maintenance: {
+        kinetics: ["while pulling hard against structural levers on", "during a manual inspection of weld points along", "while tightening a primary compression bolt across", "as heavy pneumatic pressure dials fluctuate on"],
+        targets: ["the floor-level platform tracking boundary", "a heavy hydraulic steel piston chamber", "the primary utility steam manifold valve", "the high-pressure pneumatic compressor tank system"],
+        physics: ["releasing a sharp deafening hiss of pressurized mechanical steam.", "with micro-adjustments to manage structural load equilibrium safely.", "sending a sudden brief shower of hot orange friction sparks downward."]
+    },
+    map: {
+        kinetics: ["while tracing an intricate path route trajectory across", "as charcoal pencils log topological survey markings along", "while carefully pinning tracking coordinates into", "as a magnifying glass parses microscopic typography text on"],
+        targets: ["the weathered tattered edges of a vintage parchment document", "the complex cartographic grid line coordinate overlay mapping", "the massive wall-mounted tactical navigation chart diagram", "a rolled strategic deployment field grid schematic"],
+        physics: ["revealing worn crease lines, tea stains, and deep ink textures.", "while soft low-angle warm study lamplight rakes horizontally across the sheet.", "as the high-contrast ink lines stand out vividly against aged paper planes."]
+    },
+    medical: {
+        kinetics: ["while carefully adjusting the monitoring rate on", "as sterile latex gloves quickly sanitize", "while logging vital diagnostic telemetry outputs off", "as specialized instruments check tracking metrics across"],
+        targets: ["the real-time electrocardiogram life monitor display", "a sealed clear intravenous fluid line system", "the automated surgical ventilation canopy array", "the localized biometric diagnostic workstation unit"],
+        physics: ["accompanied by a rhythmic predictable digital safety alert ping.", "as bright flat fluorescent clinical lighting eliminates all background shadow.", "while specialized equipment hums quietly to stabilize environment metrics."]
+    },
+    cleaning: {
+        kinetics: ["while wiping a damp disinfectant cloth flat down", "as high-pressure chemical spray vapor mist covers", "while scraping away calcified residue buildup off", "as vacuum suction patterns collect debris arrays off"],
+        targets: ["the stainless-steel industrial prep table surface layout", "the high-traffic ceramic tile floor plane framework", "the translucent chemical laboratory mixing hood tray", "a highly reflective glass partition divider panel"],
+        physics: ["leaving a squeaky clean streak-free reflective surface plane path.", "as microscopic sanitizing foam layers dissolve and crackle smoothly.", "reflecting the brilliant clean glare of bright overhead white LEDs."]
+    },
+    mixmatch: {
+        kinetics: ["while combining disparate unexpected interactions near", "as mismatched structural elements collide randomly past", "while operating unusual structural layouts along", "as unpredictable kinetic workflows traverse around"],
+        targets: ["the experimental abstract landscape background system", "an unmapped structural configuration junction setup", "the multi-genre environmental container module matrix", "the hybrid testing pipeline workspace installation layout"],
+        physics: ["creating an odd unique high-contrast clash of cinematic design styles.", "with erratic unexpected lighting dynamics shifting across materials.", "as multiple distinct thematic physics systems merge simultaneously."]
+    },
+    combat: {
+        kinetics: ["while snapping a lightning-fast front kick directly at", "as defensive blocking postures pivot perfectly past", "while driving a powerful balanced kinetic punch toward", "as body weight shifts rapidly into an aggressive low stance near"],
+        targets: ["the heavy canvas training bag hanging apparatus", "the sparring partner's defensive guard layout system", "the traditional straw-matted dojo floor arena boundary", "the ring corner padded turnbuckle framework post"],
+        physics: ["delivering a crisp explosive physical kinetic impact crack sound wave.", "with absolute perfect balance and recovery returning instantly to base.", "sending sweat beads scattering dynamically into the dark air background."]
+    },
+    dance: {
+        kinetics: ["while executing a fluid graceful spinning pirouette across", "as sweeping rhythmic arm movements trace elegant arcs past", "while dropping into a sharp synchronized locking pose along", "as continuous footwork steps maintain perfect synchronization across"],
+        targets: ["the highly polished wooden studio floor stage plane", "the center spotlight dramatic theater performance layout", "the ambient smoke-filled subterranean dancefloor grid space", "an open urban concrete courtyard performance platform"],
+        physics: ["as trailing dramatic spot-lighting captures moving body silhouettes.", "while fine atmospheric stage fog swirls lazily around ankle level.", "conveying effortless kinetic momentum and elegant spatial energy lines."]
+    },
+    sports: {
+        kinetics: ["while sprinting at peak explosive athletic output across", "as hands securely catch and clutch a moving ball near", "while driving a precise high-velocity launch trajectory toward", "as cleats dig violently into the surface turf parsing past"],
+        targets: ["the chalk-lined stadium perimeter turf field track", "the high-tensile white nylon goal net framing array", "the solid fiberglass backboard basket rim structure", "the wet clay track boundary transition baseline lane"],
+        physics: ["sending loose dirt chunks and grass turf spraying upward in a stream.", "while heavy physical respiration creates visible breath vapor trails.", "illuminated by massive high-intensity overhead stadium floodlight banks."]
+    },
+    formal: {
+        kinetics: ["while adjusting a high-end directional lapel microphone on", "as formal posture straightens confidently ahead of", "while gesturing with hands to articulate conceptual points inside", "as an attentive professional head nod tracks engagement across"],
+        targets: ["the acoustic studio interview talk panel layout desk", "the bright dual-point lighting portrait studio backdrop frame", "a dark wood panel meeting roundtable conference platform", "the high-definition broadcast studio media desk assembly"],
+        physics: ["with a crisp clean multi-point key light layout isolating the subject.", "rendering smooth natural skin tones with rich professional cinematic color grading.", "while a deep professional bokeh background defocus isolates the row."]
     }
+    // --- EXPANSION PACK LANDSCAPE ---
+    // You can add more matching entries below for your other HTML menu keys 
+    // (e.g., office, beverage, combat) using this exact template layout!
 };
 
 function getRandomValueFrom(array) {
-    if (!array || array.length === 0) return "executes unmapped structural transition behavior";
+    if (!array || array.length === 0) return "";
     return array[Math.floor(Math.random() * array.length)];
 }
 
-// Generates a contextually cohesive action based on your overall layout
+// --- INTELLIGENT DROPDOWN-AWARE COMPOSER ENGINE ---
 function generateDynamicProceduralMotion() {
-    const activeKeys = Object.keys(PROCEDURAL_SCENARIOS);
-    const chosenContextKey = getRandomValueFrom(activeKeys);
-    const pool = PROCEDURAL_SCENARIOS[chosenContextKey];
+    // Read exactly what preset pack is selected in the UI dropdown right now
+    const selectedGenreValue = document.getElementById("p-genre").value;
     
-    const actor    = getRandomValueFrom(pool.actors);
-    const kinetic  = getRandomValueFrom(pool.kinetics);
-    const target   = getRandomValueFrom(pool.targets);
-    const physics  = getRandomValueFrom(pool.physics);
+    // Fallback logic: If the selected pack doesn't have a procedural pool entry, 
+    // or if the user selected "universal", pick a random theme entry out of our database matrix
+    let themePool = PROCEDURAL_SCENARIOS[selectedGenreValue];
+    if (!themePool) {
+        const structuralKeys = Object.keys(PROCEDURAL_SCENARIOS);
+        const randomKeyFallback = getRandomValueFrom(structuralKeys);
+        themePool = PROCEDURAL_SCENARIOS[randomKeyFallback];
+    }
     
-    const compositeSentence = `${actor} ${kinetic} ${target}, ${physics}`;
-    return compositeSentence.charAt(0).toUpperCase() + compositeSentence.slice(1);
+    const manualSubjectInput = document.getElementById("p-subject") || document.getElementById("p-anchor");
+    let baseAnchorText = manualSubjectInput ? manualSubjectInput.value.trim() : "";
+
+    const kinetic = getRandomValueFrom(themePool.kinetics);
+    const target  = getRandomValueFrom(themePool.targets);
+    const physics = getRandomValueFrom(themePool.physics);
+
+    // FIX: Clear out empty inputs or old placeholders and enforce "A focused character" clean baseline
+    if (baseAnchorText.length === 0 || baseAnchorText.toLowerCase() === "character") {
+        baseAnchorText = "A focused character";
+        const cleanKinetic = kinetic.replace("while ", "").replace("as ", "moves to ");
+        const compositeSentence = `${baseAnchorText} ${cleanKinetic} ${target}, ${physics}`;
+        return compositeSentence.charAt(0).toUpperCase() + compositeSentence.slice(1);
+    }
+
+    // Check if user entered a complex action sequence premise description
+    const isComplexPremise = baseAnchorText.toLowerCase().includes(" ") && 
+                             (baseAnchorText.toLowerCase().includes("ing") || 
+                              baseAnchorText.toLowerCase().includes("by") || 
+                              baseAnchorText.toLowerCase().includes("with") ||
+                              baseAnchorText.toLowerCase().includes("and"));
+
+    if (isComplexPremise) {
+        const compositeSentence = `${baseAnchorText}, ${kinetic} ${target}, ${physics}`;
+        return compositeSentence.charAt(0).toUpperCase() + compositeSentence.slice(1);
+    } else {
+        const cleanActiveKinetic = kinetic.replace("while ", "").replace("as ", "");
+        const compositeSentence = `${baseAnchorText} ${cleanActiveKinetic} ${target}, ${physics}`;
+        return compositeSentence.charAt(0).toUpperCase() + compositeSentence.slice(1);
+    }
 }
 
-// --- MASTER ROLLING ENGINE WITH EXPLICIT PRESET PACK LOCKS ---
+// --- MASTER ROLLING ENGINE ---
 function rollUnlockedElements() {
-    // 1. Grab values from both independent dropdowns using your exact layout IDs
     const movementMode = document.getElementById("p-movement").value;
     const currentPool = getActiveBehaviorPool();
-    
-    const behaviorDropdown = document.getElementById("p-genre");
-    const selectedPackValue = behaviorDropdown ? behaviorDropdown.value : "";
+    const selectedPackValue = document.getElementById("p-genre").value;
 
     PERSISTENT_SHOTS_DATA.forEach((shot) => {
-        // 2. Optics Handler (Runs off the camera dropdown setting)
         if (!shot.cameraLocked) {
             if (movementMode.toLowerCase().includes("random") || movementMode === "randomize") {
                 shot.camera = getRandomValueFrom(OPTICAL_POOL);
@@ -1463,14 +2458,11 @@ function rollUnlockedElements() {
             }
         }
         
-        // 3. Action/Motion Handler (Runs strictly off your behavior pack selection value)
         if (!shot.actionLocked) {
-            // IF you selected the default stock ("universal"), OR if your loaded pool is missing data:
             if (selectedPackValue === "universal" || !currentPool || currentPool.length === 0) {
-                // Use our clean, context-cohesive procedural action generator
+                // Generates synchronized contextual scenario text strings dynamically
                 shot.action = generateDynamicProceduralMotion();
             } else {
-                // A dedicated preset pack is selected (flashlight, car_chase, etc.) -> Use it exclusively!
                 shot.action = getRandomValueFrom(currentPool);
             }
         }
@@ -1478,84 +2470,101 @@ function rollUnlockedElements() {
     
     compilePipelineOutput();
 }
-    function registerEventHandlers() {
-        const triggers = ["p-category", "p-structure", "p-duration", "p-shots", "p-timing-preset", "p-genre", "p-movement", "p-energy", "p-subject", "p-dialogue", "p-dialogue-shift", "p-audiomode", "p-instrument", "p-mood"];
-        triggers.forEach(id => {
-            document.getElementById(id).addEventListener("input", () => {
-                if (id === "p-duration") document.getElementById("val-duration").innerText = document.getElementById("p-duration").value + "s";
-                if (id === "p-shots") {
-                    document.getElementById("val-shots").innerText = document.getElementById("p-shots").value + " Shots";
-                    syncDynamicLockRegistry();
-                }
-                if (id === "p-genre") {
-                    const currentPool = getActiveBehaviorPool();
-                    PERSISTENT_SHOTS_DATA.forEach(shot => {
-                        if (!shot.locked) shot.action = getRandomValueFrom(currentPool);
-                    });
-                }
-                if (id === "p-energy") document.getElementById("val-energy").innerText = document.getElementById("p-energy").value == 0 ? "STATIC" : `LVL ${document.getElementById("p-energy").value}`;
-                if (id === "p-dialogue-shift") document.getElementById("val-dialogue-shift").innerText = "Offset " + document.getElementById("p-dialogue-shift").value;
-                
-                if (id === "p-structure") {
-                    const isMulti = document.getElementById("p-structure").value === "multi";
-                    document.getElementById("container-shots-count").classList.toggle("hidden-panel", !isMulti);
-                    document.getElementById("container-timing-preset").classList.toggle("hidden-panel", !isMulti);
-                    document.getElementById("panel-lock-registry").classList.toggle("hidden-panel", !isMulti);
-                    syncDynamicLockRegistry();
-                }
-                if (id === "p-audiomode") {
-                    document.getElementById("soundtrack-expansion-panel").classList.toggle("hidden-panel", document.getElementById("p-audiomode").value !== "soundtrack");
-                }
-                if (id === "p-movement" && document.getElementById("p-movement").value !== "randomize") {
-                    PERSISTENT_SHOTS_DATA.forEach(shot => {
-                        if (!shot.locked) shot.camera = document.getElementById("p-movement").value;
-                    });
-                }
-                compilePipelineOutput();
-            });
-        });
 
-        document.getElementById("p-file-loader").addEventListener("change", function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
+// --- SYSTEM EVENT INTERFACES MATRIX ---
+function registerEventHandlers() {
+    const triggers = ["p-category", "p-structure", "p-duration", "p-shots", "p-timing-preset", "p-genre", "p-movement", "p-energy", "p-subject", "p-dialogue", "p-dialogue-shift", "p-audiomode", "p-instrument", "p-mood", "p-manual-actions-blob"];
+    triggers.forEach(id => {
+        const element = document.getElementById(id);
+        if (!element) return; // Guard against missing DOM element nodes Safely
 
-            document.getElementById("file-label-view").innerText = file.name;
-            const reader = new FileReader();
+        element.addEventListener("input", () => {
+            if (id === "p-duration") document.getElementById("val-duration").innerText = document.getElementById("p-duration").value + "s";
+            if (id === "p-shots") {
+                document.getElementById("val-shots").innerText = document.getElementById("p-shots").value + " Shots";
+                syncDynamicLockRegistry();
+            }
+            if (id === "p-genre") {
+                const currentPool = getActiveBehaviorPool();
+                PERSISTENT_SHOTS_DATA.forEach(shot => {
+                    if (!shot.actionLocked) {
+                        if (element.value === "universal" || !currentPool || currentPool.length === 0) {
+                            shot.action = generateDynamicProceduralMotion();
+                        } else {
+                            shot.action = getRandomValueFrom(currentPool);
+                        }
+                    }
+                });
+            }
+            if (id === "p-energy") document.getElementById("val-energy").innerText = document.getElementById("p-energy").value == 0 ? "STATIC" : `LVL ${document.getElementById("p-energy").value}`;
             
-            reader.onload = function(evt) {
-                try {
-                    let parsedActions = [];
-                    const content = evt.target.result.trim();
-                    
-                    if (file.name.endsWith(".json") || content.startsWith("[")) {
-                        parsedActions = JSON.parse(content);
-                    } else {
-                        parsedActions = content.split("\n").map(l => l.trim()).filter(l => l.length > 0);
-                    }
-
-                    if (Array.isArray(parsedActions) && parsedActions.length > 0) {
-                        GENRE_BEHAVIOR_MATRIX.external = parsedActions;
-                        
-                        const extOpt = document.getElementById("opt-external");
-                        extOpt.removeAttribute("disabled");
-                        document.getElementById("p-genre").value = "external";
-                        
-                        PERSISTENT_SHOTS_DATA.forEach(shot => {
-                            if (!shot.locked) shot.action = getRandomValueFrom(parsedActions);
-                        });
-                        
-                        compilePipelineOutput();
-                        alert(`Successfully imported ${parsedActions.length} dynamic custom behavior nodes into volatile memory.`);
-                    } else {
-                        alert("Invalid Schema array parsing error: ensure file holds non-empty content layout items.");
-                    }
-                } catch(err) {
-                    alert("Failure parsing external data stream alignment matrix: " + err.message);
-                }
-            };
-            reader.readAsText(file);
+            // FIX: Ensure UI counter updates and forces a complete recalculation sequence of the dialogue placement mapping array
+            if (id === "p-dialogue-shift") {
+                document.getElementById("val-dialogue-shift").innerText = "Offset " + element.value;
+            }
+            
+            if (id === "p-structure") {
+                const isMulti = document.getElementById("p-structure").value === "multi";
+                document.getElementById("container-shots-count").classList.toggle("hidden-panel", !isMulti);
+                document.getElementById("container-timing-preset").classList.toggle("hidden-panel", !isMulti);
+                document.getElementById("panel-lock-registry").classList.toggle("hidden-panel", !isMulti);
+                syncDynamicLockRegistry();
+            }
+            if (id === "p-audiomode") {
+                document.getElementById("soundtrack-expansion-panel").classList.toggle("hidden-panel", document.getElementById("p-audiomode").value !== "soundtrack");
+            }
+            if (id === "p-movement" && document.getElementById("p-movement").value !== "randomize") {
+                PERSISTENT_SHOTS_DATA.forEach(shot => {
+                    if (!shot.cameraLocked) shot.camera = document.getElementById("p-movement").value;
+                });
+            }
+            
+            // Re-run compilation to force distribution calculations live
+            compilePipelineOutput();
         });
-    }
+    });
+
+    document.getElementById("p-file-loader").addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        document.getElementById("file-label-view").innerText = file.name;
+        const reader = new FileReader();
+        
+        reader.onload = function(evt) {
+            try {
+                let parsedActions = [];
+                const content = evt.target.result.trim();
+                
+                if (file.name.endsWith(".json") || content.startsWith("[")) {
+                    parsedActions = JSON.parse(content);
+                } else {
+                    parsedActions = content.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+                }
+
+                if (Array.isArray(parsedActions) && parsedActions.length > 0) {
+                    GENRE_BEHAVIOR_MATRIX.external = parsedActions;
+                    
+                    const extOpt = document.getElementById("opt-external");
+                    extOpt.removeAttribute("disabled");
+                    document.getElementById("p-genre").value = "external";
+                    
+                    PERSISTENT_SHOTS_DATA.forEach(shot => {
+                        if (!shot.actionLocked) shot.action = getRandomValueFrom(parsedActions);
+                    });
+                    
+                    compilePipelineOutput();
+                    alert(`Successfully imported ${parsedActions.length} dynamic custom behavior nodes into volatile memory.`);
+                } else {
+                    alert("Invalid Schema array parsing error: ensure file holds non-empty content layout items.");
+                }
+            } catch(err) {
+                alert("Failure parsing external data stream alignment matrix: " + err.message);
+            }
+        };
+        reader.readAsText(file);
+    });
+}
 
     function calculateSegmentDurations(totalTime, shotCount, preset) {
         let fractions = [];
@@ -1572,17 +2581,50 @@ function rollUnlockedElements() {
         return fractions.map(f => (f / sum) * totalTime);
     }
 
-    function calculateDialogueMapping(totalShots, scriptLines, shiftValue) {
-        let mapping = new Array(totalShots).fill(null);
-        if (scriptLines.length === 0) return mapping;
-        let maxAvailableOffset = Math.max(0, totalShots - scriptLines.length);
-        let normalizedShift = Math.min(maxAvailableOffset, Math.floor((shiftValue / 10) * (maxAvailableOffset + 0.99)));
-        for (let i = 0; i < scriptLines.length; i++) {
-            let targetIdx = normalizedShift + i;
-            if (targetIdx < totalShots) mapping[targetIdx] = scriptLines[i];
+function calculateDialogueMapping(totalShots, scriptLines, shiftValue) {
+    const dialogueMap = {};
+    if (!scriptLines || scriptLines.length === 0 || totalShots <= 0) return dialogueMap;
+
+    const lineCount = scriptLines.length;
+
+    scriptLines.forEach((line, index) => {
+        // 1. Calculate a normalized baseline position for this line between 0.0 and 1.0
+        const normalPosition = lineCount > 1 ? index / (lineCount - 1) : 0;
+
+        // 2. Linear Spacing Baseline (when slider is 0, they sit perfectly back-to-back at the start)
+        const tightIndex = index;
+
+        // 3. Maximum Expanded Spacing Baseline (stretches lines evenly across the entire shot list)
+        const fullyExpandedIndex = Math.floor(normalPosition * (totalShots - 1));
+
+        // 4. Use the slider value (0 to 4+) as an interpolation weight factor
+        // As the slider increases, spacing transitions smoothly from tight to fully stretched
+        const interpolationFactor = Math.min(shiftValue / 4, 1); // Normalize slider input safely to a 0.0 - 1.0 range
+        
+        let targetShotIndex = Math.round(tightIndex + (fullyExpandedIndex - tightIndex) * interpolationFactor);
+
+        // 5. Boundary Guard: Clamp values within structural limits
+        if (targetShotIndex >= totalShots) targetShotIndex = totalShots - 1;
+        if (targetShotIndex < 0) targetShotIndex = 0;
+
+        // 6. Sequential Preservation Loop: If this index is blocked by a previous line,
+        // push it forward step-by-step to the next available shot slot to maintain chronological order
+        while (dialogueMap[targetShotIndex] !== undefined && targetShotIndex < totalShots - 1) {
+            targetShotIndex++;
         }
-        return mapping;
-    }
+
+        // 7. Ultimate Collision Override: If it runs out of space at the end, 
+        // find the absolute closest empty shot space behind it to prevent line deletion bugs
+        while (dialogueMap[targetShotIndex] !== undefined && targetShotIndex > 0) {
+            targetShotIndex--;
+        }
+
+        // Final registration entry
+        dialogueMap[targetShotIndex] = line;
+    });
+
+    return dialogueMap;
+}
 
     function extractSubjectCoreSnippet(anchorText) {
         if (!anchorText) return "subject";
@@ -1590,116 +2632,149 @@ function rollUnlockedElements() {
         if (words.length <= 6) return words.join(" ");
         return words.slice(0, 6).join(" ");
     }
+function compilePipelineOutput() {
+    const category = document.getElementById("p-category").value;
+    const structure = document.getElementById("p-structure").value;
+    const duration = parseInt(document.getElementById("p-duration").value) || 10;
+    const totalShots = structure === "single" ? 1 : (parseInt(document.getElementById("p-shots").value) || 1);
+    const timingPreset = document.getElementById("p-timing-preset").value;
+    const energy = parseInt(document.getElementById("p-energy").value) || 0;
+    
+    let rawAnchor = document.getElementById("p-subject") ? document.getElementById("p-subject").value.trim() : "";
+    if (!rawAnchor || rawAnchor.toLowerCase() === "unspecified visual baseline" || rawAnchor === "") {
+        rawAnchor = "Character";
+    }
+    const anchorSubject = rawAnchor;
+    
+    const dialogueInput = document.getElementById("p-dialogue") ? document.getElementById("p-dialogue").value : "";
+    const shiftValue = document.getElementById("p-dialogue-shift") ? parseInt(document.getElementById("p-dialogue-shift").value) : 0;
+    const audioMode = document.getElementById("p-audiomode") ? document.getElementById("p-audiomode").value : "foley";
 
-    function compilePipelineOutput() {
-        const category = document.getElementById("p-category").value;
-        const structure = document.getElementById("p-structure").value;
-        const duration = parseInt(document.getElementById("p-duration").value);
-        const totalShots = structure === "single" ? 1 : parseInt(document.getElementById("p-shots").value);
-        const timingPreset = document.getElementById("p-timing-preset").value;
-        const energy = parseInt(document.getElementById("p-energy").value);
-        const anchorSubject = document.getElementById("p-subject").value.trim() || "Unspecified visual baseline";
-        const dialogueInput = document.getElementById("p-dialogue").value;
+    const scriptLines = dialogueInput.split('\n').map(l => l.trim()).filter(l => l !== '');
+    const speakerProfile = document.getElementById("audio-speaker-context") ? document.getElementById("audio-speaker-context").value.trim() : "";
+    
+    // Fallback safe duration calculation if layout math drops helper logic
+    const shotDurations = typeof calculateSegmentDurations === "function" ? calculateSegmentDurations(duration, totalShots, timingPreset) : Array(totalShots).fill(duration / totalShots);
+    const dialogueMap = typeof calculateDialogueMapping === "function" ? calculateDialogueMapping(totalShots, scriptLines, shiftValue) : {};
 
-        const shiftValue = parseInt(document.getElementById("p-dialogue-shift").value);
-        const audioMode = document.getElementById("p-audiomode").value;
-
-        const scriptLines = dialogueInput.split('\n').map(l => l.trim()).filter(l => l !== '');
-// Extract the optional speaker voice profile
-const speakerProfile = document.getElementById("audio-speaker-context").value.trim();
-        const shotDurations = calculateSegmentDurations(duration, totalShots, timingPreset);
-        const dialogueMap = calculateDialogueMapping(totalShots, scriptLines, shiftValue);
-
-        if (PERSISTENT_SHOTS_DATA.length !== totalShots) syncDynamicLockRegistry();
-
-        const subjectSnippet = extractSubjectCoreSnippet(anchorSubject);
-
-        let viewHtml = `<span class="t-meta">MASTER SCENARIO CONTEXT: ${anchorSubject}</span>\n`;
-        viewHtml += `<span class="t-meta">CONFIG PROFILE: [Type: ${category}] [Structure: ${structure === "single" ? "Continuous Shot" : "Sequence Array"}]</span>\n\n`;
-        
-        let rawText = `MASTER SCENARIO CONTEXT: ${anchorSubject}\n`;
-        rawText += `CONFIG PROFILE: [Type: ${category}] [Structure: ${structure === "single" ? "Continuous Shot" : "Sequence Array"}]\n\n`;
-
-        let currentTimelineTime = 0;
-
-for (let i = 0; i < totalShots; i++) {
-            let currentDur = shotDurations[i];
-            let start = currentTimelineTime.toFixed(1);
-            let end = (currentTimelineTime + currentDur).toFixed(1);
-            currentTimelineTime += currentDur;
-
-            let vibrationMod = "";
-            if (energy > 0) {
-                if (energy <= 3) vibrationMod = "with subtle stable stabilization anchors";
-                else if (energy > 3 && energy <= 7) vibrationMod = "accompanied by loose handheld organic drift patterns";
-                else vibrationMod = "driven by erratic high-frequency tracking jitters and rapid tracking corrections";
-            } else { vibrationMod = "locked absolute zero-velocity tripod lock"; }
-
-            let shotMemory = PERSISTENT_SHOTS_DATA[i];
-            
-            // Render specific visual markers depending on which components are frozen
-            let statusMarkers = "";
-            if (shotMemory.cameraLocked) statusMarkers += "🔒📷 ";
-            if (shotMemory.actionLocked) statusMarkers += "🔒🏃‍♂️ ";
-
-            viewHtml += `<span class="t-time">[SHOT ${i + 1} TIMEMARK: ${start}s - ${end}s] ${statusMarkers}</span>\n`;
-            rawText  += `[SHOT ${i + 1} TIMEMARK: ${start}s - ${end}s]\n`;
-
-            viewHtml += `<span class="t-cam"> - Optics: Axis directional ${shotMemory.camera}, ${vibrationMod}.</span>\n`;
-            rawText  += ` - Optics: Axis directional ${shotMemory.camera}, ${vibrationMod}.\n`;
-
-            let highImpactAction = shotMemory.action.replace(/^(violently|aggressively|strikes|ducks|kicks|pivots|loses|reaches|lunges|hurls|braces|smashes|charges|slides|grabs|collides|swipes|leaps|recoils|punches|climbs|tears|sweeps|slams|intercepts|drops|wrenches|skids|grapples|stumbles|shoves|rips|vaults|bounds|dives|pokes|snatches|veers|boots|wears|interfaces|looks|blocks|parries|executes|adjusts)/i, (match) => {
-                return `${subjectSnippet} ${match.toLowerCase()}`;
-            });
-            
-            if (highImpactAction === shotMemory.action) {
-                highImpactAction = `${subjectSnippet} ${shotMemory.action}`;
-            }
-
-            viewHtml += `<span class="t-dir"> - Action: ${highImpactAction}.</span>\n`;
-            rawText  += ` - Action: ${highImpactAction}.\n`;
-
-// --- UPDATED STEP 3 AUDIO ASSEMBLY LOGIC ---
-if (dialogueMap[i]) {
-    let formattedAudioSegment = "";
-    if (speakerProfile) {
-        // Formats exactly to: [Speaker Profile]: "Your dialogue line text here"
-        formattedAudioSegment = `${speakerProfile}: "${dialogueMap[i]}"`;
-    } else {
-        formattedAudioSegment = `"${dialogueMap[i]}"`;
+    if (PERSISTENT_SHOTS_DATA.length !== totalShots) {
+        if (typeof syncDynamicLockRegistry === "function") syncDynamicLockRegistry();
     }
 
-    viewHtml += `<span class="t-audio"> - Audio Sync: ${formattedAudioSegment}</span>\n`;
-    rawText  += ` - Audio Sync: ${formattedAudioSegment}\n`;
-}
-// --- END AUDIO ASSEMBLY ---
-            
-            viewHtml += `\n`; rawText  += `\n`;
-        }
+    let subjectSnippet = anchorSubject;
+    let cleanStyleLabel = "cinematic";
+    if (category) {
+        let baseSegment = category.split(/[,(|\n]/)[0].trim();
+        cleanStyleLabel = baseSegment.replace(/(film|print|emulation|footage|stock|format|grade|capture|stream|aesthetic)/i, "").trim();
+        cleanStyleLabel = cleanStyleLabel.charAt(0).toUpperCase() + cleanStyleLabel.slice(1);
+    }
 
-        viewHtml += `<span class="t-audio">AUDIO DIRECTIVE:</span>\n`;
-        rawText  += `AUDIO DIRECTIVE:\n`;
+    let introductoryPremise = structure === "single" 
+        ? `A continuous tracking single-shot cinematic sequence featuring ${anchorSubject} (Total Duration: ${duration}s).`
+        : `A multi-shot ${cleanStyleLabel} sequence of a ${anchorSubject}, shot as a series of quick cuts (Total Duration: ${duration}s).`;
 
-        if (audioMode === "foley") {
-            viewHtml += `<span class="t-audio"> - Layer: Natural environment location foley effects, high atmospheric background noise track preservation.</span>\n`;
-            rawText  += ` - Layer: Natural environment location foley effects, high atmospheric background noise track preservation.\n`;
+    let viewHtml = `<span class="t-meta">${introductoryPremise}</span>\n`;
+    viewHtml += `<span class="t-meta">CONFIG PROFILE: [Type: ${category}] [Structure: ${structure === "single" ? "Continuous Shot" : "Sequence Array"}]</span>\n\n`;
+    
+    let rawText = `${introductoryPremise}\nCONFIG PROFILE: [Type: ${category}] [Structure: ${structure === "single" ? "Continuous Shot" : "Sequence Array"}]\n\n`;
+
+    const overrideBlob = document.getElementById("p-manual-actions-blob");
+    const overrideLines = overrideBlob ? overrideBlob.value.split('\n') : [];
+
+    for (let i = 0; i < totalShots; i++) {
+        let rawDur = shotDurations[i] || (duration / totalShots);
+        let roundedDur = Math.round(rawDur * 2) / 2;
+        if (roundedDur <= 0) roundedDur = 0.5;
+        let currentDur = roundedDur.toString();
+
+        let vibrationMod = "";
+        if (energy > 0) {
+            if (energy <= 3) vibrationMod = "with subtle stable stabilization anchors";
+            else if (energy > 3 && energy <= 7) vibrationMod = "accompanied by loose handheld organic drift patterns";
+            else vibrationMod = "driven by erratic high-frequency tracking jitters and rapid tracking corrections";
+        } else { vibrationMod = "locked absolute zero-velocity tripod lock"; }
+
+        let shotMemory = PERSISTENT_SHOTS_DATA[i] || { camera: "Static establishing medium shot", action: "", cameraLocked: false, actionLocked: false };
+        
+        let statusMarkers = "";
+        if (shotMemory.cameraLocked) statusMarkers += "🔒📷 ";
+        if (shotMemory.actionLocked) statusMarkers += "🔒🏃‍♂️ ";
+
+        let targetActionText = "";
+        let isManualOverride = false;
+
+        if (overrideLines[i] && overrideLines[i].trim() !== "") {
+            targetActionText = overrideLines[i].trim();
+            isManualOverride = true;
         } else {
-            const inst = document.getElementById("p-instrument").value;
-            const mood = document.getElementById("p-mood").value;
-            viewHtml += `<span class="t-audio"> - Layer: Local physical environmental foley synced with instrumental soundtrack layer [Score: ${inst}] [Acoustic Vibe: ${mood}].</span>\n`;
-            rawText  += ` - Layer: Local physical environmental foley synced with instrumental soundtrack layer [Score: ${inst}] [Acoustic Vibe: ${mood}].\n`;
+            targetActionText = (shotMemory.action || "").trim();
+        }
+        
+        targetActionText = targetActionText.replace(/^A focused character/i, "").trim();
+        targetActionText = targetActionText.replace(/^Character/i, "").trim();
+
+        let highImpactAction = targetActionText || "Performs default background environmental calibration motion.";
+
+        if (!isManualOverride && targetActionText !== "") {
+            highImpactAction = `${subjectSnippet} ${targetActionText}`;
         }
 
-        viewHtml += `<span class="t-meta"> - Render Directives: Maintain absolute multi-frame consistency matrix. Prevent spatial warping loops. [Cut Style: Hard cinematic jumps, zero fluid interpolation or morphing between timestamps]. Render crisp 8k detail resolution. No letterboxing fields.</span>`;
-        rawText  += ` - Render Directives: Maintain absolute multi-frame consistency matrix. Prevent spatial warping loops. [Cut Style: Hard cinematic jumps, zero fluid interpolation or morphing between timestamps]. Render crisp 8k detail resolution. No letterboxing fields.`;
+        highImpactAction = highImpactAction.replace(/\s+/g, " ").trim();
+        if (!highImpactAction.endsWith(".")) highImpactAction += ".";
+        highImpactAction = highImpactAction.charAt(0).toUpperCase() + highImpactAction.slice(1);
 
-        const viewContainer = document.getElementById("output-view");
+// 1. Visual version with lock icons for your screen display panel layout
+        let transitionMarkerVisual = structure === "single"
+            ? `Scene Playback (Duration: ${currentDur}s): ${statusMarkers}`
+            : (i === 0 ? `Shot 1 (Duration: ${currentDur}s): ${statusMarkers}` : `Cut to Shot ${i + 1} (Duration: ${currentDur}s): ${statusMarkers}`);
+
+        // 2. Clean version with NO lock icons for your clipboard copy data
+        let transitionMarkerClean = structure === "single"
+            ? `Scene Playback (Duration: ${currentDur}s):`
+            : (i === 0 ? `Shot 1 (Duration: ${currentDur}s):` : `Cut to Shot ${i + 1} (Duration: ${currentDur}s):`);
+
+        let cleanCamRaw = shotMemory.camera || "Static establishing medium shot";
+        let cameraClause = `Axis directional ${cleanCamRaw}, ${vibrationMod}.`;
+        
+        // This line sends the lock icons to your web browser window view screen
+        viewHtml += `<span class="t-time">${transitionMarkerVisual}</span> <span class="t-cam">${cameraClause}</span> <span class="t-dir">${highImpactAction}</span>\n`;
+        
+        // This line keeps the text completely clean when you go to copy it
+        rawText  += `${transitionMarkerClean} ${cameraClause} ${highImpactAction}\n`;
+
+        if (dialogueMap[i]) {
+            let formattedAudioSegment = speakerProfile ? `${speakerProfile}: "${dialogueMap[i]}"` : `"${dialogueMap[i]}"`;
+            viewHtml += `<span class="t-audio"> - Audio Sync: ${formattedAudioSegment}</span>\n`;
+            rawText  += ` - Audio Sync: ${formattedAudioSegment}\n`;
+        }
+        viewHtml += `\n`; rawText  += `\n`;
+    }
+
+    viewHtml += `<span class="t-audio">Aesthetic & Directional Layer Rules:</span>\n`;
+    rawText  += `Aesthetic & Directional Layer Rules:\n`;
+
+    if (audioMode === "foley") {
+        viewHtml += `<span class="t-audio"> - Audio: Natural environment location foley effects, high atmospheric background noise track preservation.</span>\n`;
+        rawText  += ` - Audio: Natural environment location foley effects, high atmospheric background noise track preservation.\n`;
+    } else {
+        const inst = document.getElementById("p-instrument") ? document.getElementById("p-instrument").value : "Acoustic";
+        const mood = document.getElementById("p-mood") ? document.getElementById("p-mood").value : "Ambient";
+        viewHtml += `<span class="t-audio"> - Audio: Local physical environmental foley synced with instrumental soundtrack layer [Score: ${inst}] [Acoustic Vibe: ${mood}].</span>\n`;
+        rawText  += ` - Audio: Local physical environmental foley synced with instrumental soundtrack layer [Score: ${inst}] [Acoustic Vibe: ${mood}].\n`;
+    }
+
+    viewHtml += `<span class="t-meta"> - Render Directives: Sequential multi-angle storyboard edits. Render crisp high-definition resolution. No letterboxing fields.</span>`;
+    rawText  += ` - Render Directives: Sequential multi-angle storyboard edits. Render crisp high-definition resolution. No letterboxing fields.`;
+
+    const viewContainer = document.getElementById("output-view");
+    if (viewContainer) {
         viewContainer.innerHTML = viewHtml;
         viewContainer.setAttribute("data-raw", rawText);
-
-        updateTokenBudgetUi(rawText.length);
     }
 
+    const counter = document.getElementById("char-counter");
+    if (counter) counter.innerText = rawText.length;
+}
     function updateTokenBudgetUi(charCount) {
         const label = document.getElementById("char-counter");
         const warn = document.getElementById("budget-warning");
@@ -1715,6 +2790,53 @@ if (dialogueMap[i]) {
             alert("v12.1 custom array output written to system clipboard!");
         });
     }
+// --- DROPDOWN PRESET SWITCH PROTECTION LAYOUT ---
+(function() {
+    let changeBackupCache = [];
+
+    function savePresetSnapshot() {
+        if (!window.PERSISTENT_SHOTS_DATA) return;
+        // Map out exactly what text and lock statuses look like right now
+        changeBackupCache = window.PERSISTENT_SHOTS_DATA.map(shot => ({
+            action: shot.action,
+            locked: shot.locked === true
+        }));
+    }
+
+    function restorePresetSnapshot() {
+        if (!window.PERSISTENT_SHOTS_DATA || changeBackupCache.length === 0) return;
+        let restored = false;
+
+        window.PERSISTENT_SHOTS_DATA.forEach((shot, index) => {
+            const cacheItem = changeBackupCache[index];
+            // If this item was supposed to be locked, force-restore its description text string
+            if (cacheItem && cacheItem.locked) {
+                shot.action = cacheItem.action;
+                shot.locked = true;
+                restored = true;
+            }
+        });
+
+        if (restored) {
+            compilePipelineOutput();
+            if (typeof renderShots === "function") renderShots();
+        }
+    }
+
+    const genreDropdown = document.getElementById("p-genre");
+    if (genreDropdown) {
+        // Capture a clean snapshot before any value adjustment can occur
+        genreDropdown.addEventListener("mousedown", savePresetSnapshot, true);
+        genreDropdown.addEventListener("keydown", savePresetSnapshot, true);
+
+        // Run recovery directly when the selection completes changing layout settings
+        genreDropdown.addEventListener("change", function() {
+            restorePresetSnapshot();
+            setTimeout(restorePresetSnapshot, 10);
+            setTimeout(restorePresetSnapshot, 100);
+        });
+    }
+})();
 </script>
 
 </body>
